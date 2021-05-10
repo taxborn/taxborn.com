@@ -1,3 +1,35 @@
+/** tailwindcss */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/** custom classes */
+.navbar-item {
+    @apply px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg;
+}
+
+.navbar-item.selected, .dropdown-item.selected {
+    @apply text-gray-900 bg-gray-200;
+}
+
+.dropdown-item {
+    @apply block px-4 py-2 my-1 text-sm font-semibold bg-transparent rounded-lg;
+}
+
+.navbar-item:hover, .navbar-item-selected:hover, .dropdown-item:hover {
+    @apply text-gray-900 bg-gray-200;
+}
+
+.navbar-item:focus, .navbar-item-selected:focus, .dropdown-item:focus {
+    @apply outline-none ring;
+}
+
+@screen md {
+    .navbar-item, .navbar-item-selected {
+        @apply mt-0 ml-4;
+    }
+
+    .dropdown-item {
+        @apply mt-0;
+    }
+}
