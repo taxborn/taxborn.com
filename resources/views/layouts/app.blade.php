@@ -7,9 +7,13 @@
 
         <title>taxborn.com | @yield('title')</title>
 
+        {{-- tailwindcss --}}
         <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     </head>
     <body>
         @yield('content')
+
+        {{-- AlpineJS --}}
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     </body>
 </html>
