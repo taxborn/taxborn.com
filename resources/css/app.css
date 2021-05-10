@@ -33,3 +33,11 @@
         @apply mt-0;
     }
 }
+
+.icon {
+    @apply w-8 h-8 fill-current text-gray-700;
+}
+
+.icon:hover {
+    @apply text-indigo-500;
+}
