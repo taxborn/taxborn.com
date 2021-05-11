@@ -41,3 +41,41 @@
 .icon:hover {
     @apply text-indigo-500;
 }
+
+
+.blog-container > h1 {
+    @apply text-3xl my-2;
+}
+
+.blog-container > h2 {
+    @apply text-2xl my-2;
+}
+
+.blog-container > h3 {
+    @apply text-xl my-2;
+}
+
+.blog-container {
+    @apply w-full bg-white rounded mt-8 py-4 px-8 rounded shadow;
+}
+
+.embedded_image {
+    @apply flex justify-center;
+}
+
+.embedded_image > img {
+    @apply shadow-lg rounded;
+}
+
+
+.blog-container > ol {
+    @apply list-decimal ml-8;
+}
+
+.blog-container > ul {
+    @apply list-disc ml-8;
+}
+
+.blog-container > p > a {
+    @apply text-indigo-500 underline;
+}
