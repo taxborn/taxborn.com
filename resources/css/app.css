@@ -16,16 +16,16 @@
     @apply block px-4 py-2 my-1 text-sm font-semibold bg-transparent rounded-lg;
 }
 
-.navbar-item:hover, .navbar-item-selected:hover, .dropdown-item:hover {
+.navbar-item:hover, .dropdown-item:hover {
     @apply text-gray-900 bg-gray-200;
 }
 
-.navbar-item:focus, .navbar-item-selected:focus, .dropdown-item:focus {
+.navbar-item:focus, .dropdown-item:focus {
     @apply outline-none ring;
 }
 
 @screen md {
-    .navbar-item, .navbar-item-selected {
+    .navbar-item {
         @apply mt-0 ml-4;
     }
 
@@ -52,10 +52,6 @@
 
 .blog-container > h3 {
     @apply text-xl my-2;
-}
-
-.blog-container {
-    @apply w-full bg-white rounded mt-8 py-4 px-8 rounded shadow;
 }
 
 .embedded_image {

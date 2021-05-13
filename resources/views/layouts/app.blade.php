@@ -15,7 +15,7 @@
         @include('includes.navigation')
 
         {{-- Main content --}}
-        <div class="container mx-auto mt-8">
+        <div class="container mx-auto mt-8 w-full bg-white shadow-lg rounded py-4 px-8">
             @yield('content')
         </div>
 
