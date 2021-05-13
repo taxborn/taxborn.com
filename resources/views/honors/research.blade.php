@@ -4,5 +4,5 @@
 
 @section('content')
         <h1 class="title">Research.</h1>
-        <p class="subtext">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae in perferendis nesciunt iusto doloribus accusantium ad quas velit? Ex a cum sit iure aspernatur veritatis corporis odio deserunt sequi tempora?</p>
+        <blockquote class="blockquote">Upon graduation, honors students will have demonstrated the ability to exhibit information literacy skills, synthesize and integrate ideas, produce original research or creative works, and contribute to knowledge.</blockquote>
 @endsection

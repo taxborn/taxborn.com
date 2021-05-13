@@ -106,3 +106,11 @@
 .divider-small {
     @apply mx-auto h-0.5 w-1/3 bg-gray-300 my-2 rounded;
 }
+
+.blockquote {
+    @apply bg-gray-200 px-2 py-4 my-4 border-l-4 border-indigo-500 italic text-gray-800;
+}
+
+code {
+    @apply my-2 rounded;
+}

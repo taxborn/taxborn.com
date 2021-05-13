@@ -4,5 +4,5 @@
 
 @section('content')
         <h1 class="title">Global Citizenship.</h1>
-        <p class="subtext">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae in perferendis nesciunt iusto doloribus accusantium ad quas velit? Ex a cum sit iure aspernatur veritatis corporis odio deserunt sequi tempora?</p>
+        <blockquote class="blockquote">Upon graduation, honors students will have demonstrated an increased self-awareness of their own and other cultures, knowledge and understanding of cultural perspectives, and awareness of the connections between language and culture in communication.</blockquote>
 @endsection
