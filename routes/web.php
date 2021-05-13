@@ -19,6 +19,8 @@ use App\Http\Controllers\HonorsController;
 
 Route::get('/', HomeController::class)->name('home');
 
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+
 Route::get('/posts', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/post/{post:slug}', [BlogController::class, 'show'])->name('blog.post');
 

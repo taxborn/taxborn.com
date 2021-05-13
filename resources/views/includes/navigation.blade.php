@@ -14,7 +14,7 @@
 
         <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
             <a class="navbar-item {{ Route::currentRouteName() == 'home' ? 'selected' : '' }}" href="{{ route('home') }}">Home</a>
-            <a class="navbar-item {{ Route::currentRouteName() == 'about' ? 'selected' : '' }}" href="#">About</a>
+            <a class="navbar-item {{ Route::currentRouteName() == 'about' ? 'selected' : '' }}" href="{{ route('about') }}">About</a>
             <a class="navbar-item {{ strstr(Route::currentRouteName(), 'blog') ? 'selected' : '' }}" href="{{ route('blog.index') }}">Blog</a>
 
             <div @click.away="open = false" class="relative" x-data="{ open: false }">
