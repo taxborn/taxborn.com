@@ -108,7 +108,15 @@
 }
 
 .blockquote {
-    @apply bg-gray-200 px-2 py-4 my-4 border-l-4 border-indigo-500 italic text-gray-800;
+    @apply bg-gray-200 px-4 py-4 my-4 border-l-4 border-indigo-500 italic text-gray-800;
+}
+
+.blockquote::before {
+    content: "\"";
+}
+
+.blockquote::after {
+    content: "\"";
 }
 
 code {

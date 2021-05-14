@@ -16,13 +16,10 @@
         {{-- Navigation bar --}}
         @include('includes.navigation')
 
-        <div class="container mx-auto bg-indigo-500 mt-8 rounded px-8 py-4 shadow">
-            <h3 class="font-black text-white shadow-sm">Heads up!</h3>
-            <p class="text-indigo-100 mt-1 leading-tight">This site is under heavy development at the moment. I hope to have it done in the near future here, but in the meantime, content will be lacking and there may be some empty pages. Let me know if something feels off, and thank you for being patient!</p>
-        </div>
+        @include('includes.alert')
 
         {{-- Main content --}}
-        <div class="container mx-auto mt-8 w-full bg-white shadow-lg rounded py-4 px-8">
+        <div class="container mx-auto mt-2 w-full bg-white shadow-lg rounded py-4 px-8">
             @yield('content')
         </div>
 
