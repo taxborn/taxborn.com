@@ -9,7 +9,7 @@ class BlogController extends Controller
     public function index()
     {
         return view('blog.posts')
-            ->with('posts', WinkPost::orderBy('created_at', 'desc')->get());
+            ->with('posts', WinkPost::orderBy('created_at', 'desc')->live()->get());
     }
 
     public function show(WinkPost $post)
