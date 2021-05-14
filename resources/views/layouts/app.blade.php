@@ -16,8 +16,10 @@
         {{-- Navigation bar --}}
         @include('includes.navigation')
 
+        @include('includes.alert')
+
         {{-- Main content --}}
-        <div class="container mx-auto mt-8 w-full bg-white shadow-lg rounded py-4 px-8">
+        <div class="container mx-auto mt-2 w-full bg-white shadow-lg rounded py-4 px-8">
             @yield('content')
         </div>
 

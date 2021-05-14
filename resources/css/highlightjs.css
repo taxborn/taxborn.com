@@ -172,7 +172,7 @@ base0F  #d65d0e  Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php 
 
 /* for block of code */
 .hljs-ln-code {
-    padding-left: 10px !important;
+    padding-left: 20px !important;
 }
 
 .language-bash::before {
