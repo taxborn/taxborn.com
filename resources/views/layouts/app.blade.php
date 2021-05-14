@@ -8,12 +8,23 @@
         <title>taxborn.com | @yield('title')</title>
 
         {{-- tailwindcss --}}
-        <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('assets/css/highlightjs.css') }}">
+        <link rel="stylesheet" href="{{ mix('assets/css/app.css') }}">
     </head>
-    <body>
-        @yield('content')
+
+    <body class="bg-gray-100">
+        {{-- Navigation bar --}}
+        @include('includes.navigation')
+
+        {{-- Main content --}}
+        <div class="container mx-auto mt-8 w-full bg-white shadow-lg rounded py-4 px-8">
+            @yield('content')
+        </div>
 
         {{-- AlpineJS --}}
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+        <script src="{{ mix('assets/js/app.js') }}"></script>
     </body>
 </html>
