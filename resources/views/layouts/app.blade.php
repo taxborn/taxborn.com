@@ -16,7 +16,13 @@
         {{-- Navigation bar --}}
         @include('includes.navigation')
 
-        @include('includes.alert')
+        {{-- WIP Alert --}}
+        <x-alert>
+            <x-slot name="title">Heads up!</x-slot>
+
+            This site is under heavy development at the moment. I hope to have it done in the near future here, but in the meantime,
+            content will be lacking and there may be some empty pages. Let me know if something feels off, and thank you for being patient!
+        </x-alert>
 
         {{-- Main content --}}
         <div class="container mx-auto mt-2 w-full bg-white shadow-lg rounded py-4 px-8">

@@ -1,6 +1,6 @@
 {{-- https://tailwindcomponents.com/component/responsive-navbar-with-dropdown --}}
 
-<div class="w-full text-gray-700 bg-white border-t-2 border-indigo-500">
+<div class="w-full text-gray-700 bg-white border-t-4 border-indigo-500">
     <div x-data="{ open: false }" class="flex flex-col max-w-screen-3xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div class="p-4 flex flex-row items-center justify-between">
             <a href="{{ route('home') }}">@include('includes.svg.academic-cap')</a>
@@ -16,6 +16,10 @@
             <a class="navbar-item {{ Route::currentRouteName() == 'home' ? 'selected' : '' }}" href="{{ route('home') }}">Home</a>
             <a class="navbar-item {{ Route::currentRouteName() == 'about' ? 'selected' : '' }}" href="{{ route('about') }}">About</a>
             <a class="navbar-item {{ strstr(Route::currentRouteName(), 'blog') ? 'selected' : '' }}" href="{{ route('blog.index') }}">Blog</a>
+
+            @auth('wink')
+                <a class="navbar-item" href="/wink/posts">Wink</a>
+            @endauth
 
             <div @click.away="open = false" class="relative" x-data="{ open: false }">
                 <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-indigo-500 rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 text-white hover:text-gray-200 focus:text-gray-200 hover:bg-indigo-600 focus:bg-indigo-600 focus:outline-none focus:shadow-outline">
