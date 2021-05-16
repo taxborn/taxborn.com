@@ -7,7 +7,7 @@
     <div class="grid grid-cols-1 md:grid-cols-6">
         <div class="col-span-2">
             <div class="bg-gradient-to-br from-indigo-500 to-blue-500 rounded w-4/5 mx-auto">
-                <img src="{{ asset('assets/img/profile-full.webp') }}" srcset="{{ asset('assets/img/profile-third.webp') }} 1007w, {{ asset('assets/img/profile-half.webp') }} 1512w, {{ asset('assets/img/profile-full.webp') }} 3024w" sizes="100vw" class="p-1 shadow rounded-lg" alt="A picture of Braxton Fair on the MSU, Mankato campus">
+                <img src="{{ asset('assets/img/profile-full.webp') }}" width="3024" height="3024" srcset="{{ asset('assets/img/profile-third.webp') }} 1007w, {{ asset('assets/img/profile-half.webp') }} 1512w, {{ asset('assets/img/profile-full.webp') }} 3024w" sizes="100vw" class="p-1 shadow rounded-lg" alt="A picture of Braxton Fair on the MSU, Mankato campus">
             </div>
         </div>
         <div class="col-span-4 mt-8 md:mt-0 w-11/12 mx-auto flex flex-wrap content-center">
