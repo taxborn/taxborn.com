@@ -17,7 +17,7 @@
                     I am a double major in mathematics and computer science, studying operating systems and playing around with <a href="https://www.rust-lang.org/" class="link" rel="noreferrer" target="_blank">Rust</a>!
                 Having fun tinkering with the lower levels of computers and the web, and writing about it. If you want to check out what I'm working on, look at my <a href="https://github.com/taxborn" class="link" rel="noreferrer" target="_blank">Github</a>
                  page or my <a href="{{ route('about') }}" class="link">about me</a> section!</p>
-                <h3 class="subtitle mt-4">My mission statment.</h3>
+                <h2 class="subtitle mt-4">My mission statment.</h3>
                 <p class="subtext">I want to take my studies at MSU, Mankato into real-world research and applications to solve real-world problems. I also want to facilitate effective communication and teamwork within that research and application.</p>
 
                 <div class="mt-4">

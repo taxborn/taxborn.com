@@ -3,11 +3,11 @@
 <div class="w-full text-gray-700 bg-white border-t-4 border-indigo-500">
     <div x-data="{ open: false }" class="flex flex-col max-w-screen-3xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div class="p-4 flex flex-row items-center justify-between">
-            <a href="{{ route('home') }}">@include('includes.svg.academic-cap')</a>
+            <a href="{{ route('home') }}" aria-label="Logo">@include('includes.svg.academic-cap')</a>
 
             <a href="{{ route('home') }}" class="text-lg tracking-wide text-gray-900 rounded-lg focus:outline-none focus:shadow-outline">Braxton <span class="font-semibold text-indigo-500">Fair</span></a>
 
-            <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+            <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open" aria-label="Hamburger Menu">
                 @include('includes.svg.hamburger')
             </button>
         </div>
