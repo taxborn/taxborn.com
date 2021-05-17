@@ -9,8 +9,8 @@
         <title>taxborn.com | @yield('title')</title>
 
         {{-- tailwindcss --}}
-        <link rel="stylesheet" href="{{ mix('assets/css/highlightjs.css') }}">
         <link rel="stylesheet" href="{{ mix('assets/css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('assets/css/highlightjs.css') }}">
     </head>
 
     <body class="bg-gray-100">
@@ -30,7 +30,7 @@
             @yield('content')
         </div>
 
-        {{-- AlpineJS --}}
-        <script src="{{ mix('assets/js/app.js') }}"></script>
+        {{-- App Javascript --}}
+        <script src="{{ mix('assets/js/app.js') }}" defer></script>
     </body>
 </html>

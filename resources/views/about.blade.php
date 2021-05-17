@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="grid grid-cols-1 md:grid-cols-2">
-        <div>
-            <img src="{{ asset('assets/img/me-and-mickey-full.webp') }}" width="3088" height="2316" srcset="{{ asset('assets/img/me-and-mickey-full.webp') }} 3088w, {{ asset('assets/img/me-and-mickey-half.webp') }} 1544w, {{ asset('assets/img/me-and-mickey-third.webp') }} 1028w, " class="w-11/12 shadow rounded" alt="">
+        <div class="bg-gradient-to-br from-indigo-500 to-blue-500 rounded w-11/12 mx-auto">
+            <img src="{{ asset('assets/img/me-and-mickey-full.webp') }}" width="3088" height="2316" srcset="{{ asset('assets/img/me-and-mickey-full.webp') }} 3088w, {{ asset('assets/img/me-and-mickey-half.webp') }} 1544w, {{ asset('assets/img/me-and-mickey-third.webp') }} 1028w" sizes="100vw" class="p-1 shadow rounded-lg" alt="Picture of my girlfriend and I">
         </div>
         <div class="order-first md:order-last mb-4 md:mb-0">
             <h1 class="title">Hey there!</h1>

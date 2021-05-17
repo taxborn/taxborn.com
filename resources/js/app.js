@@ -5,5 +5,5 @@ const hljs = require('highlight.js');
 window.hljs = hljs;
 require('highlightjs-line-numbers.js')
 
-hljs.highlightAll();
-hljs.initLineNumbersOnLoad();
+window.hljs.highlightAll()
+window.hljs.initLineNumbersOnLoad()
