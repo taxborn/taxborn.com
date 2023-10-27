@@ -1,0 +1,15 @@
+---
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props;
+---
+
+<section>
+	<h2 class="font-bold uppercase">{title} <span class="hidden group-hover:inline-block cursor">_</span></h2>
+
+	<div class="ml-8">
+		<slot />
+	</div>
+</section>
