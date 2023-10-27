@@ -15,5 +15,8 @@
     "astro": "^3.3.4",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@catppuccin/tailwindcss": "^0.1.6"
   }
 }
