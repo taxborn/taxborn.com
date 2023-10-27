@@ -5,7 +5,7 @@ import ManSection from '../components/ManSection.astro';
 
 <Layout title="home">
 	<main>
-		<pre class="text-center py-8">
+		<pre class="text-center pt-8 pb-4 hidden md:block">
      /$$$$$$       /$$                         /$$                                    
    /$$$__  $$$    | $$                        | $$                                    
   /$$_/  \_  $$  /$$$$$$    /$$$$$$  /$$   /$$| $$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$$ 
@@ -16,12 +16,36 @@ import ManSection from '../components/ManSection.astro';
 |  $$\________/    \___/   \_______/|__/  \__/|_______/  \______/ |__/      |__/  |__/
  \  $$$   /$$$                                                                        
   \_  $$$$$$_/                                                                        
-	\______/<span class="cursor -mt-2">█</span>                                                                         
+	\______/<span class="cursor">█</span>                                                                         
 		</pre>
 
 		<ManSection title="name">
 			<p>Braxton (taxborn) Fair</p>
 			<p><span class="font-bold">taxborn</span> is an <a href="https://en.wikipedia.org/wiki/Anagram">anagram</a> of my first name, and a username I was able to snag everywhere, so that's why I go by it online.</p>
 		</ManSection>
+
+		<ManSection title="synopsis">
+			<p>Hey there! I am a <span class="font-bold" id="age"></span> year old software engineer attending <a href="https://mnsu.edu">Minnesota State University, Mankato</a> majoring in computer science and minoring in mathematics. I currently intern at <a href="https://thomsonreuters.com">Thomson Reuters</a> as a software engineer currently working on migrating applications to AWS and learning the intricacies of CI/CD.</p>
+			<p class="my-2">I've been programming on and off since about 5th grade. At the time I was infatuated with <a href="">Mario Kart Wii</a>, and after stumbling across videos online of people making custom content / tracks for the game, I was immediately captivated by code and what you could make computers do. While looking at PowerPC assembly code initially scared me off from the idea, I quickly found learning web development to be a comfortable start to programming. Eventually, moving into PHP and Laravel, constructing websites that hook into databases was a huge step that really got me excited, creating websites with functionality showed me there was a big world out there.</p>
+			<p class="mb-2">After some years self-teaching web development and backends, I moved onto a more general purpose language, Java, as I was really into Minecraft my middle and high school years. I spent some time learning mod development and plugin development for servers, however learning Java opened up a new world of 'real' programming for me and I experimented with game development. However, quickly I realized I don't have the creativity required for indie game development, however this allowed me to be more comfortable exploring other languages, as I dived deeper into the machine in front of me.</p>
+			<p>As I moved into my college years, I got lower and lower level. I started learning and fell in love with Rust to start learning how to build compilers, and got over my fear of C and even built a small <a href="https://github.com/taxborn/u8read">Unicode (UTF-8) parser</a>! My current interest lays in compilers, teaching myself the fundamentals and digging down into assembly (intel x86 only, please). I aim for a career where I can work on tools that help developers ship code, compiler design, or really just wherever my career takes me.</p>
+		</ManSection>
+
+		<ManSection title="social media / links">
+			<ul>
+				<li>⋯<a href="https://github.com/taxborn" class="ml-2">GitHub</a></li>
+				<li>⋯<a href="https://twitter.com/taxborn" class="ml-2">Twitter / X</a></li>
+				<li>⋯<a href="https://linkedin.com/in/braxtonfair" class="ml-2">LinkedIn</a></li>
+			</ul>
+		</ManSection>
 	</main>
 </Layout>
+
+<script>
+	// My birthday is October 18th, 2001 at 8:56pm, however translates to October 19th at 1:56am in UTC
+	var ageDate = new Date(Date.now() - new Date("2001-10-19T01:56:00Z")); // milliseconds from epoch
+	var age = ageDate.getUTCFullYear() - 1970; // 1970 is the Unix epoch
+
+	const ageSpan = document.getElementById("age");
+	ageSpan.innerHTML = age;
+</script>
