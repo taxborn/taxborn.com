@@ -20,7 +20,7 @@ const { title } = Astro.props;
 		<header>
 			<div class="flex justify-between font-bold text-lg">
 				<p>TAXBORN(1)</p>
-				<h1>Braxton Fair</h1>
+				<h1>Braxton <span class="text-mauve">Fair</span></h1>
 				<p>TAXBORN(1)</p>
 			</div>
 		</header>
@@ -50,5 +50,13 @@ const { title } = Astro.props;
 		0% { opacity: 0; }
 		50% { opacity: 100; }
 		100% { opacity: 0; }
+	}
+
+	a {
+		@apply underline underline-offset-4;
+	}
+
+	a:hover {
+		@apply text-mauve;
 	}
 </style>
