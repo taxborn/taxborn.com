@@ -66,9 +66,8 @@ import ManSection from '../components/ManSection.astro';
 
 <script>
 	// My birthday is October 18th, 2001 at 8:56pm, however translates to October 19th at 1:56am in UTC
-	var ageDate = new Date(Date.now() - new Date("2001-10-19T01:56:00Z")); // milliseconds from epoch
+	var ageDate = new Date(Date.now() - Number(new Date("2001-10-19T01:56:00Z"))); // milliseconds from epoch
 	var age = ageDate.getUTCFullYear() - 1970; // 1970 is the Unix epoch
 
-	const ageSpan = document.getElementById("age");
-	ageSpan.innerHTML = age;
+	document.getElementById("age")!.innerHTML = String(age);
 </script>
