@@ -1,6 +1,8 @@
 ---
 import '@fontsource-variable/jetbrains-mono';
 import Navbar from '../components/Navbar.astro';
+
+const { pwd } = Astro.props;
 ---
 <!doctype html>
 <html lang="en" transition:animate="fade">
@@ -12,7 +14,7 @@ import Navbar from '../components/Navbar.astro';
 		<title>Braxton Fair</title>
 	</head>
 	<body class="font-mono text-text bg-base">
-		<Navbar />
+		<Navbar pwd={pwd} />
 
 		<slot />
 	</body>
