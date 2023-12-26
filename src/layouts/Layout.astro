@@ -1,8 +1,9 @@
 ---
 import '@fontsource-variable/jetbrains-mono';
+import Navbar from '../components/Navbar.astro';
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:animate="fade">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="computer science student with a focus in project-based learning at mnsu, mankato." />
@@ -10,7 +11,9 @@ import '@fontsource-variable/jetbrains-mono';
 		<meta name="generator" content={Astro.generator} />
 		<title>Braxton Fair</title>
 	</head>
-	<body class="font-mono">
+	<body class="font-mono text-text bg-base">
+		<Navbar />
+
 		<slot />
 	</body>
 </html>
