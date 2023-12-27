@@ -1,19 +1,28 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-const allBlogPosts = await getCollection('notes', ({data}) => {
+const allBlogPosts = await getCollection("notes", ({ data }) => {
     return data.isDraft === false;
 });
-
 ---
+
 <Layout pwd="~/notes">
     <h1>All notes</h1>
 
     <ul>
-        {allBlogPosts.map(p => (
-            <li><a href={`/notes/${p.slug}`} class="hover:underline">{p.data.title}</a></li>
-        ))}
+        {
+            allBlogPosts.map((p) => (
+                <li>
+                    <a href={`/notes/${p.slug}`} class="hover:underline">
+                    <time datetime={p.data.publishDate.toISOString()} class="text-text/50">
+                        {p.data.publishDate.toDateString()}
+                    </time>
+                        {p.data.title}
+                    </a>
+                </li>
+            ))
+        }
     </ul>
 </Layout>
