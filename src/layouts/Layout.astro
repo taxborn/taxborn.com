@@ -1,14 +1,18 @@
 ---
-import '@fontsource-variable/jetbrains-mono';
-import Navbar from '../components/Navbar.astro';
+import "@fontsource-variable/jetbrains-mono";
+import Navbar from "../components/Navbar.astro";
 
 const { pwd } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="en" transition:animate="fade">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="computer science student with a focus in project-based learning at mnsu, mankato." />
+		<meta
+			name="description"
+			content="computer science student with a focus in project-based learning at mnsu, mankato."
+		/>
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Braxton Fair</title>
@@ -16,6 +20,8 @@ const { pwd } = Astro.props;
 	<body class="font-mono text-text bg-base">
 		<Navbar pwd={pwd} />
 
-		<slot />
+		<div class="p-4">
+			<slot />
+		</div>
 	</body>
 </html>

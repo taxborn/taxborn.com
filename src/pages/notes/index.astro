@@ -1,0 +1,19 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import { getCollection } from 'astro:content';
+
+const allBlogPosts = await getCollection('notes', ({data}) => {
+    return data.isDraft === false;
+});
+
+---
+<Layout pwd="~/notes">
+    <h1>All notes</h1>
+
+    <ul>
+        {allBlogPosts.map(p => (
+            <li><a href={`/notes/${p.slug}`} class="hover:underline">{p.data.title}</a></li>
+        ))}
+    </ul>
+</Layout>
