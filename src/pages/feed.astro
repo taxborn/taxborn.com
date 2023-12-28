@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+
+const allLinks = await getCollection("links", ({ data }) => {
+    return data.isDraft === false;
+});
+
+const links = Array.from(allLinks);
+
+const allNotes = await getCollection("notes", ({ data }) => {
+    return data.isDraft === false;
+});
+
+const notes = Array.from(allNotes);
+
+---
+
+<Layout pwd="~/links">
+    <h1>Feed of all links and noets</h1>
+</Layout>

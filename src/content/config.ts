@@ -21,7 +21,11 @@ const linksCollection = defineCollection({
         // Using this because I don't understand how to use z.date()
         // with the 'data' collection type. one day I will understand,
         // not today.
-        publishDate: z.string().transform((str) => new Date(str)),
+        // https://astrocourse.dev/blog/how-to-use-content-collections/
+        publishDate: z
+            .string()
+            .or(z.date())
+            .transform((val) => new Date(val)),
     }),
 });
 
