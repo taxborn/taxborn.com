@@ -3,20 +3,43 @@ import Layout from "../layouts/Layout.astro";
 
 import { getCollection } from "astro:content";
 
-const allLinks = await getCollection("links", ({ data }) => {
-    return data.isDraft === false;
-});
+const allPosts = [
+    ...(await getCollection("links", ({ data }) => {
+        return data.isDraft === false;
+    })),
+    ...(await getCollection("notes", ({ data }) => {
+        return data.isDraft === false;
+    })),
+];
 
-const links = Array.from(allLinks);
-
-const allNotes = await getCollection("notes", ({ data }) => {
-    return data.isDraft === false;
-});
-
-const notes = Array.from(allNotes);
-
+const latestPosts = allPosts.sort(
+    (a, b) => +b.data.publishDate - +a.data.publishDate,
+);
 ---
 
 <Layout pwd="~/links">
-    <h1>Feed of all links and noets</h1>
+    <ul>
+        {
+            latestPosts.map((p) => (
+                <li>
+                    <a
+                        href={
+                            p.collection === "links"
+                                ? p.data.url
+                                : `/notes/${p.slug}`
+                        }
+                    >
+                        {p.data.title}
+                    </a>
+                    -
+                    <time
+                        datetime={p.data.publishDate.toISOString()}
+                        class="text-text/50"
+                    >
+                        {p.data.publishDate.toDateString()}
+                    </time>
+                </li>
+            ))
+        }
+    </ul>
 </Layout>
