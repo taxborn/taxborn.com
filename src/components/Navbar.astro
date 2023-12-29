@@ -1,13 +1,15 @@
 ---
-const { pwd } = Astro.props;
+
 ---
 
 <nav>
-    <div class="flex flex-wrap items-center justify-between mx-auto p-4 text-text">
-        <a href="/" class="tracking-wide text-sm">
-            <span class="text-green">root@taxborn.com</span>:<span
-                class="text-blue">{pwd}</span
-            >$ ./website<span class="font-black cursor">_</span>
+    <div
+        class="flex flex-wrap max-w-screen-2xl items-center justify-between mx-auto p-4 text-text"
+    >
+        <a href="/" class="tracking-wide text-lg">
+            :<span class="text-blue">~{Astro.url.pathname}</span>$<span
+                class="font-black cursor">_</span
+            >
         </a>
         <button
             data-collapse-toggle="navbar-dropdown"
@@ -32,22 +34,24 @@ const { pwd } = Astro.props;
                     d="M1 1h15M1 7h15M1 13h15"></path>
             </svg>
         </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+        <div class="hidden w-full md:block md:w-auto text-xl" id="navbar-dropdown">
             <ul
                 class="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0"
             >
                 <li>
                     <a
                         href="/"
-                        class="block py-2 px-3 rounded md:bg-transparent md:p-0"
-                        aria-current="page">home</a
+                        class="block py-2 px-3 rounded md:bg-transparent md:p-0 hover:text-mauve"
+                        aria-current={Astro.url.pathname === "/"
+                            ? "page"
+                            : false}>home</a
                     >
                 </li>
                 <li>
                     <button
                         id="aboutDropdown"
                         data-dropdown-toggle="aboutDropdownMenu"
-                        class="flex items-center justify-between w-full py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 md:w-auto"
+                        class="flex items-center justify-between w-full py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 md:w-auto hover:text-mauve"
                         >about <svg
                             class="w-2.5 h-2.5 ms-2.5"
                             aria-hidden="true"
@@ -76,14 +80,20 @@ const { pwd } = Astro.props;
                                 <a
                                     href="/about"
                                     class="block px-4 py-2 hover:bg-crust hover:text-mauve"
-                                    >/about</a
+                                    aria-current={Astro.url.pathname ===
+                                    "/about"
+                                        ? "page"
+                                        : false}>/about</a
                                 >
                             </li>
                             <li>
                                 <a
                                     href="/elsewhere"
                                     class="block px-4 py-2 hover:bg-crust hover:text-mauve"
-                                    >/elsewhere</a
+                                    aria-current={Astro.url.pathname ===
+                                    "/elsewhere"
+                                        ? "page"
+                                        : false}>/elsewhere</a
                                 >
                             </li>
                         </ul>
@@ -93,7 +103,7 @@ const { pwd } = Astro.props;
                     <button
                         id="feedDropdown"
                         data-dropdown-toggle="feedDropdownMenu"
-                        class="flex items-center justify-between w-full py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 md:w-auto"
+                        class="flex items-center justify-between w-full py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:p-0 md:w-auto hover:text-mauve"
                         >feed <svg
                             class="w-2.5 h-2.5 ms-2.5"
                             aria-hidden="true"
@@ -122,28 +132,38 @@ const { pwd } = Astro.props;
                                 <a
                                     href="/feed"
                                     class="block px-4 py-2 hover:bg-crust hover:text-mauve"
-                                    >/feed</a
+                                    aria-current={Astro.url.pathname === "/page"
+                                        ? "page"
+                                        : false}>/feed</a
                                 >
                             </li>
                             <li>
                                 <a
                                     href="/notes"
                                     class="block px-4 py-2 hover:bg-crust hover:text-mauve"
-                                    >/notes</a
+                                    aria-current={Astro.url.pathname ===
+                                    "/notes"
+                                        ? "page"
+                                        : false}>/notes</a
                                 >
                             </li>
                             <li>
                                 <a
                                     href="/links"
                                     class="block px-4 py-2 hover:bg-crust hover:text-mauve"
-                                    >/links</a
+                                    aria-current={Astro.url.pathname ===
+                                    "/links"
+                                        ? "page"
+                                        : false}>/links</a
                                 >
                             </li>
                             <li>
                                 <a
                                     href="/tags"
                                     class="block px-4 py-2 hover:bg-crust hover:text-mauve"
-                                    >/tags</a
+                                    aria-current={Astro.url.pathname === "/tags"
+                                        ? "page"
+                                        : false}>/tags</a
                                 >
                             </li>
                         </ul>
@@ -152,8 +172,10 @@ const { pwd } = Astro.props;
                 <li>
                     <a
                         href="/uses"
-                        class="block py-2 px-3 rounded md:bg-transparent md:p-0"
-                        aria-current="page">uses</a
+                        class="block py-2 px-3 rounded md:bg-transparent md:p-0 hover:text-mauve"
+                        aria-current={Astro.url.pathname === "/uses"
+                            ? "page"
+                            : false}>uses</a
                     >
                 </li>
             </ul>

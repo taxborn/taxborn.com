@@ -6,14 +6,18 @@ import { getCollection } from "astro:content";
 const allLinks = await getCollection("links", ({ data }) => {
     return data.isDraft === false;
 });
+
+const latestLinks = allLinks.sort(
+    (a, b) => +b.data.publishDate - +a.data.publishDate,
+);
 ---
 
-<Layout pwd="~/links">
+<Layout>
     <h1>All links</h1>
 
     <ul>
         {
-            allLinks.map((p) => (
+            latestLinks.map((p) => (
                 <li>
                     <a href={p.data.url} class="hover:underline">
                         <time
