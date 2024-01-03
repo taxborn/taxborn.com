@@ -16,9 +16,12 @@ const allBlogPosts = await getCollection("notes", ({ data }) => {
             allBlogPosts.map((p) => (
                 <li>
                     <a href={`/notes/${p.slug}`} class="hover:underline">
-                    <time datetime={p.data.publishDate.toISOString()} class="text-text/50">
-                        {p.data.publishDate.toDateString()}
-                    </time>
+                        <time
+                            datetime={p.data.publishDate.toISOString()}
+                            class="text-text/50"
+                        >
+                            {p.data.publishDate.toDateString()}
+                        </time>
                         {p.data.title}
                     </a>
                 </li>

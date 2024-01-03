@@ -39,10 +39,25 @@ const { Content } = await entry.render();
     #md h4 {
         @apply text-lg font-extrabold py-2;
     }
+    #md h5 {
+        @apply font-extrabold py-2;
+    }
     #md h6 {
         @apply text-sm font-extrabold py-2;
     }
     #md ul {
         @apply list-disc list-inside py-4;
+    }
+    #md ol {
+        @apply list-decimal list-inside py-4;
+    }
+    #md strong {
+        @apply font-extrabold;
+    }
+    #md a {
+        @apply text-mauve underline underline-offset-4;
+    }
+    #md img {
+        @apply mx-auto rounded-lg shadow-lg border-4 border-mauve max-h-screen;
     }
 </style>
