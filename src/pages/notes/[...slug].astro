@@ -17,7 +17,32 @@ const { Content } = await entry.render();
 ---
 
 <Layout>
-    <h1>{entry.data.title}</h1>
+    <h1 class="text-5xl font-extrabold mb-4">
+        <span class="text-mauve mr-4">#</span>{entry.data.title}
+    </h1>
 
-    <Content />
+    <div id="md">
+        <Content />
+    </div>
 </Layout>
+
+<style is:global>
+    #md h1 {
+        @apply text-3xl font-extrabold py-2;
+    }
+    #md h2 {
+        @apply text-2xl font-extrabold py-2;
+    }
+    #md h3 {
+        @apply text-xl font-extrabold py-2;
+    }
+    #md h4 {
+        @apply text-lg font-extrabold py-2;
+    }
+    #md h6 {
+        @apply text-sm font-extrabold py-2;
+    }
+    #md ul {
+        @apply list-disc list-inside py-4;
+    }
+</style>
