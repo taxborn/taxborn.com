@@ -17,9 +17,20 @@ const { Content } = await entry.render();
 ---
 
 <Layout>
-    <h1 class="text-5xl font-extrabold mb-4">
-        <span class="text-mauve mr-4">#</span>{entry.data.title}
-    </h1>
+    <header class="mb-6">
+        <h1 class="text-5xl font-extrabold mb-2">
+            <span class="text-mauve mr-4">#</span>{entry.data.title}
+        </h1>
+        <p class="text-xl font-bold">
+            By: Braxton Fair -
+            <time
+                datetime={entry.data.publishDate.toString()}
+                class="text-text/50"
+            >
+                {entry.data.publishDate.toLocaleString()}
+            </time>
+        </p>
+    </header>
 
     <div id="md">
         <Content />
@@ -62,6 +73,9 @@ const { Content } = await entry.render();
     }
     #md pre {
         @apply p-4 rounded-lg my-4;
+    }
+    #md hr {
+        @apply w-48 h-1 mx-auto my-4 bg-surface2 border-0 rounded md:my-10;
     }
 </style>
 

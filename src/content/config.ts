@@ -6,8 +6,8 @@ const notesCollection = defineCollection({
         title: z.string(),
         tags: z.array(z.string()),
         isDraft: z.boolean(),
-        publishDate: z.date(),
-        updatedDate: z.date(),
+        publishDate: z.string().datetime({ offset: true }).or(z.date()),
+        updatedDate: z.string().datetime({ offset: true }).or(z.date()),
     }),
 });
 
@@ -22,10 +22,7 @@ const linksCollection = defineCollection({
         // with the 'data' collection type. one day I will understand,
         // not today.
         // https://astrocourse.dev/blog/how-to-use-content-collections/
-        publishDate: z
-            .string()
-            .or(z.date())
-            .transform((val) => new Date(val)),
+        publishDate: z.string().datetime({ offset: true }).or(z.date()),
     }),
 });
 
