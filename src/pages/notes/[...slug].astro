@@ -68,7 +68,7 @@ const { Content } = await entry.render();
 <script>
     let codeblocks = document.getElementsByTagName("pre");
 
-    // since pre elements aren't interactable in my website, we want to remove
+    // since pre elements aren't interactive on my website, we want to remove
     // tabindex for a11y purposes. not sure why it is being added in the first
     // place, might be a PR to make eventually.
     for (let block of codeblocks) block.removeAttribute("tabindex");
