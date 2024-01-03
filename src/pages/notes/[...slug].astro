@@ -61,14 +61,15 @@ const { Content } = await entry.render();
         @apply mx-auto rounded-lg shadow-lg border-4 border-mauve max-h-screen;
     }
     #md pre {
-        @apply p-4 rounded-lg;
+        @apply p-4 rounded-lg my-4;
     }
 </style>
 
 <script>
     let codeblocks = document.getElementsByTagName("pre");
 
-    for (let block of codeblocks) {
-        block.removeAttribute("tabindex");
-    }
+    // since pre elements aren't interactable in my website, we want to remove
+    // tabindex for a11y purposes. not sure why it is being added in the first
+    // place, might be a PR to make eventually.
+    for (let block of codeblocks) block.removeAttribute("tabindex");
 </script>

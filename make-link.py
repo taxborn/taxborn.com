@@ -6,6 +6,8 @@ Eventually I'd like to look into replacing this with Raindrop and using their AP
 import json
 import requests
 import datetime
+from slugify import slugify
+
 
 def is_valid(url: str) -> bool:
     try:
@@ -14,8 +16,9 @@ def is_valid(url: str) -> bool:
     except:
         return False
 
+
 if __name__ == "__main__":
-    data = {}    
+    data = {}
 
     url = input("URL: ")
 
@@ -23,19 +26,31 @@ if __name__ == "__main__":
         print("URL was not valid. Link not created.")
         exit(1)
 
-    data['url'] = url
+    data["url"] = url
 
-    data['title'] = input("Title: ") 
+    title = input("Title: ").strip()
+    data["title"] = title
 
     tags = input("Tags (comma seperated): ")
-    data['tags'] = [tag.strip() for tag in set(tags.split(","))]
+    data["tags"] = list(set(tag.strip() for tag in tags.split(",") if tag.strip() != ""))
 
     draft = input("Draft? [yN]: ")
-    data['draft'] = True if draft else False
+    data["isDraft"] = True if draft else False
 
     slug = input("Slug? [N]: ")
-    data['slug'] = slug if slug else None
+    slug = slugify(slug) if slug else None
+    if slug:
+        data["slug"] = slug
 
-    data['time'] = "{:%Y-%m-%d %H:%M:%S}".format(datetime.datetime.now()).replace(" ", "T")
+    data["publishDate"] = "{:%Y-%m-%d %H:%M:%S}".format(datetime.datetime.now()).replace(
+        " ", "T"
+    )
 
-    print(json.dumps(data, indent=4))
+    filename = f"{slug if slug else slugify(title)}.json"
+
+    print(f"Generating {filename}")
+
+    with open(f"src/content/links/{filename}", "w") as file:
+        file.write(json.dumps(data, indent=4))
+
+    print("Complete")
