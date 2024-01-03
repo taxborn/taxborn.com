@@ -1,12 +1,14 @@
 ---
-const { pwd } = Astro.props;
+
 ---
 
 <nav>
-    <div class="flex flex-wrap items-center justify-between mx-auto p-4 text-text">
+    <div
+        class="flex flex-wrap items-center justify-between mx-auto p-4 text-text"
+    >
         <a href="/" class="tracking-wide text-sm">
             <span class="text-green">root@taxborn.com</span>:<span
-                class="text-blue">{pwd}</span
+                class="text-blue">~{Astro.url.pathname}</span
             >$ ./website<span class="font-black cursor">_</span>
         </a>
         <button
