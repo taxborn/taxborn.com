@@ -40,4 +40,5 @@ if __name__ == "__main__":
 
     data['time'] = "{:%Y-%m-%d %H:%M:%S}".format(datetime.datetime.now()).replace(" ", "T")
 
+    with open()
     print(json.dumps(data, indent=4))
