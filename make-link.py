@@ -28,17 +28,14 @@ if __name__ == "__main__":
     data['title'] = input("Title: ") 
 
     tags = input("Tags (comma seperated): ")
-    data['tags'] = [tag.strip() for tag in tags.split(",")]
+    data['tags'] = [tag.strip() for tag in set(tags.split(","))]
 
     draft = input("Draft? [yN]: ")
     data['draft'] = True if draft else False
 
     slug = input("Slug? [N]: ")
-    slug = slug if slug else False
-    if slug:
-        data['slug'] = slug
+    data['slug'] = slug if slug else None
 
     data['time'] = "{:%Y-%m-%d %H:%M:%S}".format(datetime.datetime.now()).replace(" ", "T")
 
-    with open()
     print(json.dumps(data, indent=4))
