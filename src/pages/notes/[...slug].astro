@@ -60,4 +60,15 @@ const { Content } = await entry.render();
     #md img {
         @apply mx-auto rounded-lg shadow-lg border-4 border-mauve max-h-screen;
     }
+    #md pre {
+        @apply p-4 rounded-lg;
+    }
 </style>
+
+<script>
+    let codeblocks = document.getElementsByTagName("pre");
+
+    for (let block of codeblocks) {
+        block.removeAttribute("tabindex");
+    }
+</script>
