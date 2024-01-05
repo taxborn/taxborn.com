@@ -33,10 +33,10 @@ const latestPosts = allPosts.sort(
                     </a>
                     -
                     <time
-                        datetime={p.data.publishDate.toISOString()}
+                        datetime={p.data.publishDate.toString()}
                         class="text-text/50"
                     >
-                        {p.data.publishDate.toDateString()}
+                        {p.data.publishDate.toLocaleString()}
                     </time>
                 </li>
             ))
