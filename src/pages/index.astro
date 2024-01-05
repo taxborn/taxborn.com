@@ -1,20 +1,52 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import profileImage from "../content/images/profile.jpg";
 ---
 
 <Layout>
-	<h1 class="text-2xl font-semibold">
-		<span class="text-green">root@taxborn.com</span>:<span class="text-blue"
-			>~/dev</span
-		>$ ./website<span class="font-black cursor">_</span>
-	</h1>
+	<header class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+		<div class="col-span-1 sm:col-span-2 order-2 sm:order-1">
+			<h1 class="text-2xl font-semibold">
+				<span class="text-green">root@taxborn.com</span>:<span
+					class="text-blue">~/dev</span
+				>$ ./website<span class="font-black cursor">_</span>
+			</h1>
 
-	<p class="mt-2">
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-		explicabo corrupti nesciunt harum. Consequatur nemo assumenda
-		reprehenderit earum voluptates nihil placeat illum, hic doloremque natus
-		dolores, accusamus molestias ullam obcaecati!
-	</p>
+			<p class="mt-2">
+				Hey there! I am a <span class="font-bold" id="age"></span> year old
+				software engineer attending <a href="https://mnsu.edu"
+					>Minnesota State University, Mankato</a
+				> majoring in computer science and minoring in mathematics. I currently
+				intern at <a href="https://thomsonreuters.com"
+					>Thomson Reuters</a
+				> as a software engineer currently working on migrating applications
+				to AWS and learning the intricacies of CI/CD.
+			</p>
+			<p class="my-2">
+				I've been programming on and off since about 5th grade. At the
+				time I was infatuated with <a
+					href="https://en.wikipedia.org/wiki/Mario_Kart_Wii"
+					>Mario Kart Wii</a
+				>, and after stumbling across videos online of people making
+				custom content / tracks for the game, I was immediately
+				captivated by code and what you could make computers do. While
+				looking at PowerPC assembly code initially scared me off from
+				the idea, I quickly found learning web development to be a
+				comfortable start to programming. Eventually, moving into PHP
+				and Laravel, constructing websites that hook into databases was
+				a huge step that really got me excited, creating websites with
+				functionality showed me there was a big world out there.
+			</p>
+		</div>
+		<div class="order-1 sm:order-2">
+			<Image
+				src={profileImage}
+				alt="A bird sitting on a nest of eggs."
+				class="rounded-lg"
+			/>
+		</div>
+	</header>
 </Layout>
 
 <style>
@@ -36,4 +68,22 @@ import Layout from "../layouts/Layout.astro";
 			opacity: 1;
 		}
 	}
+
+	a {
+		@apply underline font-bold underline-offset-4;
+	}
+
+	a:hover {
+		@apply text-mauve;
+	}
 </style>
+
+<script>
+	// My birthday is October 18th, 2001 at 8:56pm, however translates to October 19th at 1:56am in UTC
+	var ageDate = new Date(
+		Date.now() - Number(new Date("2001-10-19T01:56:00Z")),
+	); // milliseconds from epoch
+	var age = ageDate.getUTCFullYear() - 1970; // 1970 is the Unix epoch
+
+	document.getElementById("age")!.innerHTML = String(age);
+</script>
