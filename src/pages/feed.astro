@@ -46,7 +46,11 @@ const latestPosts = allPosts.sort(
                                 : `/notes/${p.slug}`
                         }
                         class="group-hover:underline underline-offset-8 group-hover:text-mauve text-text"
-                        target="_blank"
+                        target={
+                            p.collection === "links"
+                                ? "_blank"
+                                : "_self"
+                        }
                     >
                         <time
                             datetime={p.data.publishDate.toISOString()}
