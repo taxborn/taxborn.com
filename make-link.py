@@ -32,7 +32,9 @@ if __name__ == "__main__":
     data["title"] = title
 
     tags = input("Tags (comma seperated): ")
-    data["tags"] = list(set(tag.strip() for tag in tags.split(",") if tag.strip() != ""))
+    data["tags"] = list(
+        set(tag.strip() for tag in tags.split(",") if tag.strip() != "")
+    )
 
     draft = input("Draft? [yN]: ")
     data["isDraft"] = True if draft else False
@@ -42,9 +44,9 @@ if __name__ == "__main__":
     if slug:
         data["slug"] = slug
 
-    data["publishDate"] = "{:%Y-%m-%d %H:%M:%S}".format(datetime.datetime.now()).replace(
-        " ", "T"
-    )
+    data["publishDate"] = "{:%Y-%m-%d %H:%M:%S}".format(
+        datetime.datetime.now()
+    ).replace(" ", "T")
 
     filename = f"{slug if slug else slugify(title)}.json"
 

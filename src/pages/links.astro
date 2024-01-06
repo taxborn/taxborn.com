@@ -8,7 +8,10 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const allLinks = await getCollection("links", ({ data }) => {
-    return data.isDraft === false;
+    return (
+        data.isDraft === false &&
+        new Date().getTime() >= data.publishDate.getTime()
+    );
 });
 
 const latestLinks = allLinks.sort(
@@ -17,16 +20,26 @@ const latestLinks = allLinks.sort(
 ---
 
 <Layout>
-    <h1>All links</h1>
+    <h1 class="text-4xl font-bold mb-2">
+        <span class="text-mauve font-black">#</span> All links
+    </h1>
+    <p>
+        Whenever I find an article I've learned from or a website I like to
+        visit, I will post it here. A public bookmark page of sorts.
+    </p>
 
-    <ul>
+    <ol class="mt-4 list-inside list-decimal text-mauve" reversed>
         {
             latestLinks.map((p) => (
-                <li>
-                    <a href={p.data.url} class="hover:underline">
+                <li class="group">
+                    <a
+                        href={p.data.url}
+                        class="group-hover:underline underline-offset-8 group-hover:text-mauve text-text"
+                        target="_blank"
+                    >
                         <time
                             datetime={p.data.publishDate.toISOString()}
-                            class="text-text/50"
+                            class="text-text/50 group-hover:text-mauve/75"
                         >
                             {p.data.publishDate.toDateString()}
                         </time>
@@ -35,5 +48,5 @@ const latestLinks = allLinks.sort(
                 </li>
             ))
         }
-    </ul>
+    </ol>
 </Layout>
