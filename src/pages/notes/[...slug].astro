@@ -27,40 +27,46 @@ const { Content } = await entry.render();
                 datetime={entry.data.publishDate.toString()}
                 class="text-text/50"
             >
-                {entry.data.publishDate.toLocaleString()}
+                {entry.data.publishDate.toDateString()}
             </time>
         </p>
     </header>
 
+    <!-- TODO: Tailwind Prose has some sensible defaults for markdown
+               if I get tired of rolling my own, especially with nested
+               lists, I should look into that -->
     <div id="md">
         <Content />
     </div>
 </Layout>
 
 <style is:global>
+    .heading {
+        @apply font-extrabold pt-4;
+    }
     #md h1 {
-        @apply text-3xl font-extrabold py-2;
+        @apply text-3xl heading;
     }
     #md h2 {
-        @apply text-2xl font-extrabold py-2;
+        @apply text-2xl heading;
     }
     #md h3 {
-        @apply text-xl font-extrabold py-2;
+        @apply text-xl heading;
     }
     #md h4 {
-        @apply text-lg font-extrabold py-2;
+        @apply text-lg heading;
     }
     #md h5 {
-        @apply font-extrabold py-2;
+        @apply heading;
     }
     #md h6 {
-        @apply text-sm font-extrabold py-2;
+        @apply text-sm heading;
     }
     #md ul {
-        @apply list-disc list-inside py-4;
+        @apply list-disc list-inside;
     }
     #md ol {
-        @apply list-decimal list-inside py-4;
+        @apply list-decimal list-inside;
     }
     #md strong {
         @apply font-extrabold;
@@ -78,7 +84,7 @@ const { Content } = await entry.render();
         @apply w-48 h-1 mx-auto my-4 bg-surface2 border-0 rounded md:my-10;
     }
     #md ul ul {
-        @apply ml-4 -mt-4;
+        @apply ml-4;
     }
 </style>
 
