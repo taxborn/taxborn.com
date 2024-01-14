@@ -4,18 +4,18 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = [
-    ...((await getCollection("links", ({ data }) => {
-        return (
-            data.isDraft === false &&
-            new Date().getTime() >= data.publishDate.getTime()
-        );
-    })) ?? []),
-    ...((await getCollection("notes", ({ data }) => {
+    ...(await getCollection("links", ({ data }) => {
         return (
             (data.isDraft === false || !import.meta.env.PROD) &&
             new Date().getTime() >= data.publishDate.getTime()
         );
-    })) ?? []),
+    })),
+    ...(await getCollection("notes", ({ data }) => {
+        return (
+            (data.isDraft === false || !import.meta.env.PROD) &&
+            new Date().getTime() >= data.publishDate.getTime()
+        );
+    })),
 ];
 
 const latestPosts = allPosts.sort(
