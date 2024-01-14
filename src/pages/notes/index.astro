@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 
 const allBlogPosts = await getCollection("notes", ({ data }) => {
     return (
-        data.isDraft === false &&
+        (data.isDraft === false || !import.meta.env.PROD) &&
         new Date().getTime() >= data.publishDate.getTime()
     );
 });
