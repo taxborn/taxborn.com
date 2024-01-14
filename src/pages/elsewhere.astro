@@ -1,7 +1,45 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Github, Linkedin, Twitter, MailSearch } from "lucide-astro";
 ---
 
 <Layout>
-	<h1>Everywhere you can find me online</h1>
+	<h1 class="text-3xl font-bold mb-2">
+		<span class="text-mauve font-black">#</span> Everywhere you can find me online
+	</h1>
+
+	<main>
+		<ul class="text-xl">
+			<li>
+				<a
+					href="https://www.github.com/taxborn"
+					class="flex hover:text-mauve hover:underline underline-offset-4"
+				>
+					<Github class="mr-2" />Github (@taxborn)</a
+				>
+			</li>
+			<li>
+				<a
+					href="https://www.twitter.com/taxborn"
+					class="flex hover:text-mauve hover:underline underline-offset-4"
+				>
+					<Twitter class="mr-2" />X / Twitter (@taxborn)</a
+				>
+			</li>
+			<li>
+				<a
+					href="https://www.linkedin.com/in/braxtonfair"
+					class="flex hover:text-mauve hover:underline underline-offset-4"
+					><Linkedin class="mr-2" />LinkedIn (/in/braxtonfair)</a
+				>
+			</li>
+			<li>
+				<a
+					href="mailto:hello@taxborn.com"
+					class="flex hover:text-mauve hover:underline underline-offset-4"
+					><MailSearch class="mr-2" />hello@taxborn.com</a
+				>
+			</li>
+		</ul>
+	</main>
 </Layout>

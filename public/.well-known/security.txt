@@ -1,0 +1,24 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Canonical: https://www.taxborn.com/.well-known/security.txt
+Contact: mailto:hello@taxborn.com
+Encryption: https://www.taxborn.com/.well-known/publickey.asc
+Expires: 2024-01-13T22:21:00Z
+-----BEGIN PGP SIGNATURE-----
+
+iQJGBAEBCgAwFiEEa+ggWloEV5K43CQqypc/D9DyrzoFAmWjO2kSHGhlbGxvQHRh
+eGJvcm4uY29tAAoJEMqXPw/Q8q86OxMP/RfljMZXYplE+/Beb6PfUu60Dlf9neM6
+Exi/go6uf42Ah3mi++Ki5CmwjLpm9bINjPOsfJfxeECOgnEC7tFIx6DIJckpyphp
+EiGSXv5bbvuH42nrNmUajK8OI1WzrjxkcBPJGD9V0HDttqKcGIkQvaMNF6Aw5QLU
+4GZtW+AgXbgd6OfsmbvFen8OUL9ZUGjsOxS27qjtIfjsYmNWNBiC5M481n1oL7jC
+VrYFnQjiQc/kJPqX+LGrAcy1qI2cvlXVVUsFscS6N4y5OGypQP/imtbP0ezOJFZG
+azQRTyK5JGvuefOGqdb2wuVoEZIa4XpeshWa12amLLTq4iB0wWZlF/4kMfW4q1qu
+i/lEcsVPXxLrYOslRP8Fq5BK9bktMUDiSR3njLDKgWN5zHbvFuddFEKhE3jKCbWa
+RDWhqh5TFm9CPgFE6T5CE1fsZSY0/AjMjSgGflokEAJHsn9c3qL+8kDr6Cov/ykA
+FGnGtwDQTxNOPVyVxkSUhKuyAm3tzFfV07AH0ZdaVBJan2E1nmewShJZTLdE3ShU
+Xb45CoXp2qA2p8G1YuaCNopCd8y2U7CBSxH9/3h8sImCVVYPTvyy6Ww+HRSA2ZI6
+SOzw00nmZ18oix9nfr7rG67WO1ksHB8a6rTFT66wWG7ZRA4ZobvuK2AEkp+IvUGX
+1g8DUYOOoCc3
+=ZTwa
+-----END PGP SIGNATURE-----
