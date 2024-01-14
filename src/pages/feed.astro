@@ -4,18 +4,18 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = [
-    ...(await getCollection("links", ({ data }) => {
+    ...((await getCollection("links", ({ data }) => {
         return (
             data.isDraft === false &&
             new Date().getTime() >= data.publishDate.getTime()
         );
-    })),
-    ...(await getCollection("notes", ({ data }) => {
+    })) ?? []),
+    ...((await getCollection("notes", ({ data }) => {
         return (
-            data.isDraft === false &&
+            (data.isDraft === false || !import.meta.env.PROD) &&
             new Date().getTime() >= data.publishDate.getTime()
         );
-    })),
+    })) ?? []),
 ];
 
 const latestPosts = allPosts.sort(
@@ -46,11 +46,7 @@ const latestPosts = allPosts.sort(
                                 : `/notes/${p.slug}`
                         }
                         class="group-hover:underline underline-offset-8 group-hover:text-mauve text-text"
-                        target={
-                            p.collection === "links"
-                                ? "_blank"
-                                : "_self"
-                        }
+                        target={p.collection === "links" ? "_blank" : "_self"}
                     >
                         <time
                             datetime={p.data.publishDate.toISOString()}

@@ -1,10 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Github, Linkedin, Twitter, MailSearch } from "lucide-astro";
+import { Github, Linkedin, Twitter, MailSearch, KeyRound } from "lucide-astro";
 ---
 
 <Layout>
-	<h1 class="text-3xl font-bold mb-2">
+	<h1 class="text-3xl font-bold mb-8">
 		<span class="text-mauve font-black">#</span> Everywhere you can find me online
 	</h1>
 
@@ -37,7 +37,14 @@ import { Github, Linkedin, Twitter, MailSearch } from "lucide-astro";
 				<a
 					href="mailto:hello@taxborn.com"
 					class="flex hover:text-mauve hover:underline underline-offset-4"
-					><MailSearch class="mr-2" />hello@taxborn.com</a
+					><MailSearch class="mr-2" />Email (hello@taxborn.com)</a
+				>
+			</li>
+			<li>
+				<a
+					href="/.well-known/publickey.asc"
+					class="flex hover:text-mauve hover:underline underline-offset-4"
+					><KeyRound class="mr-2" />GPG Key (CA973F0FD0F2AF3A)</a
 				>
 			</li>
 		</ul>

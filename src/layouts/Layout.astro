@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/jetbrains-mono";
 import Navbar from "../components/Navbar.astro";
+import { Heart } from "lucide-astro"
 ---
 
 <!doctype html>
@@ -20,6 +21,29 @@ import Navbar from "../components/Navbar.astro";
 
 		<div class="container mx-auto px-2">
 			<slot />
+			<footer class="py-8">
+				<p>
+					Copyright <span id="year"></span> Braxton Fair. Licensed under
+					the <a
+						href="https://github.com/taxborn/taxborn.com-next/blob/main/LICENSE"
+						>MIT License</a
+					> (I <Heart class="inline-block size-5 text-pink-500 -mt-1" /> open source!).
+				</p>
+				<p>
+					Created with <a href="https://astro.build">Astro</a> and deployed
+					with <a href="https://vercel.com/">Vercel</a>. Source code
+					available on <a
+						href="https://github.com/taxborn/taxborn.com">GitHub</a
+					>.
+				</p>
+			</footer>
 		</div>
 	</body>
 </html>
+
+<script>
+	var year = new Date().getFullYear();
+
+	document.getElementById("year")!.innerHTML = String(year);
+
+</script>
