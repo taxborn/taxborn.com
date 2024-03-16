@@ -1,62 +1,59 @@
 ---
-interface Props {
-	title: string;
-}
-
-const { title } = Astro.props;
+import "@fontsource-variable/jetbrains-mono";
+import Navbar from "../components/Navbar.astro";
+import { Heart } from "lucide-astro";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<!-- TODO -->
-		<meta name="description" content="computer science student with a focus in project-based learning at mnsu, mankato." />
+		<meta
+			name="description"
+			content="computer science student with a focus in project-based learning at mnsu, mankato."
+		/>
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} | Braxton (taxborn) Fair</title>
+		<title>Braxton Fair</title>
 	</head>
-	<body class="font-mono p-4 bg-base text-text selection:bg-mauve selection:text-base" id="body">
-		<header>
-			<div class="flex justify-between font-bold text-md md:text-lg">
-				<p>TAXBORN(1)</p>
-				<h1>Braxton <span class="text-mauve">Fair</span></h1>
-				<p>TAXBORN(1)</p>
-			</div>
-		</header>
+	<body class="font-mono text-text bg-base">
+		<Navbar />
 
-		<slot />
+		<div class="container mx-auto px-2">
+			<slot />
+			<footer class="py-8">
+				<p>
+					Copyright <span id="year"></span> Braxton Fair. Licensed under
+					the <a
+						href="https://github.com/taxborn/taxborn.com-next/blob/main/LICENSE"
+						class="hover:text-mauve underline underline-offset-4 font-bold"
+						>MIT License</a
+					> (I <Heart
+						class="inline-block size-5 text-pink-500 -mt-1"
+					/> open source!).
+				</p>
+				<p>
+					Created with <a
+						href="https://astro.build"
+						class="hover:text-mauve underline underline-offset-4 font-bold"
+						>Astro</a
+					> and deployed with <a
+						href="https://vercel.com/"
+						class="hover:text-mauve underline underline-offset-4 font-bold"
+						>Vercel</a
+					>. Source code available on <a
+						href="https://github.com/taxborn/taxborn.com"
+						class="hover:text-mauve underline underline-offset-4 font-bold"
+						>GitHub</a
+					>.
+				</p>
+			</footer>
+		</div>
 	</body>
 </html>
 
 <script>
-	const body = document.getElementById("body");
-	const scrollValue = 24; // Roughly the line height, seems the best to 'scroll' by one line
+	var year = new Date().getFullYear();
 
-	body?.addEventListener("keypress", (event) => {
-		if (event.key == 'j') window.scrollBy(0, scrollValue);
-		if (event.key == 'k') window.scrollBy(0, -scrollValue);
-	});
+	document.getElementById("year")!.innerHTML = String(year);
 </script>
-
-<style is:global>
-	span.cursor {
-		animation: fadeInOut 1.25s linear;
-		animation-fill-mode: forwards;
-		animation-iteration-count: infinite;
-	}
-
-	@keyframes fadeInOut {
-		0% { opacity: 0; }
-		50% { opacity: 100; }
-		100% { opacity: 0; }
-	}
-
-	a {
-		@apply underline font-bold underline-offset-4;
-	}
-
-	a:hover {
-		@apply text-mauve;
-	}
-</style>

@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+
+const allPosts = [
+    ...(await getCollection("links", ({ data }) => {
+        return (
+            (data.isDraft === false || !import.meta.env.PROD) &&
+            new Date().getTime() >= data.publishDate.getTime()
+        );
+    })),
+    ...(await getCollection("notes", ({ data }) => {
+        return (
+            (data.isDraft === false || !import.meta.env.PROD) &&
+            new Date().getTime() >= data.publishDate.getTime()
+        );
+    })),
+];
+
+const latestPosts = allPosts.sort(
+    (a, b) => +b.data.publishDate - +a.data.publishDate,
+);
+---
+
+<Layout>
+    <h1 class="text-4xl font-bold mb-2">
+        <span class="text-mauve font-black">#</span> Feed
+    </h1>
+    <p>
+        Between the <a href="">notes</a> and <a href="">links</a>, I want to
+        keep a feed of everything. Inspired by <a href="https://www.jvt.me/"
+            >Jaime Tanna</a
+        > and the <a href="https://indieweb.org/why">IndieWeb</a> movement. I intend
+        to turn this into something that is h-feed compatible.
+    </p>
+
+    <ol class="mt-4 list-inside list-decimal text-mauve" reversed>
+        {
+            latestPosts.map((p) => (
+                <li class="group">
+                    <a
+                        href={
+                            p.collection === "links"
+                                ? p.data.url
+                                : `/notes/${p.slug}`
+                        }
+                        class="group-hover:underline underline-offset-8 group-hover:text-mauve text-text"
+                        target={p.collection === "links" ? "_blank" : "_self"}
+                    >
+                        <time
+                            datetime={p.data.publishDate.toISOString()}
+                            class="text-text/50 group-hover:text-mauve/75"
+                        >
+                            {p.data.publishDate.toDateString()}
+                        </time>
+                        {p.data.title}
+                    </a>
+                </li>
+            ))
+        }
+    </ol>
+</Layout>

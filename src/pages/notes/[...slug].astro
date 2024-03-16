@@ -1,0 +1,113 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+// 1. Get the slug from the incoming server request
+const { slug } = Astro.params;
+if (slug === undefined) {
+    throw new Error("Slug is required");
+}
+// 2. Query for the entry directly using the request slug
+const entry = await getEntry("notes", slug);
+// 3. Redirect if the entry does not exist
+if (entry === undefined) {
+    return Astro.redirect("/404");
+}
+// 4. (Optional) Render the entry to HTML in the template
+const { Content } = await entry.render();
+
+const updated = new Date(entry.data.publishDate) !== new Date(entry.data.updatedDate);
+---
+
+<Layout>
+    <header class="mb-6">
+        <h1 class="text-5xl font-extrabold mb-2">
+            <span class="text-mauve mr-4">#</span>{entry.data.title}
+        </h1>
+        <p class="text-xl font-bold">
+            By: Braxton Fair -
+            <time
+                datetime={entry.data.publishDate.toString()}
+                class="text-text/50"
+            >
+                {entry.data.publishDate.toDateString()}
+            </time>
+
+            {
+                updated && (
+                    <time
+                        datetime={entry.data.updatedDate.toString()}
+                        class="text-text/50"
+                    >
+                        <span class="text-text">-</span>
+                        Updated at
+                        {entry.data.updatedDate.toDateString()}
+                    </time>
+                )
+            }
+        </p>
+    </header>
+
+    <!-- TODO: Tailwind Prose has some sensible defaults for markdown
+               if I get tired of rolling my own, especially with nested
+               lists, I should look into that -->
+    <div id="md">
+        <Content />
+    </div>
+</Layout>
+
+<style is:global>
+    .heading {
+        @apply font-extrabold pt-4;
+    }
+    #md h1 {
+        @apply text-3xl heading;
+    }
+    #md h2 {
+        @apply text-2xl heading;
+    }
+    #md h3 {
+        @apply text-xl heading;
+    }
+    #md h4 {
+        @apply text-lg heading;
+    }
+    #md h5 {
+        @apply heading;
+    }
+    #md h6 {
+        @apply text-sm heading;
+    }
+    #md ul {
+        @apply list-disc list-inside;
+    }
+    #md ol {
+        @apply list-decimal list-inside;
+    }
+    #md strong {
+        @apply font-extrabold;
+    }
+    #md a {
+        @apply text-mauve underline underline-offset-4;
+    }
+    #md img {
+        @apply mx-auto rounded-lg shadow-lg border-4 border-mauve max-h-screen;
+    }
+    #md pre {
+        @apply p-4 rounded-lg my-4;
+    }
+    #md hr {
+        @apply w-48 h-1 mx-auto my-4 bg-surface2 border-0 rounded md:my-10;
+    }
+    #md ul ul {
+        @apply ml-4;
+    }
+</style>
+
+<script>
+    let codeblocks = document.getElementsByTagName("pre");
+
+    // since pre elements aren't interactive on my website, we want to remove
+    // tabindex for a11y purposes. not sure why it is being added in the first
+    // place, might be a PR to make eventually.
+    for (let block of codeblocks) block.removeAttribute("tabindex");
+</script>

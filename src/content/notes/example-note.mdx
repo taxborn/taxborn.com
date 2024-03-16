@@ -1,0 +1,62 @@
+---
+title: This is my second note
+tags: ["first tag", "second tag", "third tag"]
+isDraft: true
+publishDate: 2023-12-28T23:59:59+06:00
+updatedDate: 2023-12-28T23:59:59+06:00
+---
+
+The contents of the note look like this.
+
+# This is a h1 🌞
+This is the content after it.
+
+I want to see what a list looks like:
+
+- First thing
+- Second thing
+- Third thing
+
+Some space to **embolden** and *italicize* and ***everything***.
+
+Here should be a horizontal rule:
+
+***
+
+## This is an h2?
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
+explicabo corrupti nesciunt harum. Consequatur nemo assumenda
+reprehenderit earum voluptates nihil placeat illum, hic doloremque natus
+dolores, accusamus molestias ullam obcaecati! 
+
+Let's look at [this link](https://taxborn.com).
+
+### H3
+![Traantula Nebula taken from the JWST](https://planetary.s3.amazonaws.com/web/assets/pictures/_1200x630_crop_center-center_82_none/tarantula-nebula-jwst.png?mtime=1663172236)
+
+#### H4 type vibes
+Let's check ordered lists:
+1. This is a test
+2. Of ordered lists
+3. To see if they work correctly.
+
+##### H5 gettin there
+Now I want to make sure code works correctly. What does the following evaluate to?
+
+```python
+def create_feature_file():
+    # TODO: What to do if the file exists? overwrite? ask? increment a value in the name?
+    subject_data = glob.glob("data/proc/user_*_data.csv")
+
+    with open(config.FEATURE_FILE, "wb") as outfile:
+        for i, subject in enumerate(subject_data):
+            with open(subject, "rb") as infile:
+                if i != 0:
+                    infile.readline()
+                if i > 1:
+                    outfile.write(b"\n")
+                shutil.copyfileobj(infile, outfile)
+```
+
+###### Even necessary?
+This is the content after it

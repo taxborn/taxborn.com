@@ -1,0 +1,184 @@
+---
+
+---
+
+<nav>
+    <div class="flex flex-wrap items-center justify-end p-4">
+        <button
+            data-collapse-toggle="navbar-dropdown"
+            type="button"
+            class="inline-flex items-center p-2 size-10 justify-center rounded-lg md:hidden hover:bg-crust hover:text-mauve focus:text-mauve focus:bg-crust focus:outline-none"
+            aria-controls="navbar-dropdown"
+            aria-expanded="false"
+        >
+            <span class="sr-only">Open main menu</span>
+            <svg
+                class="size-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+            >
+                <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h15"></path>
+            </svg>
+        </button>
+        <div
+            class="hidden w-full md:block md:w-auto bg-mantle md:bg-transparent mt-2 rounded-lg text-lg"
+            id="navbar-dropdown"
+        >
+            <ul
+                class="flex flex-col font-medium p-4 md:p-0 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row"
+            >
+                <li>
+                    <a
+                        href="/"
+                        class="block py-2 px-3 rounded md:bg-transparent md:p-0 hover:text-mauve transition-colors duration-200 hover:underline underline-offset-4"
+                        aria-current={Astro.url.pathname === "/"
+                            ? "page"
+                            : false}>home</a
+                    >
+                </li>
+                <li>
+                    <button
+                        id="aboutDropdown"
+                        data-dropdown-toggle="aboutDropdownMenu"
+                        class="flex items-center justify-between w-full py-2 px-3 rounded md:p-0 md:w-auto hover:text-mauve transition-colors duration-200 hover:underline underline-offset-4"
+                        >about <svg
+                            class="w-2.5 h-2.5 ms-2.5"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 10 6"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="m1 1 4 4 4-4"></path>
+                        </svg></button
+                    >
+                    <!-- Dropdown menu -->
+                    <div
+                        id="aboutDropdownMenu"
+                        class="z-10 hidden font-normal bg-crust rounded-lg shadow md:w-44 w-10/12"
+                    >
+                        <ul
+                            class="py-2 text-md"
+                            aria-labelledby="dropdownLargeButton"
+                        >
+                            <li>
+                                <a
+                                    href="/about"
+                                    class="block px-4 py-2 hover:bg-crust hover:text-mauve transition-colors duration-200"
+                                    aria-current={Astro.url.pathname ===
+                                    "/about"
+                                        ? "page"
+                                        : false}>/about</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/elsewhere"
+                                    class="block px-4 py-2 hover:bg-crust hover:text-mauve transition-colors duration-200"
+                                    aria-current={Astro.url.pathname ===
+                                    "/elsewhere"
+                                        ? "page"
+                                        : false}>/elsewhere</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button
+                        id="feedDropdown"
+                        data-dropdown-toggle="feedDropdownMenu"
+                        class="flex items-center justify-between w-full py-2 px-3 rounded md:p-0 md:w-auto hover:text-mauve transition-colors duration-200 hover:underline underline-offset-4"
+                        >feed <svg
+                            class="w-2.5 h-2.5 ms-2.5"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 10 6"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="m1 1 4 4 4-4"></path>
+                        </svg></button
+                    >
+                    <!-- Dropdown menu -->
+                    <div
+                        id="feedDropdownMenu"
+                        class="z-10 hidden font-normal bg-crust rounded-lg shadow md:w-44 w-10/12"
+                    >
+                        <ul
+                            class="py-2 text-md"
+                            aria-labelledby="dropdownLargeButton"
+                        >
+                            <li>
+                                <a
+                                    href="/feed"
+                                    class="block px-4 py-2 hover:bg-crust hover:text-mauve transition-colors duration-200"
+                                    aria-current={Astro.url.pathname === "/feed"
+                                        ? "page"
+                                        : false}>/feed</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/notes"
+                                    class="block px-4 py-2 hover:bg-crust hover:text-mauve transition-colors duration-200"
+                                    aria-current={Astro.url.pathname ===
+                                    "/notes"
+                                        ? "page"
+                                        : false}>/notes</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/links"
+                                    class="block px-4 py-2 hover:bg-crust hover:text-mauve transition-colors duration-200"
+                                    aria-current={Astro.url.pathname ===
+                                    "/links"
+                                        ? "page"
+                                        : false}>/links</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/tags"
+                                    class="block px-4 py-2 hover:bg-crust hover:text-mauve transition-colors duration-200"
+                                    aria-current={Astro.url.pathname === "/tags"
+                                        ? "page"
+                                        : false}>/tags</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a
+                        href="/uses"
+                        class="block py-2 px-3 rounded md:bg-transparent md:p-0 hover:text-mauve transition-colors duration-200 hover:underline underline-offset-4"
+                        aria-current={Astro.url.pathname === "/uses"
+                            ? "page"
+                            : false}>uses</a
+                    >
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    import { Collapse } from "flowbite";
+</script>

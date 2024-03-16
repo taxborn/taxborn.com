@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+
+const allBlogPosts = await getCollection("notes", ({ data }) => {
+    return (
+        (data.isDraft === false || !import.meta.env.PROD) &&
+        new Date().getTime() >= data.publishDate.getTime()
+    );
+});
+const latestPosts = allBlogPosts.sort(
+    (a, b) => +b.data.publishDate - +a.data.publishDate,
+);
+---
+
+<Layout>
+    <h1 class="text-4xl font-bold mb-2">
+        <span class="text-mauve font-black">#</span> Notes
+    </h1>
+    <p>Various notes..</p>
+
+    <ol class="mt-4 list-inside list-decimal text-mauve" reversed>
+        {
+            latestPosts.map((p) => (
+                <li class="group">
+                    <a
+                        href={`/notes/${p.slug}`}
+                        class="group-hover:underline underline-offset-8 group-hover:text-mauve text-text"
+                    >
+                        <time
+                            datetime={p.data.publishDate.toISOString()}
+                            class="text-text/50 group-hover:text-mauve/75"
+                        >
+                            {p.data.publishDate.toDateString()}
+                        </time>
+                        {p.data.title}
+                    </a>
+                </li>
+            ))
+        }
+    </ol>
+</Layout>

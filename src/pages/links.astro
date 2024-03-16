@@ -1,0 +1,52 @@
+---
+// TODO: Look into WebMention to see how I can go about implementing that in Astro.
+// I know I don't want to spam the endpoints, so have some sort of local caching on
+// what has already worked? small database somewhere?
+
+import Layout from "../layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+
+const allLinks = await getCollection("links", ({ data }) => {
+    return (
+        (data.isDraft === false || !import.meta.env.PROD) &&
+        new Date().getTime() >= data.publishDate.getTime()
+    );
+});
+
+const latestLinks = allLinks.sort(
+    (a, b) => +b.data.publishDate - +a.data.publishDate,
+);
+---
+
+<Layout>
+    <h1 class="text-4xl font-bold mb-2">
+        <span class="text-mauve font-black">#</span> All links
+    </h1>
+    <p>
+        Whenever I find an article I've learned from or a website I like to
+        visit, I will post it here. A public bookmark page of sorts.
+    </p>
+
+    <ol class="mt-4 list-inside list-decimal text-mauve" reversed>
+        {
+            latestLinks.map((p) => (
+                <li class="group">
+                    <a
+                        href={p.data.url}
+                        class="group-hover:underline underline-offset-8 group-hover:text-mauve text-text"
+                        target="_blank"
+                    >
+                        <time
+                            datetime={p.data.publishDate.toISOString()}
+                            class="text-text/50 group-hover:text-mauve/75"
+                        >
+                            {p.data.publishDate.toDateString()}
+                        </time>
+                        {p.data.title}
+                    </a>
+                </li>
+            ))
+        }
+    </ol>
+</Layout>

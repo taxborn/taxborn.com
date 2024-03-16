@@ -10,3 +10,6 @@ wasn't a whole lot of learning requried for me to get up and running.
 npm i && npm run dev
 ```
 should be all you need to run this website locally.
+
+## Plans
+I want this to be a space for me on the internet. 
