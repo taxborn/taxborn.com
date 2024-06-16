@@ -3,6 +3,8 @@ import { ViewTransitions } from 'astro:transitions';
 import SpeedInsights from "@vercel/speed-insights/astro"
 import Navbar from "../components/Navbar.astro";
 
+import "@fontsource-variable/overpass";
+
 const { title } = Astro.props;
 ---
 
@@ -17,7 +19,7 @@ const { title } = Astro.props;
 	</head>
 
 	<body class="bg-slate-100 dark:bg-slate-900 dark:text-white p-4">
-        <div class="container mx-auto">
+        <div class="container mx-auto max-w-4xl">
             <Navbar />
 
             <slot />
