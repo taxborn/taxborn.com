@@ -1,5 +1,8 @@
 ---
-import  SpeedInsights  from "@vercel/speed-insights/astro"
+import SpeedInsights from "@vercel/speed-insights/astro"
+import Navbar from "../components/Navbar.astro";
+
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -7,11 +10,25 @@ import  SpeedInsights  from "@vercel/speed-insights/astro"
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>@taxborn - {title}</title>
 	</head>
-	<body>
-        <slot />
+	<body class="bg-slate-100 p-4">
+        <div class="container mx-auto">
+            <Navbar />
+
+            <slot />
+        </div>
 
 		<SpeedInsights />
 	</body>
 </html>
+
+<style is:global>
+    h1 {
+        @apply font-bold text-5xl;
+    }
+
+    a {
+        @apply font-bold hover:underline underline-offset-2;
+    }
+</style>

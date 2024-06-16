@@ -1,0 +1,26 @@
+---
+const path = Astro.url.pathname;
+---
+
+<nav class="flex justify-between">
+    <p class="text-sm content-center italic text-gray-600">~{path}</p>
+
+    <ul>
+        <li><a href="/" aria-current={path === "/" && "page"}>home</a></li>
+        <li><a href="/about" aria-current={path === "/about" && "page"}>about</a></li>
+    </ul>
+</nav>
+
+<style>
+    li {
+        @apply inline;
+    }
+
+    a {
+        @apply text-sm font-normal mx-1;
+    }
+
+    a[aria-current="page"] {
+        @apply font-semibold underline;
+    }
+</style>
