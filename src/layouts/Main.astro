@@ -8,7 +8,7 @@ import "@fontsource-variable/overpass";
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -18,7 +18,7 @@ const { title } = Astro.props;
         <ViewTransitions />
 	</head>
 
-	<body class="bg-slate-100 dark:bg-slate-900 dark:text-white p-4">
+	<body class="bg-slate-100 dark:bg-black dark:text-white p-4">
         <div class="container mx-auto max-w-4xl">
             <Navbar />
 
@@ -35,7 +35,7 @@ const { title } = Astro.props;
     }
 
     a {
-        @apply font-bold hover:underline underline-offset-2 text-indigo-500;
+        @apply font-bold hover:underline underline-offset-2 text-indigo-500 dark:text-indigo-400;
     }
 
     ul {

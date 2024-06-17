@@ -3,7 +3,7 @@ const path = Astro.url.pathname;
 ---
 
 <nav class="flex justify-between pb-4">
-    <p class="text-sm content-center italic dark:text-white/50 text-black/50 tracking-wide">~{path}</p>
+    <p class="text-sm content-center italic dark:text-white/75 text-black/50 tracking-wide hover:text-indigo-800/50 font-semibold transition-colors duration-300">~{path}</p>
 
     <ul>
         <li><a href="/" aria-current={path === "/" && "page"}>home</a></li>
@@ -28,7 +28,7 @@ const path = Astro.url.pathname;
     }
 
     a {
-        @apply text-sm font-normal mx-1 text-black;
+        @apply text-sm font-normal mx-1 text-black dark:text-white;
     }
 
     a[aria-current="page"] {
