@@ -10,13 +10,19 @@ import Main from "../layouts/Main.astro";
 		<li>Test</li>
 		<li>Test</li>
 	</ul>
-	<p>I graduated from <a href="https://mnsu.edu">Minnesota State University, Mankato</a></p>
+	<p>I graduated from <a href="https://mnsu.edu">Minnesota State University, Mankato</a> with a degree in a Computer Science, minoring in Mathematics.</p>
 </Main>
 
 <script>
-	const yearEl = document.getElementById("year") as HTMLElement;
-	// TODO: Compute age
 	const birthdate = new Date("2001-10-18T20:56:00-05:00");
-	console.log(birthdate.toString())
-	yearEl.innerHTML = "22";
+	const today = new Date();
+
+	var age = today.getFullYear() - birthdate.getFullYear();
+	// If today is BEFORE the birth month / day, then subtract one as 
+	// my birthday hasn't happened this year
+	if (today.getMonth() <= birthdate.getMonth() && today.getDate() <= birthdate.getDate()) 
+		age -= 1;
+
+	const yearEl = document.getElementById("year") as HTMLElement;
+	yearEl.innerHTML = age.toString();
 </script>
