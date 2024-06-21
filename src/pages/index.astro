@@ -19,7 +19,7 @@ import Main from "../layouts/Main.astro";
   </p>
   <ul>
     <li>
-      I love <a href="">open source work</a>, I <i>try</i> to stay active on my GitHub,
+      I love <a href="https://github.com/taxborn">open source work</a>, I <i>try</i> to stay active on my GitHub,
       and list what I'm currently working on there!
     </li>
     <li>
@@ -52,8 +52,10 @@ import Main from "../layouts/Main.astro";
   if (
     today.getMonth() <= birthdate.getMonth() &&
     today.getDate() <= birthdate.getDate()
-  )
+  ) {
+    console.log("ehre.")
     age -= 1;
+  }
 
   const yearEl = document.getElementById("year") as HTMLElement;
   yearEl.innerHTML = age.toString();

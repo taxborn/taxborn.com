@@ -1,0 +1,38 @@
+---
+import Main from "../../layouts/Main.astro";
+---
+
+<Main title="sha">
+  <header class="my-8">
+    <h1>
+        <span class="underline">Challenge:</span> Generate the lowest SHA256 hash
+    </h1>
+    <p>I recently came across <a href="https://shallenge.quirino.net/">SHAllenge</a> and wanted to create it myself here. I also want to extend this to other hashing algorithms.</p>
+    <h2 class="font-bold">Rules:</h2>
+    <p>Submit a string in the format <span class="font-mono font-bold">&lbrace;username&rbrace;/&lbrace;nonce&rbrace;</span> where:</p>
+    <ul>
+        <li><span class="font-bold">&lbrace;username&rbrace;</span> is any username 1-16 characters long [a-zA-Z0-9_-]. This <span class="font-bold">IS</span> case-sensitive.</li>
+        <li><span class="font-bold">&lbrace;nonce&rbrace;</span> is a string of <a href="https://datatracker.ietf.org/doc/html/rfc4648#section-4">valid base64</a> characters 1-64 characters long [a-zA-Z0-9+/]. This <span class="font-bold">IS</span> case-sensitive.</li>
+    </ul>
+    <p>For example: <span class="font-bold">taxborn/317892</span>, <span class="font-bold">testUser/a9fB+/32</span> <i>(note: test<span class="underline">u</span>ser/a9fB+/32 WOULD be a different hash as such, a different username)</i>, or <span class="font-bold">brxtn///////1/23123///12/312</span>.</p>
+    <p>The resulting sha256 of your username is what will be ranked on the leaderboard.</p>
+  </header>
+
+  <section>
+    <form>
+        <label for="username" class="font-bold">Username</label>
+        <div class="w-full flex">
+            <input type="text" id="username" class="rounded-lg p-2 bg-transparent border-white border-2 flex-1 mr-2">
+            <button class="bg-white px-4 py-2 text-black rounded">Submit</button>
+        </div>
+    </form>
+  </section>
+
+  <section class="my-8">
+      <span class="text-3xl font-bold">Leaderboard</span>
+      <ol>
+        <li>taxborn/14ZeroesOn5MHs/87250220662: 000000000418714ab27c857948ad09bff20ae17d9370adf24ffc38f2aab92b6e</li>
+      </ol>
+  </section>
+
+</Main>
