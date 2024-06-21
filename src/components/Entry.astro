@@ -1,9 +1,9 @@
 ---
 const { entry, idx } = Astro.props;
 
-const splitIdx = entry.username.indexOf('/');
-const username = entry.username.slice(0, splitIdx)
-const nonce = entry.username.slice(splitIdx + 1)
+const splitIdx = entry.input.indexOf('/');
+const username = entry.input.slice(0, splitIdx)
+const nonce = entry.input.slice(splitIdx + 1)
 ---
 
 <div class="font-mono border-2 border-white p-2 my-2 text-wrap">

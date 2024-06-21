@@ -4,7 +4,8 @@ const ShaEntry = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
     username: column.text(),
-    hash: column.text({ unique: true }),
+    input: column.text({ unique: true }),
+    hash: column.text(),
     submitted: column.date({ default: NOW })
   }
 })
