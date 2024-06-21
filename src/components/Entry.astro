@@ -1,5 +1,5 @@
 ---
-const { entry }: { entry: { username: string, hash: string, submitted: Date } } = Astro.props;
+const { entry } = Astro.props;
 
 const splitIdx = entry.username.indexOf('/');
 const username = entry.username.slice(0, splitIdx)
