@@ -1,12 +1,14 @@
 ---
-const { entry } = Astro.props;
+const { entry, idx } = Astro.props;
 
 const splitIdx = entry.username.indexOf('/');
 const username = entry.username.slice(0, splitIdx)
 const nonce = entry.username.slice(splitIdx + 1)
 ---
 
-<li class="font-mono border-2 border-white p-2 my-2">
-    <p>Input: <a class="font-bold underline underline-offset-2" href=`/sha/search?username=${username}`>{username}</a>/<span class="text-gray-500">{nonce}</span> <i class="text-sm">Submitted {entry.submitted}</i></p>
-    <p>Output: {entry.hash}</p>
-</li>
+<div class="font-mono border-2 border-white p-2 my-2 text-wrap">
+    <h3 class="inline font-bold text-indigo-400">#{idx + 1}</h3>
+    <p class="inline">Input: <a class="font-bold underline underline-offset-2" href=`/sha/search?username=${username}`>{username}</a>/<span class="text-gray-500">{nonce}</span></p>
+    <i class="text-sm">Submitted {entry.submitted}</i>
+    <p class="text-ellipsis"></p>Output: {entry.hash}</p>
+</div>

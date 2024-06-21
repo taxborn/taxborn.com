@@ -54,11 +54,9 @@ const entries = await db.select().from(ShaEntry).orderBy(ShaEntry.hash);
 
   <section class="my-8">
       <h2 class="text-3xl font-bold mb-2">Leaderboard</h2>
-      <ol class="list-decimal">
-        {entries.map((entry) => (
-            <Entry entry={entry} />
+        {entries.map((entry, i) => (
+            <Entry entry={entry} idx={i} />
         ))}
-      </ol>
   </section>
 
 </Main>

@@ -1,6 +1,16 @@
 ---
 import Main from "../../layouts/Main.astro";
+import Entry from "../../components/Entry.astro";
+import { db, ShaEntry, eq } from 'astro:db';
+
+const searchQuery = Astro.url.searchParams.get("username");
+console.log("query: " + searchQuery)
+
+const entries = await db.select().from(ShaEntry).where(eq(ShaEntry.username, searchQuery as string)).orderBy(ShaEntry.hash);
+console.log(entries.length + " entries found")
 ---
 <Main title="sha profile search">
-
+        {entries.map((entry, i) => (
+            <Entry entry={entry} idx={i} />
+        ))}
 </Main>
