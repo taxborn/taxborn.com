@@ -5,11 +5,15 @@ import { db, ShaEntry, eq } from "astro:db";
 
 const searchQuery = Astro.url.searchParams.get("username");
 
+console.log("search query " + searchQuery)
+
 const entries = await db
   .select()
   .from(ShaEntry)
   .where(eq(ShaEntry.username, searchQuery as string))
   .orderBy(ShaEntry.hash);
+
+console.log('entries ' + entries)
 ---
 
 <Main title="sha profile search">
@@ -37,6 +41,8 @@ const entries = await db
 
     const queryInput = document.getElementById("query") as HTMLFormElement;
 
+    if (username) {
     queryInput.value = username;
+    }
   });
 </script>
