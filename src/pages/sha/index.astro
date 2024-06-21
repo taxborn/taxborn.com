@@ -1,5 +1,27 @@
 ---
 import Main from "../../layouts/Main.astro";
+
+const errors = { username: "" };
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const username = data.get("username");
+
+    if (typeof username !== "string") {
+      errors.username += "Please enter a username."
+    }
+
+    if (username?.toString().indexOf('/') === -1) {
+      errors.username += "Incorrect username format."
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
+  }
+}
+
 ---
 
 <Main title="sha">
@@ -19,12 +41,13 @@ import Main from "../../layouts/Main.astro";
   </header>
 
   <section>
-    <form>
+    <form method="POST">
         <label for="username" class="font-bold">Username</label>
         <div class="w-full flex">
             <input type="text" id="username" class="rounded-lg p-2 bg-transparent border-white border-2 flex-1 mr-2">
             <button class="bg-white px-4 py-2 text-black rounded">Submit</button>
         </div>
+        <p><span class="font-bold">sha256(<span id="hash_username" class="font-normal"></span>) = <span id="hash"></span></span> <i>{}</i></p>
     </form>
   </section>
 
@@ -36,3 +59,27 @@ import Main from "../../layouts/Main.astro";
   </section>
 
 </Main>
+
+<script>
+const input = document.getElementById("username") as HTMLFormElement;
+const fnInput = document.getElementById("hash_username") as HTMLElement;
+const hashOutput = document.getElementById("hash") as HTMLElement;
+
+// https://stackoverflow.com/questions/59777670/how-can-i-hash-a-string-with-sha256
+const getSHA256Hash = async (input) => {
+  const inputAsBuffer = new TextEncoder().encode(input);
+  const hashBuffer = await window.crypto.subtle.digest("SHA-256", inputAsBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hash = hashArray
+                .map((item) => item.toString(16).padStart(2, "0"))
+                .join("");
+  return hash;
+}
+
+input.addEventListener('change', async (event) => {
+  const input = event.target?.value;
+  fnInput.innerHTML = input;
+  const hash = await getSHA256Hash(input);
+  hashOutput.innerHTML = hash;
+});
+</script>
