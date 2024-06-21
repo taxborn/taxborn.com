@@ -85,6 +85,7 @@ const entries = await db.select().from(ShaEntry).orderBy(ShaEntry.hash);
           id="challengeInput"
           name="challengeInput"
           class="rounded-lg p-2 bg-transparent border-white border-2 flex-1 mr-2"
+          autocomplete="off"
         />
         <button class="bg-white px-4 py-2 text-black rounded">Submit</button>
       </div>

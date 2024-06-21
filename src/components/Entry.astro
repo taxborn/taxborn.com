@@ -5,7 +5,17 @@ const splitIdx = entry.input.indexOf("/");
 const username = entry.input.slice(0, splitIdx);
 const nonce = entry.input.slice(splitIdx + 1);
 
-const submitted = entry.submitted as Date;
+const hash = entry.hash as string;
+
+let leadingZeroes = 0;
+for (let i = 0; i < hash.length; i++) {
+  if (hash[i] != '0') break;
+
+  leadingZeroes += 1;
+}
+
+let zeroes = hash.substring(0, leadingZeroes);
+let rest = hash.substring(leadingZeroes);
 ---
 
 <div class="font-mono border-2 border-white p-2 my-2 text-wrap">
@@ -16,6 +26,6 @@ const submitted = entry.submitted as Date;
       href=`/sha/search?username=${username}`>{username}</a
     >/<span class="text-gray-500">{nonce}</span>
   </p>
-  <i class="text-sm"> - Submitted {submitted.toISOString()}</i>
-  <p class="text-ellipsis">Output: 0x{entry.hash}</p>
+  <i class="text-sm"> - Submitted {entry.submitted.toISOString()}</i>
+  <p class="text-ellipsis">Output: <span class="text-emerald-400">0x{zeroes}</span>{rest}</p>
 </div>
