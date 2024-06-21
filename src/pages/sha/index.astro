@@ -2,22 +2,21 @@
 import Main from "../../layouts/Main.astro";
 import Entry from "../../components/Entry.astro";
 import { db, ShaEntry } from "astro:db";
-const { createHash } = await import("node:crypto")
+const { createHash } = await import("node:crypto");
 
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
     const input = data.get("challengeInput");
 
-    if (typeof input === "string" && input.indexOf('/') !== -1) {
-        const username = input.substring(0, input.indexOf('/') + 1);
-        const hash = createHash('sha256').update(input).digest('hex');
+    if (typeof input === "string" && input.indexOf("/") !== -1) {
+      const username = input.substring(0, input.indexOf("/") + 1);
+      const hash = createHash("sha256").update(input).digest("hex");
 
-        await db.insert(ShaEntry).values({ username, input, hash });
+      await db.insert(ShaEntry).values({ username, input, hash });
     }
   } catch (error) {
     if (error instanceof Error) {
-      console.log("err happened")
       console.log(error.message);
     }
   }
@@ -29,34 +28,71 @@ const entries = await db.select().from(ShaEntry).orderBy(ShaEntry.hash);
 <Main title="sha">
   <header class="my-8">
     <h1>
-        <span class="underline">Challenge:</span> Generate the lowest SHA256 hash
+      <span class="underline">Challenge:</span> Generate the lowest <a
+        href="https://en.wikipedia.org/wiki/SHA-2">SHA256</a
+      > hash
     </h1>
-    <p>I recently came across <a href="https://shallenge.quirino.net/">SHAllenge</a> and wanted to create it myself here. I also want to extend this to other hashing algorithms.</p>
+
+    <p>
+      I recently came across <a href="https://shallenge.quirino.net/"
+        >SHAllenge</a
+      > and wanted to create it myself here. I also want to extend this to other
+      hashing algorithms.
+    </p>
+
     <h2 class="font-bold">Rules:</h2>
-    <p>Submit a string in the format <span class="font-mono font-bold">&lbrace;username&rbrace;/&lbrace;nonce&rbrace;</span> where:</p>
+    <p>
+      Submit a string in the format <span class="font-mono font-bold"
+        >&lbrace;username&rbrace;/&lbrace;nonce&rbrace;</span
+      > where:
+    </p>
     <ul>
-        <li><span class="font-bold">&lbrace;username&rbrace;</span> is any username 1-16 characters long [a-zA-Z0-9_-]. This <span class="font-bold">IS</span> case-sensitive.</li>
-        <li><span class="font-bold">&lbrace;nonce&rbrace;</span> is a string of <a href="https://datatracker.ietf.org/doc/html/rfc4648#section-4">valid base64</a> characters 1-64 characters long [a-zA-Z0-9+/]. This <span class="font-bold">IS</span> case-sensitive.</li>
+      <li>
+        <span class="font-bold">&lbrace;username&rbrace;</span> is any username 1-16
+        characters long [a-zA-Z0-9_-]. This <span class="font-bold">IS</span> case-sensitive.
+      </li>
+      <li>
+        <span class="font-bold">&lbrace;nonce&rbrace;</span> is a string of <a
+          href="https://datatracker.ietf.org/doc/html/rfc4648#section-4"
+          >valid base64</a
+        > characters 1-64 characters long [a-zA-Z0-9+/]. This <span
+          class="font-bold">IS</span
+        > case-sensitive.
+      </li>
     </ul>
-    <p>For example: <span class="font-bold">taxborn/317892</span>, <span class="font-bold">testUser/a9fB+/32</span> <i>(note: test<span class="underline">u</span>ser/a9fB+/32 WOULD be a different hash as such, a different username)</i>, or <span class="font-bold">brxtn///////1/23123///12/312</span>.</p>
-    <p>The resulting sha256 of your username is what will be ranked on the leaderboard.</p>
+
+    <p>
+      For example: <span class="font-bold">taxborn/317892</span>, <span
+        class="font-bold">testUser/a9fB+/32</span
+      >
+      <i
+        >(note: test<span class="underline">u</span>ser/a9fB+/32 WOULD be a
+        different hash as such, a different username)</i
+      >, or <span class="font-bold">brxtn///////1/23123///12/312</span>.
+    </p>
+    <p>
+      The resulting sha256 of your username is what will be ranked on the
+      leaderboard.
+    </p>
   </header>
 
   <section>
     <form method="POST">
-        <label for="challengeInput" class="font-bold">Input</label>
-        <div class="w-full flex">
-            <input type="text" id="challengeInput" name="challengeInput" class="rounded-lg p-2 bg-transparent border-white border-2 flex-1 mr-2">
-            <button class="bg-white px-4 py-2 text-black rounded">Submit</button>
-        </div>
+      <label for="challengeInput" class="font-bold">Input</label>
+      <div class="w-full flex">
+        <input
+          type="text"
+          id="challengeInput"
+          name="challengeInput"
+          class="rounded-lg p-2 bg-transparent border-white border-2 flex-1 mr-2"
+        />
+        <button class="bg-white px-4 py-2 text-black rounded">Submit</button>
+      </div>
     </form>
   </section>
 
   <section class="my-8">
-      <h2 class="text-3xl font-bold mb-2">Leaderboard</h2>
-        {entries.map((entry, i) => (
-            <Entry entry={entry} idx={i} />
-        ))}
+    <h2 class="text-3xl font-bold mb-2">Leaderboard</h2>
+    {entries.map((entry, i) => <Entry entry={entry} idx={i} />)}
   </section>
-
 </Main>

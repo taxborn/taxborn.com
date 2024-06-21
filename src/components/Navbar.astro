@@ -3,35 +3,39 @@ const path = Astro.url.pathname;
 ---
 
 <nav class="flex justify-between pb-4">
-    <p class="text-sm content-center italic dark:text-white/75 text-black/50 tracking-wide hover:text-indigo-800/50 font-semibold transition-colors duration-300">~{path}</p>
+  <p
+    class="text-sm content-center italic dark:text-white/75 text-black/50 tracking-wide hover:text-indigo-800/50 font-semibold transition-colors duration-300"
+  >
+    ~{path}
+  </p>
 
-    <ul>
-        <li><a href="/" aria-current={path === "/" && "page"}>home</a></li>
-        <li><a href="/work" aria-current={path === "/work" && "page"}>work</a></li>
-        <li><a href="/now" aria-current={path === "/now" && "page"}>now</a></li>
-        <li><a href="/uses" aria-current={path === "/uses" && "page"}>uses</a></li>
-    </ul>
+  <ul>
+    <li><a href="/" aria-current={path === "/" && "page"}>home</a></li>
+    <li><a href="/work" aria-current={path === "/work" && "page"}>work</a></li>
+    <li><a href="/now" aria-current={path === "/now" && "page"}>now</a></li>
+    <li><a href="/uses" aria-current={path === "/uses" && "page"}>uses</a></li>
+  </ul>
 </nav>
 
 <style>
-    /* reverts the global y-margin in the layout file */
-    ul {
-        @apply my-0;
-    }
+  /* reverts the global y-margin in the layout file */
+  ul {
+    @apply my-0;
+  }
 
-    p {
-        @apply my-0;
-    }
+  p {
+    @apply my-0;
+  }
 
-    li {
-        @apply inline;
-    }
+  li {
+    @apply inline;
+  }
 
-    a {
-        @apply text-sm font-normal mx-1 text-black dark:text-white;
-    }
+  a {
+    @apply text-sm font-normal mx-1 text-black dark:text-white;
+  }
 
-    a[aria-current="page"] {
-        @apply font-semibold underline;
-    }
+  a[aria-current="page"] {
+    @apply font-semibold underline;
+  }
 </style>

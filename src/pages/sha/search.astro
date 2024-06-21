@@ -4,43 +4,39 @@ import Entry from "../../components/Entry.astro";
 import { db, ShaEntry, eq } from "astro:db";
 
 const searchQuery = Astro.url.searchParams.get("username");
-console.log("query: " + searchQuery);
 
 const entries = await db
-    .select()
-    .from(ShaEntry)
-    .where(eq(ShaEntry.username, searchQuery as string))
-    .orderBy(ShaEntry.hash);
+  .select()
+  .from(ShaEntry)
+  .where(eq(ShaEntry.username, searchQuery as string))
+  .orderBy(ShaEntry.hash);
 ---
 
 <Main title="sha profile search">
-    <a href="/sha">&larr; Back to /sha</a>
+  <a href="/sha">&larr; Back to /sha</a>
 
-    <form method="GET">
-        <div class="w-full flex">
-            <input
-                type="text"
-                id="query"
-                name="username"
-                class="rounded-lg p-2 bg-transparent border-white border-2 flex-1 mr-2"
-            />
-            <button class="bg-white px-4 py-2 text-black rounded">Search</button
-            >
-        </div>
-    </form>
+  <form method="GET">
+    <div class="w-full flex">
+      <input
+        type="text"
+        id="query"
+        name="username"
+        class="rounded-lg p-2 bg-transparent border-white border-2 flex-1 mr-2"
+      />
+      <button class="bg-white px-4 py-2 text-black rounded">Search</button>
+    </div>
+  </form>
 
-    {entries.map((entry, i) => <Entry entry={entry} idx={i} />)}
+  {entries.map((entry, i) => <Entry entry={entry} idx={i} />)}
 </Main>
 
 <script>
-    document.addEventListener("astro:after-swap", () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const username = urlParams.get("username");
+  document.addEventListener("astro:after-swap", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get("username");
 
-        const queryInput = document.getElementById("query") as HTMLFormElement;
+    const queryInput = document.getElementById("query") as HTMLFormElement;
 
-        console.log(username);
-
-        queryInput.value = username;
-    });
+    queryInput.value = username;
+  });
 </script>

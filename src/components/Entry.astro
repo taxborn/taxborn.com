@@ -1,14 +1,21 @@
 ---
 const { entry, idx } = Astro.props;
 
-const splitIdx = entry.input.indexOf('/');
-const username = entry.input.slice(0, splitIdx)
-const nonce = entry.input.slice(splitIdx + 1)
+const splitIdx = entry.input.indexOf("/");
+const username = entry.input.slice(0, splitIdx);
+const nonce = entry.input.slice(splitIdx + 1);
+
+const submitted = entry.submitted as Date;
 ---
 
 <div class="font-mono border-2 border-white p-2 my-2 text-wrap">
-    <h3 class="inline font-bold text-indigo-400">#{idx + 1}</h3>
-    <p class="inline">Input: <a class="font-bold underline underline-offset-2" href=`/sha/search?username=${username}`>{username}</a>/<span class="text-gray-500">{nonce}</span></p>
-    <i class="text-sm">Submitted {entry.submitted}</i>
-    <p class="text-ellipsis"></p>Output: {entry.hash}</p>
+  <h3 class="inline font-bold text-indigo-400">#{idx + 1}</h3>
+  <p class="inline">
+    Input: <a
+      class="font-bold underline underline-offset-2"
+      href=`/sha/search?username=${username}`>{username}</a
+    >/<span class="text-gray-500">{nonce}</span>
+  </p>
+  <i class="text-sm"> - Submitted {submitted.toISOString()}</i>
+  <p class="text-ellipsis"></p>Output: {entry.hash}
 </div>
