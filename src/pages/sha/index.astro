@@ -10,7 +10,7 @@ if (Astro.request.method === "POST") {
     const input = data.get("challengeInput");
 
     if (typeof input === "string" && input.indexOf("/") !== -1) {
-      const username = input.substring(0, input.indexOf("/") + 1);
+      const username = input.substring(0, input.indexOf("/"));
       const hash = createHash("sha256").update(input).digest("hex");
 
       await db.insert(ShaEntry).values({ username, input, hash });

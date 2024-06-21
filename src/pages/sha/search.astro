@@ -5,7 +5,7 @@ import { db, ShaEntry, eq } from "astro:db";
 
 const searchQuery = Astro.url.searchParams.get("username");
 
-console.log("search query " + searchQuery)
+console.log("search query '" + searchQuery + "'")
 
 const entries = await db
   .select()
@@ -14,6 +14,9 @@ const entries = await db
   .orderBy(ShaEntry.hash);
 
 console.log('entries ' + entries)
+
+const allEntries = await db.select().from(ShaEntry);
+console.log('allEntries ' + allEntries)
 ---
 
 <Main title="sha profile search">
