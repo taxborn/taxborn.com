@@ -3,35 +3,24 @@ import Main from "../../layouts/Main.astro";
 import Entry from "../../components/Entry.astro";
 import { db, ShaEntry } from "astro:db";
 
-// https://stackoverflow.com/questions/59777670/how-can-i-hash-a-string-with-sha256
-const getSHA256Hash = async (input: string) => {
-  const inputAsBuffer = new TextEncoder().encode(input);
-  const hashBuffer = await window.crypto.subtle.digest("SHA-256", inputAsBuffer);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const hash = hashArray
-                .map((item) => item.toString(16).padStart(2, "0"))
-                .join("");
-  return hash;
-}
 
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
     const username = data.get("username");
-    console.log("GOT " + username)
+    const hash = data.get("renderedHash");
 
-    if (typeof username === "string" && username.indexOf('/') !== -1) {
-        const hash = await getSHA256Hash(username);
+    if (typeof username === "string" && username.indexOf('/') !== -1 && typeof hash === "string") {
         await db.insert(ShaEntry).values({ username, hash });
     }
   } catch (error) {
     if (error instanceof Error) {
+      console.log("err happened")
       console.log(error.message);
     }
   }
 }
 
-// TODO: Sort by hash
 const entries = await db.select().from(ShaEntry).orderBy(ShaEntry.hash);
 ---
 
@@ -56,6 +45,7 @@ const entries = await db.select().from(ShaEntry).orderBy(ShaEntry.hash);
         <label for="username" class="font-bold">Username</label>
         <div class="w-full flex">
             <input type="text" id="username" name="username" class="rounded-lg p-2 bg-transparent border-white border-2 flex-1 mr-2">
+            <input type="text" hidden name="renderedHash" id="renderedHash">
             <button class="bg-white px-4 py-2 text-black rounded">Submit</button>
         </div>
         <p class="text-sm font-mono font-bold">sha256(<span id="hash_username" class="font-normal"></span>) = <span id="hash"></span></p>
@@ -75,6 +65,7 @@ const entries = await db.select().from(ShaEntry).orderBy(ShaEntry.hash);
 
 <script>
 const input = document.getElementById("username") as HTMLFormElement;
+const hashInput = document.getElementById("renderedHash") as HTMLFormElement;
 const fnInput = document.getElementById("hash_username") as HTMLElement;
 const hashOutput = document.getElementById("hash") as HTMLElement;
 
@@ -93,6 +84,7 @@ input.addEventListener('change', async (event) => {
   const input = event.target as HTMLInputElement;
   fnInput.innerHTML = input.value;
   const hash = await getSHA256Hash(input.value);
+  hashInput.value = hash;
   hashOutput.innerHTML = hash;
 });
 </script>
