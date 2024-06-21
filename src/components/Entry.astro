@@ -1,0 +1,12 @@
+---
+const { entry }: { entry: { username: string, hash: string, submitted: Date } } = Astro.props;
+
+const splitIdx = entry.username.indexOf('/');
+const username = entry.username.slice(0, splitIdx)
+const nonce = entry.username.slice(splitIdx + 1)
+---
+
+<li class="font-mono border-2 border-white p-2 my-2">
+    <p>Input: <a class="font-bold underline underline-offset-2" href=`/sha/search?username=${username}`>{username}</a>/<span class="text-gray-500">{nonce}</span> <i class="text-sm">Submitted {entry.submitted}</i></p>
+    <p>Output: {entry.hash}</p>
+</li>

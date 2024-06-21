@@ -1,19 +1,28 @@
 ---
 import Main from "../../layouts/Main.astro";
+import Entry from "../../components/Entry.astro";
+import { db, ShaEntry } from "astro:db";
 
-const errors = { username: "" };
+// https://stackoverflow.com/questions/59777670/how-can-i-hash-a-string-with-sha256
+const getSHA256Hash = async (input: string) => {
+  const inputAsBuffer = new TextEncoder().encode(input);
+  const hashBuffer = await window.crypto.subtle.digest("SHA-256", inputAsBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hash = hashArray
+                .map((item) => item.toString(16).padStart(2, "0"))
+                .join("");
+  return hash;
+}
 
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
     const username = data.get("username");
+    console.log("GOT " + username)
 
-    if (typeof username !== "string") {
-      errors.username += "Please enter a username."
-    }
-
-    if (username?.toString().indexOf('/') === -1) {
-      errors.username += "Incorrect username format."
+    if (typeof username === "string" && username.indexOf('/') !== -1) {
+        const hash = await getSHA256Hash(username);
+        await db.insert(ShaEntry).values({ username, hash });
     }
   } catch (error) {
     if (error instanceof Error) {
@@ -22,6 +31,8 @@ if (Astro.request.method === "POST") {
   }
 }
 
+// TODO: Sort by hash
+const entries = await db.select().from(ShaEntry).orderBy(ShaEntry.hash);
 ---
 
 <Main title="sha">
@@ -44,17 +55,19 @@ if (Astro.request.method === "POST") {
     <form method="POST">
         <label for="username" class="font-bold">Username</label>
         <div class="w-full flex">
-            <input type="text" id="username" class="rounded-lg p-2 bg-transparent border-white border-2 flex-1 mr-2">
+            <input type="text" id="username" name="username" class="rounded-lg p-2 bg-transparent border-white border-2 flex-1 mr-2">
             <button class="bg-white px-4 py-2 text-black rounded">Submit</button>
         </div>
-        <p><span class="font-bold">sha256(<span id="hash_username" class="font-normal"></span>) = <span id="hash"></span></span> <i>{}</i></p>
+        <p class="text-sm font-mono font-bold">sha256(<span id="hash_username" class="font-normal"></span>) = <span id="hash"></span></p>
     </form>
   </section>
 
   <section class="my-8">
-      <span class="text-3xl font-bold">Leaderboard</span>
-      <ol>
-        <li>taxborn/14ZeroesOn5MHs/87250220662: 000000000418714ab27c857948ad09bff20ae17d9370adf24ffc38f2aab92b6e</li>
+      <h2 class="text-3xl font-bold mb-2">Leaderboard</h2>
+      <ol class="list-decimal">
+        {entries.map((entry) => (
+            <Entry entry={entry} />
+        ))}
       </ol>
   </section>
 
@@ -66,7 +79,7 @@ const fnInput = document.getElementById("hash_username") as HTMLElement;
 const hashOutput = document.getElementById("hash") as HTMLElement;
 
 // https://stackoverflow.com/questions/59777670/how-can-i-hash-a-string-with-sha256
-const getSHA256Hash = async (input) => {
+const getSHA256Hash = async (input: string) => {
   const inputAsBuffer = new TextEncoder().encode(input);
   const hashBuffer = await window.crypto.subtle.digest("SHA-256", inputAsBuffer);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -77,9 +90,9 @@ const getSHA256Hash = async (input) => {
 }
 
 input.addEventListener('change', async (event) => {
-  const input = event.target?.value;
-  fnInput.innerHTML = input;
-  const hash = await getSHA256Hash(input);
+  const input = event.target as HTMLInputElement;
+  fnInput.innerHTML = input.value;
+  const hash = await getSHA256Hash(input.value);
   hashOutput.innerHTML = hash;
 });
 </script>
