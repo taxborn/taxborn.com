@@ -1,0 +1,7 @@
+---
+const { link, title } = Astro.props;
+
+const path = Astro.url.pathname;
+---
+
+<a href={link} aria-current={path === link && "page"}>{title || link}</a>
