@@ -5,3 +5,13 @@ const path = Astro.url.pathname;
 ---
 
 <a href={link} aria-current={path === link && "page"}>{title || link}</a>
+
+<style>
+    a {
+        @apply hover:font-bold;
+    }
+
+    a[aria-current="page"] {
+        @apply font-black;
+    }
+</style>
