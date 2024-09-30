@@ -1,0 +1,47 @@
+---
+import '@fontsource-variable/oswald';
+import '@fontsource/atkinson-hyperlegible';
+
+import Navigation from '../components/Navigation.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>taxborn.com</title>
+	</head>
+
+	<body>
+        <main class="container max-w-4xl mx-auto">
+            <header>
+                <Navigation />            
+            </header>
+
+            <slot />
+        </main>
+	</body>
+</html>
+
+<style is:global>
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Oswald Variable';
+
+        @apply font-medium;
+    }
+
+    h2, h3, h4, h5, h6 {
+        @apply mt-6;
+    }
+
+    p {
+        @apply my-4;
+    }
+
+    a {
+        @apply underline text-indigo-500;
+    }
+</style>
