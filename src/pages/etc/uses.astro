@@ -1,0 +1,63 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="uses">
+    <section>
+        <h1>What I use</h1>
+        <p>The hardware and software I use <i>near</i> daily to accomplish my work.</p>
+    </section>
+
+    <section>
+        <h2>Hardware</h2>
+        <p>As I stated in my <a href="/etc/colophon">colophon</a>, all of my device names are some verison of units of bits.</p>
+
+        <article>
+            <p><strong>Byte:</strong> A desktop PC I built myself in August 2023. <a href="https://pcpartpicker.com/b/29gtt6">PCPartPicker list</a>.</p>
+
+            <ul>
+                <li><strong>CPU:</strong> Intel i7-13700k (16 core, 3.4 GHz)</li>
+                <li><strong>GPU:</strong> AMD RX 7900 XT (20GB VRAM)</li>
+                <li><strong>RAM:</strong> 2x 16GB G.Skill Ripjaws S5 (DDR5-6400 CL32)</li>
+            </ul>
+        </article>
+
+        <article>
+            <p><strong>Nibble:</strong> A Dell XPS 15 9520 laptop.</p>
+
+            <ul>
+                <li><strong>CPU:</strong> Intel i9-12900HK (14 core, up to 5.0 GHz)</li>
+                <li><strong>GPU:</strong> Nvidia GeForce RTX 3050 Ti (4GB VRAM)</li>
+            </ul>
+        </article>
+
+        <article>
+            <p><strong>Word:</strong> An OVH VPS.</p>
+
+            <ul>
+                <li><strong>CPU:</strong> 4 vCPUs (Not exactly sure what the main CPU is)</li>
+                <li><strong>GPU:</strong> 8 GB</li>
+            </ul>
+        </article>
+    </section>
+
+    <section>
+        <h2>Software</h2>
+
+        <ul>
+            <li><a href="https://neovim.io/">Neovim</a> - my text editor, dotfiles mentioned below.</li>
+            <li><a href="https://obsidian.md/">Obsidian</a> - my note taking app of choice.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Dotfiles</h2>
+        <p>I am working on getting my dotfiles into good working order, but for now I have my <a href="https://github.com/taxborn/nvim">Neovim</a> dotfiles on my GitHub. Soon I will have my ZSH, tmux, and other configurations up.</p>
+    </section>
+</Layout>
+
+<style>
+    ul {
+        @apply list-inside list-disc;
+    }
+</style>

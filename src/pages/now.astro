@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const lastUpdated = "2024-08-30T21:51:00-05:00";
+const humanReadable = new Date(lastUpdated);
+
+---
+
+<Layout title="now">
+    <h1 class="mb-1">What I'm up to <a href="https://nownownow.com/about">now</a>.</h1>
+    <i>Last updated <abbr title={humanReadable.toISOString()} class="underline-offset-4 cursor-default">{humanReadable.toString()}</abbr></i>
+
+    <ul class="list-inside list-disc mt-4">
+        <li>Looking at getting a cat soon, possibly this weekend!</li>
+        <li>Recently moved to an accessibility team at work temporarily, learning to move fast!</li>
+        <li>Learning about WCAG.</li>
+        <li>Working on sculpting this digital garden. Taking inspiration from various sites on the webring, specifically emile.space!</li>
+        <li>Really trying to learn how to cook, and cook well.</li>
+        <li>Getting happy with where this website is heading, so hopefully will get back to work on my hashing experiments and learning about multi-threaded programming.</li>
+    </ul>
+</Layout>

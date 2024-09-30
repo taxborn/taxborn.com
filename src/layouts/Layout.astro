@@ -3,6 +3,8 @@ import '@fontsource-variable/oswald';
 import '@fontsource/atkinson-hyperlegible';
 
 import Navigation from '../components/Navigation.astro';
+
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -12,11 +14,11 @@ import Navigation from '../components/Navigation.astro';
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 
-		<title>taxborn.com</title>
+		<title>taxborn.com - {title}</title>
 	</head>
 
-	<body>
-        <main class="container max-w-4xl mx-auto">
+	<body class="border-t-4 border-indigo-500">
+        <main class="container max-w-4xl mx-auto px-2 text-lg">
             <header>
                 <Navigation />            
             </header>
