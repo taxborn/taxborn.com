@@ -1,0 +1,27 @@
+---
+export const prerender = false;
+
+import { getCollection } from 'astro:content';
+
+import Layout from "../../../layouts/Layout.astro";
+
+const { tag } = Astro.params;
+
+const notes = await getCollection('notes', ({ data }) => {
+    return data.tags.includes(tag);
+});
+
+---
+
+<Layout title={`notes tagged #${tag}`}>
+    <h1>#{tag}</h1>
+
+    <ul>
+    {
+        notes.map(note => (
+            <li><a href={`/note/${note.slug}`}>{note.data.title}</a></li>
+        ))
+    }
+    </ul>
+</Layout>
+

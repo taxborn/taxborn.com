@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/oswald';
 import '@fontsource/atkinson-hyperlegible';
+import { ViewTransitions } from "astro:transitions";
 
 import Navigation from '../components/Navigation.astro';
 
@@ -15,6 +16,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 
 		<title>taxborn.com - {title}</title>
+        <ViewTransitions />
 	</head>
 
 	<body class="border-t-4 border-indigo-500">
