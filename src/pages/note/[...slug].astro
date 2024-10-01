@@ -1,12 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
-  const notes = await getCollection('notes');
-  return notes.map(note => ({
-    params: { slug: note.slug }, props: { note },
+  const notes = await getCollection("notes");
+  return notes.map((note) => ({
+    params: { slug: note.slug },
+    props: { note },
   }));
 }
 
@@ -15,17 +16,27 @@ const { Content } = await note.render();
 ---
 
 <Layout>
-    <a href="/notes">&larr; Back to notes</a>
+  <a href="/notes">&larr; Back to notes</a>
 
-    <h1 class="mt-4 mb-1">{note.data.title}</h1>
+  <h1 class="mt-4 mb-1">{note.data.title}</h1>
 
-    <i>Posted <abbr title={note.data.created.toISOString()}>{note.data.created.toString()}</abbr></i>
+  <i
+    >Posted <abbr title={note.data.created.toISOString()}
+      >{note.data.created.toString()}</abbr
+    ></i
+  >
 
-    <ul class="mt-1">
-        {note.data.tags.map((tag) => (
-            <li class="inline bg-black px-2 py-1 rounded-lg text-white mr-1"><a href={`/notes/tag/${tag}`} class="text-white no-underline">{tag}</a></li>
-        ))}
-    </ul>
+  <ul class="mt-1">
+    {
+      note.data.tags.map((tag) => (
+        <li class="inline bg-black px-2 py-1 rounded-lg text-white mr-1">
+          <a href={`/notes/tag/${tag}`} class="text-white no-underline">
+            {tag}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 
-    <Content />
+  <Content />
 </Layout>

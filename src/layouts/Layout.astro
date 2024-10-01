@@ -1,63 +1,74 @@
 ---
-import '@fontsource-variable/oswald';
-import '@fontsource/atkinson-hyperlegible';
+import "@fontsource-variable/oswald";
+import "@fontsource/atkinson-hyperlegible";
 import { ViewTransitions } from "astro:transitions";
 
-import Navigation from '../components/Navigation.astro';
+import Navigation from "../components/Navigation.astro";
+import ThemeManager from "../components/ThemeManager.astro";
 
 const { title } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
 
-		<title>taxborn.com - {title}</title>
-        <ViewTransitions />
-	</head>
+    <title>taxborn.com - {title}</title>
+    <ThemeManager defaultTheme="auto" />
+    <ViewTransitions />
+  </head>
 
-	<body class="border-t-4 border-indigo-500">
-        <main class="container max-w-4xl mx-auto px-2 text-lg">
-            <header>
-                <Navigation />            
-            </header>
+  <body class="border-t-4 border-indigo-500">
+    <main class="container max-w-4xl mx-auto px-2 text-lg">
+      <header>
+        <Navigation />
+      </header>
 
-            <slot />
-        </main>
-	</body>
+      <slot />
+    </main>
+  </body>
 </html>
 
 <style is:global>
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Oswald Variable';
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Oswald Variable";
 
-        @apply font-medium;
-    }
+    @apply font-medium;
+  }
 
-    h2, h3, h4, h5, h6 {
-        @apply mt-6;
-    }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mt-6;
+  }
 
-    h1 {
-        @apply text-5xl;
-    }
+  h1 {
+    @apply text-5xl;
+  }
 
-    h2 {
-        @apply text-4xl;
-    }
+  h2 {
+    @apply text-4xl;
+  }
 
-    h3 {
-        @apply text-2xl;
-    }
+  h3 {
+    @apply text-2xl;
+  }
 
-    p {
-        @apply my-4;
-    }
+  p {
+    @apply my-4;
+  }
 
-    a {
-        @apply underline text-indigo-500;
-    }
+  a {
+    @apply underline text-indigo-500;
+  }
 </style>

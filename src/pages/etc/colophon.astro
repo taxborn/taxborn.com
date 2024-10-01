@@ -3,35 +3,84 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="colophon">
-    <section>
-        <h1>Colophon, about this website</h1>
-        <p>A colophon, as described by <a href="https://en.wikipedia.org/wiki/Colophon_(publishing)">Wikipedia</a>:</p>
+  <section>
+    <h1>Colophon, about this website</h1>
+    <p>
+      A colophon, as described by <a
+        href="https://en.wikipedia.org/wiki/Colophon_(publishing)">Wikipedia</a
+      >:
+    </p>
 
-        <blockquote>
-            <p>In publishing, a colophon <span class="font-mono">(/ˈkɒləfən, -fɒn/)</span> is a brief statement containing information about the publication of a book such as an "imprint" (the place of publication, the publisher, and the date of publication).</p>
-        </blockquote>
+    <blockquote>
+      <p>
+        In publishing, a colophon <span class="font-mono"
+          >(/ˈkɒləfən, -fɒn/)</span
+        > is a brief statement containing information about the publication of a
+        book such as an "imprint" (the place of publication, the publisher, and the
+        date of publication).
+      </p>
+    </blockquote>
 
-        <p>Or in the context of this website, about the development and information stored on this website.</p>
-    </section>
+    <p>
+      Or in the context of this website, about the development and information
+      stored on this website.
+    </p>
+  </section>
 
-    <section>
-        <h2>Hosting</h2>
-        <p>This website is hosted on a server I call word (all of my device names have different names for <a href="https://en.wikipedia.org/wiki/Units_of_information#Units_derived_from_bit">units of bits</a>). It is a VPS server hosted at OVH under their comfort model, with 4 vCores, 8 GB of RAM, and 80 GB of storage. I give myself some extra CPU and RAM space to also host a Minecraft server for my girlfriend and I (no, you cannot access it, hopefully...).</p>
-        <p>The website itself is a Node application (elaborated on in #tools), and is hosted behind an Nginx reverse proxy with SSL termination. I've been trying to get this running with <a href="https://pm2.io/">pm2</a>, however the server seemingly crashes after a while and I have no idea why.</p>
-    </section>
+  <section>
+    <h2>Hosting</h2>
+    <p>
+      This website is hosted on a server I call word (all of my device names
+      have different names for <a
+        href="https://en.wikipedia.org/wiki/Units_of_information#Units_derived_from_bit"
+        >units of bits</a
+      >). It is a VPS server hosted at OVH under their comfort model, with 4
+      vCores, 8 GB of RAM, and 80 GB of storage. I give myself some extra CPU
+      and RAM space to also host a Minecraft server for my girlfriend and I (no,
+      you cannot access it, hopefully...).
+    </p>
+    <p>
+      The website itself is a Node application (elaborated on in <strong
+        >tools</strong
+      >), and is hosted behind an Nginx reverse proxy with SSL termination. I've
+      been trying to get this running with <a href="https://pm2.io/">pm2</a>,
+      however the server seemingly crashes after a while and I have no idea why.
+    </p>
+  </section>
 
-    <section>
-        <h2>Domain</h2>
-        <p>As of right now, I own 2 domains, both registered through Cloudflare; this domain, <a href="https://taxborn.com">taxborn.com</a>, and <a href="https://braxtonfair.com">braxtonfair.com</a>. I use taxborn as it is a username that I can get everywhere and a way I can be 'recognizable' on the web, even though I don't aim for much visibility.</p>
-    </section>
+  <section>
+    <h2>Domain</h2>
+    <p>
+      As of right now, I own 2 domains, both registered through Cloudflare; this
+      domain, <a href="https://taxborn.com">taxborn.com</a>, and <a
+        href="https://braxtonfair.com">braxtonfair.com</a
+      >. I use taxborn as it is a username that I can get everywhere and a way I
+      can be 'recognizable' on the web, even though I don't aim for much
+      visibility.
+    </p>
+  </section>
 
-    <section>
-        <h2>Content</h2>
-        <p>Both the code and content of this website is &copy; Braxton Fair and released under the <a href="https://github.com/taxborn/taxborn.com/blob/main/LICENSE">MIT License</a>.</p>
-    </section>
+  <section>
+    <h2>Content</h2>
+    <p>
+      Both the code and content of this website is &copy; Braxton Fair and
+      released under the <a
+        href="https://github.com/taxborn/taxborn.com/blob/main/LICENSE"
+        >MIT License</a
+      >.
+    </p>
+  </section>
 
-    <section>
-        <h2>Tools</h2>
-        <p>I mainly use Neovim or sometimes VSCode as my editor of choice. This website is built with Astro as the website builder, as it generates fast static sites and has an interesting take of hybrid server-side rendering with the concept of <a href="https://docs.astro.build/en/concepts/islands/">islands</a>. In my daily life, I also use <a href="https://obsidian.md">Obsidian</a> for writing and taking notes both at home and at work.</p>
-    </section>
+  <section>
+    <h2>Tools</h2>
+    <p>
+      I mainly use Neovim or sometimes VSCode as my editor of choice. This
+      website is built with Astro as the website builder, as it generates fast
+      static sites and has an interesting take of hybrid server-side rendering
+      with the concept of <a
+        href="https://docs.astro.build/en/concepts/islands/">islands</a
+      >. In my daily life, I also use <a href="https://obsidian.md">Obsidian</a>
+      for writing and taking notes both at home and at work.
+    </p>
+  </section>
 </Layout>

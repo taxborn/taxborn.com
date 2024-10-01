@@ -1,21 +1,46 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const lastUpdated = "2024-08-30T21:51:00-05:00";
+const lastUpdated = "2024-10-01T14:22:21-05:00";
 const humanReadable = new Date(lastUpdated);
-
 ---
 
 <Layout title="now">
-    <h1 class="mb-1">What I'm up to <a href="https://nownownow.com/about">now</a>.</h1>
-    <i>Last updated <abbr title={humanReadable.toISOString()} class="underline-offset-4 cursor-default">{humanReadable.toString()}</abbr></i>
+  <h1 class="mb-1">
+    🕰️ What I'm up to <a href="https://nownownow.com/about">now</a>.
+  </h1>
+  <i
+    >Last updated <abbr
+      title={humanReadable.toISOString()}
+      class="underline-offset-4 cursor-default">{humanReadable.toString()}</abbr
+    ></i
+  >
 
-    <ul class="list-inside list-disc mt-4">
-        <li>Looking at getting a cat soon, possibly this weekend!</li>
-        <li>Recently moved to an accessibility team at work temporarily, learning to move fast!</li>
-        <li>Learning about WCAG.</li>
-        <li>Working on sculpting this digital garden. Taking inspiration from various sites on the webring, specifically emile.space!</li>
-        <li>Really trying to learn how to cook, and cook well.</li>
-        <li>Getting happy with where this website is heading, so hopefully will get back to work on my hashing experiments and learning about multi-threaded programming.</li>
-    </ul>
+  <ul class="list-inside list-disc mt-4">
+    <li>
+      Recently got a cat, named Mischief! I'll make a <a href="/notes">note</a> on
+      this soon.
+    </li>
+    <li>
+      Working on <a href="https://www.a11yproject.com/">accessibility</a> of the
+      Westlaw website at work.
+    </li>
+    <li>
+      Working on sculpting this digital garden. Taking inspiration from various
+      sites on the <a href="https://webring.xxiivv.com/">webring</a>.
+    </li>
+    <li>
+      Recently started learning how to pan-sear a steak, soon wanting to learn
+      how to grill a good one!
+    </li>
+    <li>
+      Settling into my new townhome really well, it's really starting to feel
+      like home.
+    </li>
+    <li>
+      Working on a budgeting application for my girlfriend and I, a lot of
+      existing solutions don't seem to handle joint finances well and wanted an
+      excuse to start a new project.
+    </li>
+  </ul>
 </Layout>

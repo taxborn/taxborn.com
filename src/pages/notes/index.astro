@@ -1,19 +1,26 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-const notes = await getCollection('notes');
+const notes = await getCollection("notes");
 ---
 
 <Layout title="notes">
-    <h1>Notes</h1>
-    <p>I plan to write about topics I find interesting and want to share a bit about. This may also include links to articles I find interesting.</p>
+  <h1>✍️ Notes</h1>
+  <p>
+    I plan to write about topics I find interesting and want to share a bit
+    about. This may also include links to articles I find interesting.
+  </p>
 
-    <ul>
+  {notes.length == 0 && <p class="font-bold">No notes, yet...</p>}
+
+  <ul>
     {
-        notes.map(note => (
-            <li><a href={`/note/${note.slug}`}>{note.data.title}</a></li>
-        ))
+      notes.map((note) => (
+        <li>
+          <a href={`/note/${note.slug}`}>{note.data.title}</a>
+        </li>
+      ))
     }
-    </ul>
+  </ul>
 </Layout>
