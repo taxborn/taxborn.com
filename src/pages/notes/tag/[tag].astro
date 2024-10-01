@@ -5,11 +5,13 @@ import { getCollection } from "astro:content";
 
 import Layout from "../../../layouts/Layout.astro";
 
-const { tag } = Astro.params;
+const { tag = "" } = Astro.params;
 
 const notes = await getCollection("notes", ({ data }) => {
   return data.tags.includes(tag);
 });
+
+// TODO: If no tag provided or there are no notes, redirect to /notes
 ---
 
 <Layout title={`notes tagged #${tag}`}>
