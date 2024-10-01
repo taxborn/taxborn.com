@@ -15,9 +15,11 @@ const notes = await getCollection("notes", ({ data }) => {
 <Layout title={`notes tagged #${tag}`}>
   <h1>#{tag}</h1>
 
+  {notes.length === 0 && <p>No notes match this tag.</p>}
+
   <ul>
     {
-      notes.map((note) => (
+      notes.map((note: { slug: string; data: { title: string; }; }) => (
         <li>
           <a href={`/note/${note.slug}`}>{note.data.title}</a>
         </li>
