@@ -21,7 +21,7 @@ const notes = await getCollection("notes", ({ data }) => {
 
   <ul>
     {
-      notes.map((note: { slug: string; data: { title: string; }; }) => (
+      notes.map((note: { slug: string; data: { title: string } }) => (
         <li>
           <a href={`/note/${note.slug}`}>{note.data.title}</a>
         </li>
