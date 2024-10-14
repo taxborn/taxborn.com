@@ -19,7 +19,7 @@ const notes = await getCollection("notes");
         notes.map((note) => (
           <tr class="group">
             <td class="text-right">
-              <span class="text-xs italic text-gray-800/65 group-hover:text-gray-800/100 font-bold">
+              <span class="text-xs italic text-gray-800/65 group-hover:text-gray-800/100 dark:text-white/65 dark:group-hover:text-white/100 font-bold">
                 {note.data.created.toDateString()}
               </span>
             </td>

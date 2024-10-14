@@ -15,31 +15,33 @@ const { note } = Astro.props;
 const { Content } = await note.render();
 ---
 
-<BlogLayout>
-  <h1 class="mb-1">{note.data.title}</h1>
+<BlogLayout title={note.data.title}>
+  <section class="my-8">
+    <h1 class="mb-1">{note.data.title}</h1>
 
-  <i
-    >Posted <abbr title={note.data.created.toISOString()}
-      >{note.data.created.toLocaleDateString()} at {
-        note.data.created.toLocaleTimeString()
-      }</abbr
-    ></i
-  >
+    <i
+      >Posted <abbr title={note.data.created.toISOString()}
+        >{note.data.created.toLocaleDateString()} at {
+          note.data.created.toLocaleTimeString()
+        }</abbr
+      ></i
+    >
 
-  <ul class="my-2">
-    {
-      note.data.tags.map((tag) => (
-        <li class="inline bg-black px-3 py-0.5 rounded-lg text-white mr-2">
-          <a
-            href={`/notes/tag/${tag}`}
-            class="text-white no-underline font-sans text-md font-bold"
-          >
-            {tag}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+    <ul class="my-2">
+      {
+        note.data.tags.map((tag) => (
+          <li class="inline bg-black px-3 py-0.5 rounded-lg text-white mr-2">
+            <a
+              href={`/notes/tag/${tag}`}
+              class="text-white no-underline font-sans text-md font-bold"
+            >
+              {tag}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
   <Content />
 </BlogLayout>

@@ -13,7 +13,6 @@ created: 2024-10-12T22:21:34-05:00
 To start off some public notes and documenting what I learn, I decided to tackle setting up a fresh Ubuntu VPS to host my personal website, a side-project, and a small Minecraft server.
 
 # Introduction
-
 While I've been coding on and off since about 2013 (_nearly half my life now_), I spent **way** too much of that time following a YouTube tutorial series, copy and pasting code, and not doing any _real_ learning. During my time in college, I learned the value of just parsing the standard library, learning my tools and learning how to use them well, and just creating something is a far greater than I initially thought it was.
 
 Around the start of 2024 I got hooked on the [IndieWeb](https://indieweb.org) movement (introduced by the website [jvt.me](https://jvt.me), not sure how I initially found it, unfortunately) and creating my own personal garden. That, coupled with the trend now to move from the cloud back to self-hosting applications (_which is ironic given that I was on a project at work to move from self-hosting to the cloud..._), I really wanted to learn things on my own without relying on heavy infrastructure like [Vercel](https://vercel.com) and the like.
@@ -22,19 +21,17 @@ With that I thought it would be a golden oppertunity to take the time to documen
 
 # Requirements
 
-1. Two domains, HTTPS, www
-   I have two domains, **taxborn.com** and **braxtonfair.com**. I have the username **taxborn** everywhere, so I essentially 'brand' myself as such. I did also want to have my name as a domain in case I ever decided to ditch the name, but today is not that day. I want to redirect all traffic from **braxtonfair.com** -> https://www.taxborn.com.
+**Two domains, HTTPS, www**: I have two domains, **taxborn.com** and **braxtonfair.com**. I have the username **taxborn** everywhere, so I essentially 'brand' myself as such. I did also want to have my name as a domain in case I ever decided to ditch the name, but today is not that day. I want to redirect all traffic from **braxtonfair.com** -> https://www.taxborn.com.
 
 I want to ensure all traffic is encrypted with SSL, and force www. I went back and forth on whether to have www.taxborn.com or the non-prefixed taxborn.com. Looked at a couple [\[1\]](https://developer.mozilla.org/en-US/docs/Web/URI/Authority/Choosing_between_www_and_non-www_URLs) [\[2\]](https://www.netlify.com/blog/2020/03/26/how-to-set-up-netlify-dns-custom-domains-cname-and-a-records/#options-for-bare-domains) resources and determined it was mostly [bikeshedding](https://bikeshed.com/) and went with www.taxborn.com.
 
-2. Easy deployments and updates
-   I got to learn a lot about [GitHub Actions](https://docs.github.com/en/actions) at work
+**Easy deployments and updates**: I got to learn a lot about [GitHub Actions](https://docs.github.com/en/actions) at work
 
-3. Understand my setup
+**Understand my setup**: ...
 
 # VPS Cleanup
 
-[[202410121803 - VPS Cleanup and initial setup]]
+I wrote about this over on [Setting up a clean VPS](/note/vps-cleanup).
 
 # Installing Nginx
 
