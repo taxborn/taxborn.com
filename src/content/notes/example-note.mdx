@@ -1,0 +1,50 @@
+---
+title: An example note
+isDraft: true
+tags:
+- test
+created: 2024-10-14T17:05:00-05:00
+---
+
+import { Image } from "astro:assets";
+import mischief from "../../assets/mischief.jpg";
+import family from "../../assets/family.jpg";
+
+# Example note
+
+This is going to be an **example note** to showcase the _styles_ of the blog.
+
+# Headings (this is h1)
+## Heading 2
+### Heading 3
+
+I shouldn't need more than this. Not going to worry about it for now.
+
+# Pictures
+<Image src={mischief} alt="My cat, Mischief. A gray domestic shorthare"/>
+<Image src={family} alt="A picture of me, Mickey, and Mischief"/>
+
+```rust
+#[derive(Debug, PartialEq, Eq)]
+pub struct Token<'src> {
+    pub lexeme: &'src str,
+    pub byte_offset: usize,
+    pub kind: TokenKind,
+}
+
+#[derive(Debug, PartialEq, Eq)]
+pub enum TokenKind {
+    Plus,
+    Minus,
+    Eq,
+}
+
+pub struct Lexer<'src> {
+    /// The original input string
+    input: &'src str,
+    /// The remain input from `byte` onwards
+    rest: &'src str,
+    /// The current postion of the lexer. This byte position is *not* lexed yet
+    byte: usize,
+}
+```

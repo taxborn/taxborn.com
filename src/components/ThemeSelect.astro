@@ -3,6 +3,7 @@
 ---
 
 <theme-selector></theme-selector>
+<label for="theme-selector" class="sr-only">Website theme selector</label>
 
 <script is:inline>
   if (!customElements.get("theme-selector")) {
@@ -12,7 +13,7 @@
       class extends HTMLElement {
         connectedCallback() {
           this.innerHTML = `
-            <select>
+            <select id="theme-selector">
               <option value="auto">Auto</option>
               <option value="light">Light</option>
               <option value="dark">Dark</option>
