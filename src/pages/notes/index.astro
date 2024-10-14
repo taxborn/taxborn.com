@@ -7,20 +7,30 @@ const notes = await getCollection("notes");
 
 <Layout title="notes">
   <h1>✍️ Notes</h1>
+
   <p>
     I plan to write about topics I find interesting and want to share a bit
     about. This may also include links to articles I find interesting.
   </p>
 
-  {notes.length == 0 && <p class="font-bold">No notes, yet...</p>}
-
-  <ul>
-    {
-      notes.map((note) => (
-        <li>
-          <a href={`/note/${note.slug}`}>{note.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <table class="table-auto">
+    <tbody>
+      {
+        notes.map((note) => (
+          <tr class="group">
+            <td class="text-right">
+              <span class="text-xs italic text-gray-800/65 group-hover:text-gray-800/100 font-bold">
+                {note.data.created.toDateString()}
+              </span>
+            </td>
+            <td>
+              <a href={`/note/${note.slug}`} class="ml-2">
+                {note.data.title}
+              </a>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
 </Layout>

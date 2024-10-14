@@ -6,7 +6,7 @@ import { ViewTransitions } from "astro:transitions";
 import Navigation from "../components/Navigation.astro";
 import ThemeManager from "../components/ThemeManager.astro";
 
-import "../styles/global.css";
+import "../styles/blog.css";
 
 const { title } = Astro.props;
 ---
@@ -25,8 +25,10 @@ const { title } = Astro.props;
 
   <body class="border-t-4 border-indigo-500 overflow-y-scroll">
     <main class="container max-w-4xl mx-auto px-2 text-lg">
-      <header>
+      <header class="mb-6">
         <Navigation />
+
+        <a href="/notes" class="mb-4">&larr; Back to notes</a>
       </header>
 
       <slot />

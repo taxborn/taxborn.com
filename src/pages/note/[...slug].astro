@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 export async function getStaticPaths() {
   const notes = await getCollection("notes");
@@ -15,22 +15,25 @@ const { note } = Astro.props;
 const { Content } = await note.render();
 ---
 
-<Layout>
-  <a href="/notes">&larr; Back to notes</a>
-
-  <h1 class="mt-4 mb-1">{note.data.title}</h1>
+<BlogLayout>
+  <h1 class="mb-1">{note.data.title}</h1>
 
   <i
     >Posted <abbr title={note.data.created.toISOString()}
-      >{note.data.created.toString()}</abbr
+      >{note.data.created.toLocaleDateString()} at {
+        note.data.created.toLocaleTimeString()
+      }</abbr
     ></i
   >
 
-  <ul class="mt-1">
+  <ul class="my-2">
     {
       note.data.tags.map((tag) => (
-        <li class="inline bg-black px-2 py-1 rounded-lg text-white mr-1">
-          <a href={`/notes/tag/${tag}`} class="text-white no-underline">
+        <li class="inline bg-black px-3 py-0.5 rounded-lg text-white mr-2">
+          <a
+            href={`/notes/tag/${tag}`}
+            class="text-white no-underline font-sans text-md font-bold"
+          >
             {tag}
           </a>
         </li>
@@ -39,4 +42,4 @@ const { Content } = await note.render();
   </ul>
 
   <Content />
-</Layout>
+</BlogLayout>

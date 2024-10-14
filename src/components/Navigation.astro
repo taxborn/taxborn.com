@@ -2,25 +2,28 @@
 import ThemeSelect from "./ThemeSelect.astro";
 ---
 
-<nav class="flex justify-end py-4">
+<nav class="flex justify-end py-6">
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/work">Work</a></li>
     <li><a href="/notes">Notes</a></li>
     <li><a href="/now">Now</a></li>
     <li><a href="/etc">Etc</a></li>
+
     <ThemeSelect />
   </ul>
 </nav>
 
 <style>
   li {
-    @apply inline;
+    @apply inline mx-0.5;
   }
 
   a {
-    font-family: "Oswald Variable";
+    @apply font-bold tracking-wider no-underline hover:underline underline-offset-2;
+  }
 
-    @apply font-medium tracking-wider;
+  select {
+    @apply ml-4;
   }
 </style>

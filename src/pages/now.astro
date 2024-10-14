@@ -12,7 +12,10 @@ const humanReadable = new Date(lastUpdated);
   <i
     >Last updated <abbr
       title={humanReadable.toISOString()}
-      class="underline-offset-4 cursor-default">{humanReadable.toString()}</abbr
+      class="underline-offset-4 cursor-default"
+      >{humanReadable.toLocaleDateString()} at {
+        humanReadable.toLocaleTimeString()
+      }</abbr
     ></i
   >
 

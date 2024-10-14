@@ -4,7 +4,7 @@ isDraft: true
 tags:
 - linux
 - tmux
-created: 2024-10-12T22:21:34-05:00
+created: 2024-10-13T22:21:34-05:00
 ---
 
 I usually like to use tmux locally, and on [[word]] (my VPS) I run a tmux session to have both my website and the Minecraft server perpetually running.
