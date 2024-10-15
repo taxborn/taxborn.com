@@ -1,0 +1,91 @@
+---
+export const prerender = "false";
+
+import { actions, isInputError } from "astro:actions";
+import Layout from "../../layouts/Layout.astro";
+import { db, Entries } from "astro:db";
+
+const result = Astro.getActionResult(actions.shaEntry);
+const inputErrors = isInputError(result?.error) ? result.error.fields : {};
+
+const entries = await db
+  .select()
+  .from(Entries)
+  .orderBy(Entries.hash)
+  .limit(100);
+---
+
+<Layout title="Hashing Experiments">
+  <section>
+    <h1>Hashing Experiments</h1>
+    <p class="italic text-sm">
+      <span class="font-bold">Disclaimer:</span> I got this idea from <a
+        href="https://shallenge.quirino.net/">another lowest hash competition</a
+      >. Full credit to them for the idea.
+    </p>
+  </section>
+
+  <section>
+    <h2>Object</h2>
+    <p>
+      Generate the smallest SHA256 hash, adhering to a certain input
+      specification. The input should be of the form: <span
+        class="dark:bg-white bg-black text-white dark:text-black px-1 py-0.5 rounded tracking-wide font-mono"
+        ><span class="font-bold">username</span>/<span class="font-bold"
+          >nonce</span
+        ></span
+      >, where <span
+        class="dark:bg-white bg-black text-white dark:text-black px-1 rounded tracking-wide font-mono font-bold"
+        >username</span
+      > is a 1 - 32 character long <a
+        href="https://datatracker.ietf.org/doc/html/rfc4648#section-5"
+        >URL-safe base-64</a
+      > string, and <span
+        class="dark:bg-white bg-black text-white dark:text-black px-1 rounded tracking-wide font-mono font-bold"
+        >nonce</span
+      > is a 1 - 64 character long base-64 string.
+    </p>
+    <p>
+      <span class="font-bold">Examples</span>: taxborn/aaAab2478,
+      bernie/a_--_789, hasK3ll/123aA7a
+    </p>
+  </section>
+
+  <section>
+    <h2>Submit your entry</h2>
+
+    <form action={actions.shaEntry} method="POST" class="mt-4">
+      <label class="block">
+        <span class="text-gray-700">Input</span>
+        {inputErrors.entry && <p id="error">{inputErrors.entry.join(",")}</p>}
+        <input
+          type="text"
+          name="entry"
+          class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+          aria-describedby="error"
+          placeholder="eXAmple/input-123_-_--_"
+        />
+      </label>
+
+      <button
+        type="submit"
+        class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md mt-2"
+        >Submit</button
+      >
+    </form>
+  </section>
+
+  <section>
+    <h2>Leaderboard</h2>
+
+    <ol>
+      {
+        entries.map(({ entry, hash }, index) => (
+          <li>
+            #{index + 1}: {entry} {hash}
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Layout>

@@ -5,6 +5,8 @@ import node from "@astrojs/node";
 import theme from "./catppuccin-color-scheme.json";
 import mdx from "@astrojs/mdx";
 
+import db from "@astrojs/db";
+
 const prettyCodeOptions = {
   theme,
   onVisitHighlightedLine(node) {
@@ -23,7 +25,7 @@ const prettyCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), mdx()],
+  integrations: [tailwind(), mdx(), db()],
   output: "hybrid",
   markdown: {
     // extendDefaultPlugins: true,
