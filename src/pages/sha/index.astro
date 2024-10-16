@@ -40,7 +40,7 @@ const entries = await db
       > is a 1 - 32 character long <a
         href="https://datatracker.ietf.org/doc/html/rfc4648#section-5"
         >URL-safe base-64</a
-      > string, and <span
+      > string <i>(minus the padding character, '=')</i>, and <span
         class="dark:bg-white bg-black text-white dark:text-black px-1 rounded tracking-wide font-mono font-bold"
         >nonce</span
       > is a 1 - 64 character long base-64 string.
@@ -56,12 +56,12 @@ const entries = await db
 
     <form action={actions.shaEntry} method="POST" class="mt-4">
       <label class="block">
-        <span class="text-gray-700">Input</span>
+        <span class="text-gray-700 dark:text-gray-200">Input</span>
         {inputErrors.entry && <p id="error">{inputErrors.entry.join(",")}</p>}
         <input
           type="text"
           name="entry"
-          class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+          class="mt-1 block w-full rounded-md bg-gray-100 dark:bg-gray-800 dark:text-gray-800 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
           aria-describedby="error"
           placeholder="eXAmple/input-123_-_--_"
         />
@@ -69,23 +69,41 @@ const entries = await db
 
       <button
         type="submit"
-        class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md mt-2"
+        class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-900 px-4 py-2 rounded-md mt-2"
         >Submit</button
       >
     </form>
   </section>
 
   <section>
-    <h2>Leaderboard</h2>
+    <h2 class="mb-4">Leaderboard</h2>
 
-    <ol>
-      {
-        entries.map(({ entry, hash }, index) => (
-          <li>
-            #{index + 1}: {entry} {hash}
-          </li>
-        ))
-      }
-    </ol>
+    <table class="table-auto">
+      <thead class="bg-gray-100 dark:bg-gray-800">
+        <tr>
+          <th>Place</th>
+          <th>Entry</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          entries.map(({ entry, hash }, index) => (
+            <tr class="font-mono even:bg-gray-100 dark:even:bg-gray-800">
+              <td class="text-right py-2 px-2">
+                #{index + 1}{" "}
+                <span>
+                  {index == 0 && "🏆"}
+                  {index == 1 && "🥈"}
+                  {index == 2 && "🥉"}
+                </span>
+              </td>
+              <td class="py-2 px-2">
+                <span class="font-bold">{entry}</span> <span>0x{hash}</span>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
   </section>
 </Layout>
