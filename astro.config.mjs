@@ -6,5 +6,11 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.taxborn.com',
-  integrations: [tailwind()]
+  integrations: [tailwind()],
+  prefetch: {
+    prefetchAll: true,
+  },
+  env: {
+    schema: {},
+  }
 });
