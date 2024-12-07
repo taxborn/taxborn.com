@@ -1,3 +1,14 @@
+---
+const buildTime = new Date();
+---
+
 <footer class="border-t-2 border-[#78A083] py-1">
-    <p>Copyright &copy; 2024 Braxton Fair.</p>
+    <div class="flex justify-between">
+        <p>Copyright &copy; 2024 Braxton Fair</p>
+        <p>Last build: <abbr title={buildTime.toISOString()}>{buildTime.toLocaleString()}</abbr></p>
+    </div>
+
+    <ul>
+        
+    </ul>
 </footer>
