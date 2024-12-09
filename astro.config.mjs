@@ -1,12 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import tailwind from '@astrojs/tailwind';
+import expressiveCode from 'astro-expressive-code';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.taxborn.com',
-  integrations: [tailwind()],
+  integrations: [tailwind(), expressiveCode({
+    // themes: ['dracula'],
+  })],
   prefetch: {
     prefetchAll: true,
   },
