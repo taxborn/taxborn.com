@@ -1,1 +1,2 @@
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDex5NmMiZqlhAaXQb7XFS8LlwVtWm7r6lMVgoD2Gn66 taxborn@uranium (hello@taxborn.com)
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJvlhtxQLO5zhlTcztBMOpkL+xSGWVWd/dTEu+Jb4zsM taxborn@tungsten (hello@taxborn.com)
