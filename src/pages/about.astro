@@ -1,5 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import mickeyAndI from '@images/mickeyAndI.jpg';
 ---
 
 <Layout title="about">
@@ -10,8 +12,21 @@ import Layout from '@layouts/Layout.astro';
 	<p>Outside of work, I am still very passionite about programming. I spend a lot of time coding and reading about 
 		what's new in compilers and software, and dabbling in mathematics to keep sharp. One day I hope to tame the beast
 		of functional programming and become proficient in Haskell or OCaml, but I haven't had the time to really drink that Kool-aid yet.</p>
-	<p>When I'm not in front of the computer, I love to spend my time with my girlfriend, Mikhaila, and my 2-year-old domestic shorthair, Mischief.</p>
+	<p>When I'm not in front of the computer, I love to spend my time with my girlfriend, Mikhaila (Mickey), and my 2-year-old domestic shorthair, Mischief.</p>
 	<!-- TODO: Insert image of Mickey and Mischief -->
+	<Image src={mickeyAndI} alt="A picture of my girlfriend, Mikhaila, and me." />
+	<p class="italic text-center text-white/50">Mickey and I in Hudson, WI.</p>
+	<h2>Aroun the internet</h2>
+	<p>You can find me on most services as <strong>@taxborn</strong> (an anagram of my first name).</p>
+	<ul>
+		<li><a href="https://mastodon.social/@taxborn">Mastodon - @taxborn</a></li>
+		<li><a href="https://github.com/taxborn">GitHub - @taxborn</a></li>
+		<li><a href="https://linkedin.com/in/braxtonfair">LinkedIn - /in/braxtonfair</a></li>
+		<li><a href="https://x.com/taxborn">X - @taxborn</a> (rarely used)</li>
+		<li><a href="https://reddit.com/u/taxborn">Reddit - /u/taxborn</a></li>
+		<li>PGP Key: <a href="/pgp-key.txt">~/pgp-key.txt</a></li>
+		<li>SSH Key: <a href="/ssh-key.txt">~/ssh-key.txt</a></li>
+	</ul>
 </Layout>
 
 <style>
