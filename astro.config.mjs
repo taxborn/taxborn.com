@@ -6,9 +6,7 @@ import expressiveCode from 'astro-expressive-code';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.taxborn.com',
-  integrations: [tailwind(), expressiveCode({
-    // themes: ['dracula'],
-  })],
+  integrations: [tailwind(), expressiveCode()],
   prefetch: {
     prefetchAll: true,
   },
