@@ -1,0 +1,31 @@
+---
+import DateAbbr from './DateAbbr.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+    note: CollectionEntry<'notes'>
+}
+
+
+const { note } = Astro.props;
+
+console.log(note.data.tags)
+---
+
+<li>
+    <article>
+        <div>
+            <h3 class="inline"><a href=`/note/${note.id}`>{note.data.title}</a></h3>
+            <ul class="inline ml-2">
+                {note.data.tags.map((tag) => <li>{tag}</li>)}
+            </ul>
+        </div>
+        <p class="text-sm italic text-white/50">Written <DateAbbr date={note.data.created_at}/> {note.data.updated_at && <span>, updated at <DateAbbr date={note.data.updated_at}/></span>}</p>
+    </article>
+</li>
+
+<style>
+    ul li {
+        @apply inline text-sm mx-0.5 border border-white/50 rounded-full px-2;
+    }
+</style>

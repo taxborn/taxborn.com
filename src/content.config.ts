@@ -11,7 +11,6 @@ const notes = defineCollection({
     created_at: z.date(),
     // created_at: z.coerce.date(),
     updated_at: z.date().optional(),
-    // updated_at: z.coerce.date().optional(),
   }),
 });
 

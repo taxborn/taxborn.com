@@ -1,4 +1,5 @@
 ---
+import NoteEntry from '@components/NoteEntry.astro';
 import Layout from '@layouts/Layout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
@@ -11,12 +12,13 @@ const notes: CollectionEntry<'notes'>[] = await getCollection("notes");
 <Layout title="notes">
     <section>
         <h1>Notes</h1>
+        <a href="/rss.xml">There's an RSS feed for these notes!</a>
         <p>I intend to write from time to time about things I learn about, what I've done in a week, or other organised (and disorganized!) thoughts.</p>
 
         <article>
             <h2>2024</h2>
             <ul>
-                {notes.map(note => (<li><a href={`/note/${note.id}`}>{note.data.title}</a></li>))}
+                {notes.map(note => <NoteEntry note={note} />)}
             </ul>
         </article>
     </section>
