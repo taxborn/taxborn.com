@@ -9,19 +9,15 @@ const notes = await getCollection("notes");
 ---
 
 <Layout title="notes">
-	<h1>Notes</h1>
-    <p>I intend to write from time to time about things I learn about, what I've done in a week, or other organised (and disorganized!) thoughts.</p>
-
     <section>
-        <h2>2024</h2>
-        <ul>
-            {notes.map(note => (<li><a href={`/note/${note.id}`}>{note.data.title}</a></li>))}
-        </ul>
+        <h1>Notes</h1>
+        <p>I intend to write from time to time about things I learn about, what I've done in a week, or other organised (and disorganized!) thoughts.</p>
+
+        <article>
+            <h2>2024</h2>
+            <ul>
+                {notes.map(note => (<li><a href={`/note/${note.id}`}>{note.data.title}</a></li>))}
+            </ul>
+        </article>
     </section>
 </Layout>
-
-<style>
-	p {
-		@apply pt-2;
-	}
-</style>

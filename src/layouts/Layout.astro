@@ -22,7 +22,7 @@ const { title } = Astro.props;
 				<Navigation />
 			</header>
 
-			<main class="py-4">
+			<main>
 				<slot />
 			</main>
 
@@ -43,4 +43,24 @@ const { title } = Astro.props;
 	h2 {
 		@apply font-bold text-2xl;
 	}
+/* 
+	section p:first-of-type {
+		@apply bg-red-500/20;
+	}
+
+	section p:last-of-type {
+		@apply bg-green-500/20;
+	} */
+
+	section {
+		@apply my-4;
+	}
+
+	section p:not(:first-of-type):not(:last-of-type) {
+		@apply my-4;
+	}
+
+    article {
+        @apply my-2;
+    }
 </style>

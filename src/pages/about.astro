@@ -1,42 +1,47 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import Fig from '@components/Fig.astro';
 import { Image } from 'astro:assets';
 import mickeyAndI from '@images/mickeyAndI.jpg';
 import mischief from '@images/mischief.jpg';
 ---
 
 <Layout title="about">
-	<h1>More about me</h1>
-    <p>Hello! I am a software engineer currently working at Thomson Reuters. I am working on the Java development side
-		of the GenAI portion of Westlaw. Day-to-day I am fixing bugs, learning on how to work on large-scale software, 
-		and battling with Ivy in Eclipse.</p>
-	<p>Outside of work, I am still very passionite about programming. I spend a lot of time coding and reading about 
-		what's new in compilers and software, and dabbling in mathematics to keep sharp. One day I hope to tame the beast
-		of functional programming and become proficient in Haskell or OCaml, but I haven't had the time to really drink that Kool-aid yet.</p>
-	<p>When I'm not in front of the computer, I love to spend my time with my girlfriend, Mikhaila (Mickey), and my 2-year-old domestic shorthair, Mischief.</p>
-	<!-- TODO: Insert image of Mickey and Mischief -->
-	<Image src={mickeyAndI} alt="A picture of my girlfriend, Mikhaila, and me." />
-	<p class="subtext">Mickey and I in Hudson, WI.</p>
-	<Image src={mischief} width={300} class="mx-auto" alt="A picture of my girlfriend, Mikhaila, and me." />
-	<p class="subtext">Mischief, he is almost 2 years old here.</p>
-	<h2>Around the internet</h2>
-	<p>You can find me on most services as <strong>@taxborn</strong> (an anagram of my first name).</p>
-	<ul>
-		<li><a href="https://mastodon.social/@taxborn">Mastodon - @taxborn</a></li>
-		<li><a href="https://github.com/taxborn">GitHub - @taxborn</a></li>
-		<li><a href="https://linkedin.com/in/braxtonfair">LinkedIn - /in/braxtonfair</a></li>
-		<li><a href="https://x.com/taxborn">X - @taxborn</a> (rarely used)</li>
-		<li><a href="https://reddit.com/u/taxborn">Reddit - /u/taxborn</a></li>
-		<li>PGP Key: <a href="/pgp-key.txt">~/pgp-key.txt</a></li>
-		<li>SSH Keys: <a href="/ssh-keys.txt">~/ssh-keys.txt</a></li>
-	</ul>
+	<section>
+		<h1>More about me</h1>
+		<p>Hello! I am a software engineer currently working at Thomson Reuters. I am working on the Java development side
+			of the GenAI portion of Westlaw. Day-to-day I am fixing bugs, learning on how to work on large-scale software, 
+			and battling with Ivy in Eclipse.</p>
+		<p>Outside of work, I am still very passionite about programming. I spend a lot of time coding and reading about 
+			what's new in compilers and software, and dabbling in mathematics to keep sharp. One day I hope to tame the beast
+			of functional programming and become proficient in Haskell or OCaml, but I haven't had the time to really drink that Kool-aid yet.</p>
+		<p>When I'm not in front of the computer, I love to spend my time with my girlfriend, Mikhaila (Mickey), and my 2-year-old domestic shorthair, Mischief.</p>
+
+		<Fig caption="Mickey and I in Hudson, WI.">
+			<Image src={mickeyAndI} alt="A picture of my girlfriend, Mikhaila, and me." />
+		</Fig>
+		<Fig caption="Mischief, he is almost 2 years old here.">
+			<Image src={mischief} width={300} class="mx-auto" alt="A picture of my girlfriend, Mikhaila, and me." />
+		</Fig>
+	</section>
+
+	<section>
+		<h2>Around the internet</h2>
+		<p>You can find me on most services as <strong>@taxborn</strong> (an anagram of my first name).</p>
+
+		<ul>
+			<li><a href="https://mastodon.social/@taxborn">Mastodon - @taxborn</a></li>
+			<li><a href="https://github.com/taxborn">GitHub - @taxborn</a></li>
+			<li><a href="https://linkedin.com/in/braxtonfair">LinkedIn - /in/braxtonfair</a></li>
+			<li><a href="https://x.com/taxborn">X - @taxborn</a> (rarely used)</li>
+			<li><a href="https://reddit.com/u/taxborn">Reddit - /u/taxborn</a></li>
+			<li>PGP Key: <a href="/pgp-key.txt">~/pgp-key.txt</a></li>
+			<li>SSH Keys: <a href="/ssh-keys.txt">~/ssh-keys.txt</a></li>
+		</ul>
+	</section>
 </Layout>
 
 <style>
-	p {
-		@apply pt-2;
-	}
-
 	.subtext {
 		@apply italic text-center text-white/50;
 	}
