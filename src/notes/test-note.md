@@ -2,7 +2,7 @@
 title: Test Note
 description: This is a test note to determine if I like my garden.
 draft: true
-tags: 
+tags:
   - test
   - garden
   - markdown
@@ -11,6 +11,7 @@ created_at: 2024-12-08T21:55:17-06:00
 ---
 
 # This is a test
+
 tester tester tester
 
 ```js

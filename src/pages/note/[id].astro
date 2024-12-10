@@ -20,7 +20,9 @@ const { Content } = await render(note);
 ---
 
 <Layout title={note.data.title}>
-    <a href="/notes">&larr; Back to notes</a>
+    <section>
+      <a href="/notes" class="pb-2">&larr; Back to notes</a>
 
-    <Content />
+      <Content />
+    </section>
 </Layout>
