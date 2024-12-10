@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import mickeyAndI from '@images/mickeyAndI.jpg';
+import mischief from '@images/mischief.jpg';
 ---
 
 <Layout title="about">
@@ -15,7 +16,9 @@ import mickeyAndI from '@images/mickeyAndI.jpg';
 	<p>When I'm not in front of the computer, I love to spend my time with my girlfriend, Mikhaila (Mickey), and my 2-year-old domestic shorthair, Mischief.</p>
 	<!-- TODO: Insert image of Mickey and Mischief -->
 	<Image src={mickeyAndI} alt="A picture of my girlfriend, Mikhaila, and me." />
-	<p class="italic text-center text-white/50">Mickey and I in Hudson, WI.</p>
+	<p class="subtext">Mickey and I in Hudson, WI.</p>
+	<Image src={mischief} width={300} class="mx-auto" alt="A picture of my girlfriend, Mikhaila, and me." />
+	<p class="subtext">Mischief, he is almost 2 years old here.</p>
 	<h2>Around the internet</h2>
 	<p>You can find me on most services as <strong>@taxborn</strong> (an anagram of my first name).</p>
 	<ul>
@@ -32,5 +35,13 @@ import mickeyAndI from '@images/mickeyAndI.jpg';
 <style>
 	p {
 		@apply pt-2;
+	}
+
+	.subtext {
+		@apply italic text-center text-white/50;
+	}
+
+	img {
+		@apply rounded shadow-md;
 	}
 </style>
