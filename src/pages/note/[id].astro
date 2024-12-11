@@ -28,7 +28,7 @@ const { Content } = await render(note);
       <a href="/notes">&larr; Back to notes</a>
       <p class="text-sm italic text-text/50 mb-2 mt-1">Written <DateAbbr date={note.data.created_at}/> {note.data.updated_at && <span>, updated at <DateAbbr date={note.data.updated_at}/></span>}</p>
 
-      <div class="prose prose-invert prose-a:text-green prose-p:text-text prose-headings:text-text">
+      <div class="prose prose-invert prose-lg hover:prose-a:text-green prose-a:text-text prose-p:text-text prose-headings:text-text prose-code:text-text prose-strong:text-text prose-li:text-text">
         <Content />
       </div>
     </section>
