@@ -7,8 +7,9 @@ export default {
     extend: {
       fontFamily: {
         serif: ["Atkinson Hyperlegible", ...defaultTheme.fontFamily.serif],
+        mono: ["JetBrains Mono Variable", ...defaultTheme.fontFamily.mono],
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

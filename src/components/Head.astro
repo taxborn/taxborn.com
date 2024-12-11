@@ -3,15 +3,17 @@ import { ClientRouter } from "astro:transitions";
 
 interface Props {
     title: string,
+    description: string
 }
 
-const { title } = Astro.props;
+const { title, description = "Braxton's digital garden to keep track of thier thoughts and projects" } = Astro.props;
 ---
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description}>
 
     <title>taxborn.com - {title}</title>
 

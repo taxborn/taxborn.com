@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Layout from '@layouts/Layout.astro';
+import NoteLayout from '@layouts/NoteLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -19,10 +19,12 @@ const { note } = Astro.props;
 const { Content } = await render(note);
 ---
 
-<Layout title={note.data.title}>
+<NoteLayout title={note.data.title} description={note.data.description}>
     <section>
       <a href="/notes">&larr; Back to notes</a>
 
-      <Content />
+      <div class="prose prose-invert">
+        <Content />
+      </div>
     </section>
-</Layout>
+</NoteLayout>
