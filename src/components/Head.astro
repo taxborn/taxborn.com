@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title, description = "Braxton's digital garden to keep track of thier thoughts and projects" } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <head>
@@ -14,7 +15,13 @@ const { title, description = "Braxton's digital garden to keep track of thier th
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description}>
+
+    <meta name="og:title" content=`taxborn.com - ${title}`>
+    <meta name="og:description" content={description}>
+    <meta name="og:url" content={canonicalURL}>
     <meta name="fediverse:creator" content="@taxborn@mastodon.social">
+
+    <link rel="canonical" href={canonicalURL} />
 
     <title>taxborn.com - {title}</title>
 
