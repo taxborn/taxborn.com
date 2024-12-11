@@ -20,4 +20,7 @@ export default defineConfig({
   env: {
     schema: {},
   },
+  redirects: {
+    '/note': '/notes',
+  }
 });
