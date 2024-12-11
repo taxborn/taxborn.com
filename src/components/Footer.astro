@@ -1,12 +1,14 @@
 ---
+import DateAbbr from "./DateAbbr.astro";
+
 // since this is a static website - this will be the build time.
 const buildTime = new Date();
 ---
 
 <footer class="border-t-2 border-[#78A083] py-1">
     <div class="flex justify-between">
-        <p>Copyright &copy; 2024 Braxton Fair</p>
-        <p>Last build: <abbr title={buildTime.toISOString()}>{buildTime.toLocaleString()}</abbr>. <a href="/sitemap-index.xml">Sitemap</a>.</p>
+        <p>Copyright &copy; {buildTime.getFullYear()} Braxton Fair</p>
+        <p>Last build: <DateAbbr date={buildTime} />. {import.meta.env.PROD && <a href="/sitemap-index.xml">Sitemap</a>}</p>
     </div>
 
     <a aria-hidden="true" tabindex="-1" class="sr-only" rel="me" href="https://mastodon.social/@taxborn">Mastodon</a>

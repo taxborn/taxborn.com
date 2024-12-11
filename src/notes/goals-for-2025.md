@@ -1,6 +1,6 @@
 ---
 title: Goals for 2025
-description: Yet Another Resolution 
+description: Yet Another Resolution
 draft: true
 tags:
   - life
