@@ -4,7 +4,12 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
 export async function GET(context: APIContext) {
-  const notes: CollectionEntry<"notes">[] = await getCollection("notes");
+  const notes: CollectionEntry<"notes">[] = await getCollection(
+    "notes",
+    ({ data }) => {
+      return import.meta.env.PROD ? data.draft !== true : true;
+    },
+  );
 
   return rss({
     title: "taxborn.com - Braxton's notes",
