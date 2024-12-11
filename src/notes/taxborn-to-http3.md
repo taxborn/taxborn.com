@@ -13,7 +13,7 @@ updated_at: 2024-12-10T19:42:07-06:00
 This was a super easy upgrade. [Atul Kumar Pandey had a straightforward article](https://www.atulhost.com/enable-http3-in-nginx) on this.
 
 # The old config:
-```nginx
+```nginx title="/etc/nginx/sites-available/www.taxborn.com"
 # HTTP Server block - responsible for upgrading all http:// traffic to https://www.taxborn.com
 server {
     listen 80;
@@ -80,7 +80,7 @@ server {
 # The **NEW** Config
 This mostly is just adding a few more port 443 listeners for quic, toggle the http3 directive on, and add a couple headers.
 
-```nginx
+```nginx title="/etc/nginx/sites-available/www.taxborn.com"
 # HTTP Server block - responsible for upgrading all http:// traffic to https://www.taxborn.com
 server {
     listen 80;

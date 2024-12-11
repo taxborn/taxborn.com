@@ -40,7 +40,7 @@ As of writing, the default apt repository has Nginx version *1.24.0*, but checki
 These commands are pulled from [nginx's instructions](https://nginx.org/en/linux_packages.html#Ubuntu).
 ## Mainline version (recommended)
 If you want the latest and greatest, you can use the mainline version of Nginx. This branch may also have experimental modules and new bugs.
-```bash
+```bash title="Alacritty" showLineNumbers="false"
 # install required packages
 sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
 # get the signing key
@@ -59,7 +59,7 @@ sudo apt install nginx
 ```
 ## Stable version
 The only difference in this process is the 3rd command, setting the url to http://nginx.org/packages/ubuntu over http://nginx.org/packages/mainline/ubuntu.
-``` bash
+```bash title="Alacritty" showLineNumbers="false"
 # install required packages
 sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
 # get the signing key
@@ -93,7 +93,7 @@ I've recently been enjoying using [fnm](https://github.com/Schniz/fnm), so will 
 *I eventually want to use deploy keys and GitHub Actions CI/CD so this way of updating the website will change.*
 
 Then it's just a matter of installing the dependencies and building: `npm i && npm run build`. The built website is in the `dist/` folder. To run my website, I execute the command `node dist/server/entry.mjs`, which results in:
-```console
+```bash title="Alacritty" showLineNumbers="false"
 01:23:43 [@astrojs/node] Server listening on http://localhost:4321
 ```
 The website is running on the VPS on port **4321**. We can't access this quite yet, we are going to configure Nginx as a [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy) (cloudflare has a [nice article about this](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/)) as a [TLS termination proxy](https://en.wikipedia.org/wiki/TLS_termination_proxy) to handle **https** traffic.
@@ -104,7 +104,7 @@ I already have my domains (*taxborn.com* and *braxtonfair.com*) verified with OV
 # Configuring Nginx
 The configuration files for Nginx (at least in Ubuntu, likely in other distributions) lay in `/etc/nginx`. Let's make sure we have 2 folders available to us, `sudo mkdir /etc/nginx/sites-available` and `sudo mkdir /etc/nginx/sites-enabled`. We can create a config for **taxborn.com** with `sudo vim /etc/nginx/sites-available/www.taxborn.com`:
 
-```nginx
+```nginx title="/etc/nginx/sites-available/www.taxborn.com"
 server {
     listen 80;
     server_name taxborn.com www.taxborn.com 15.204.234.44;
@@ -124,7 +124,7 @@ server {
 }
 ```
 Let's now enable the site www.taxborn.com by creating a symlink `sudo ln -s /etc/nginx/sites-available/www.taxborn.com /etc/nginx/sites-enabled/`, and ensure our nginx configuration loads the site `sudo vim /etc/nginx/nginx.conf`
-```nginx
+```nginx title="/etc/nginx/sites-available/www.taxborn.com"
 user  nginx;
 worker_processes  auto;
 
@@ -161,7 +161,7 @@ From there, we need to ensure our firewall allows traffic over port 80, really e
 [Certbot]() AKA LetsEncrypt has been my go-to for this for a while. Before we get too far, let's ensure that we also allow traffic over port 443, with `sudo ufw allow 443/tcp && sudo ufw reload`.
 
 Installing certbot is easy, `sudo apt install certbot python3-certbot-nginx`. From there, we can generate an SSL certificate with the following command: `sudo certbot --nginx -d taxborn.com -d www.taxborn.com`. Let certbot do it's thing, and you should see something like the following at the end:
-```console
+```console title="Alacritty"
 Successfully received certificate.
 Certificate is saved at: /etc/letsencrypt/live/taxborn.com/fullchain.pem
 Key is saved at:         /etc/letsencrypt/live/taxborn.com/privkey.pem
@@ -175,7 +175,7 @@ Successfully deployed certificate for www.taxborn.com to /etc/nginx/sites-enable
 Congratulations! You have successfully enabled HTTPS on https://taxborn.com and https://www.taxborn.com
 ```
 The file at `/etc/nginx/sites-available/www.taxborn.com` should look a bit different now:
-```nginx
+```nginx title="/etc/nginx/sites-available/www.taxborn.com"
 server {
     server_name taxborn.com www.taxborn.com;
 
@@ -214,7 +214,7 @@ server {
 }
 ```
 A little messy, I am going to clean that up a bit and add some comments...
-```nginx
+```nginx title="/etc/nginx/sites-available/www.taxborn.com"
 # HTTP Server block - responsible for upgrading all http:// traffic to https://www.taxborn.com
 server {
     listen 80;
@@ -269,7 +269,7 @@ Mozilla provides a [helpful resource](https://ssl-config.mozilla.org/) for some 
 
 *They also have configurations for various server software like Apache, HAProxy, etc...*
 
-```nginx
+```nginx title="/etc/nginx/sites-available/www.taxborn.com"
 # HTTP Server block - responsible for upgrading all http:// traffic to https://www.taxborn.com
 server {
     listen 80;
