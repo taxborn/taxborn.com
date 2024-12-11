@@ -3,12 +3,23 @@ import NoteEntry from '@components/NoteEntry.astro';
 import Layout from '@layouts/Layout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
-const notes: CollectionEntry<'notes'>[] = await getCollection("notes", ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
+function groupNotesByYear(notes: CollectionEntry<'notes'>[]): Record<number, CollectionEntry<'notes'>[]> {
+  return notes.reduce((acc, note) => {
+    const year = note.data.created_at.getFullYear();
+
+    // Group notes by year
+    acc[year] = acc[year] || [];
+    acc[year].push(note);
+
+    return acc;
+  }, {} as Record<number, CollectionEntry<'notes'>[]>);
+};
+
+const notes: CollectionEntry<'notes'>[] = await getCollection("notes", (note) => {
+    return import.meta.env.PROD ? note.data.draft !== true : true;
 });
 
-// group notes by year
-// const notesByYear = ...;
+const notesByYear = groupNotesByYear(notes);
 ---
 
 <Layout title="notes">
@@ -17,11 +28,14 @@ const notes: CollectionEntry<'notes'>[] = await getCollection("notes", ({ data }
         <a href="/rss.xml">There's an RSS feed for these notes!</a>
         <p>I intend to write from time to time about things I learn about, what I've done in a week, or other organised (and disorganized!) thoughts.</p>
 
-        <article>
-            <h2>2024</h2>
-            <ul>
-                {notes.map(note => <NoteEntry note={note} />)}
-            </ul>
-        </article>
+        <!-- Ensure the order is newest to oldest -->
+        {Object.entries(notesByYear).sort(([yearA], [yearB]) => Number(yearB) - Number(yearA)).map(([year, yearsNotes]) => (
+            <article>
+                <h2>{year}</h2>
+                <ul>
+                    {yearsNotes.map(note => <NoteEntry note={note} />)}
+                </ul>
+            </article>
+        ))}
     </section>
 </Layout>

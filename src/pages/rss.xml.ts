@@ -6,8 +6,8 @@ import type { CollectionEntry } from "astro:content";
 export async function GET(context: APIContext) {
   const notes: CollectionEntry<"notes">[] = await getCollection(
     "notes",
-    ({ data }) => {
-      return import.meta.env.PROD ? data.draft !== true : true;
+    (note: CollectionEntry<"notes">) => {
+      return import.meta.env.PROD ? note.data.draft !== true : true;
     },
   );
 
