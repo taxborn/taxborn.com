@@ -8,7 +8,7 @@ tags:
   - ovh
   - web
 created_at: 2024-10-11T14:11:00-06:00
-updated_at: 2024-12-11T19:26:04-06:00
+updated_at: 2024-12-10T20:36:57-06:00
 ---
 To start off some public notes and documenting what I learn, I decided to tackle setting up a fresh Ubuntu VPS to host my personal website, a side-project, and a small Minecraft server.
 
