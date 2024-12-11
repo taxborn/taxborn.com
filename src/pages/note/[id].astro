@@ -5,7 +5,10 @@ import DateAbbr from '@components/DateAbbr.astro';
 import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
-  const notes = await getCollection('notes');
+  const notes: CollectionEntry<'notes'>[] = await getCollection("notes", (note) => {
+      return import.meta.env.PROD ? note.data.draft !== true : true;
+  });
+
   return notes.map((note: CollectionEntry<'notes'>) => ({
     params: { id: note.id },
     props: { note },
