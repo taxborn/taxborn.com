@@ -1,0 +1,66 @@
+---
+import Head from "@components/Head.astro";
+import Navigation from "@components/Navigation.astro";
+import Footer from "@components/Footer.astro";
+// Fonts
+import "@fontsource/atkinson-hyperlegible";
+
+interface Props {
+	title: string,
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<Head title={title} />
+
+	<body class="bg-[#35374B] text-gray-100">
+		<div class="container mx-auto max-w-3xl p-2 text-lg font-serif">
+			<header>
+				<Navigation />
+			</header>
+
+			<main>
+				<slot />
+			</main>
+
+			<Footer />
+		</div>
+	</body>
+</html>
+
+<style is:global>
+	a {
+		@apply underline underline-offset-1 hover:underline-offset-2;
+	}
+
+	h1 {
+		@apply font-bold text-3xl;
+	}
+
+	h2 {
+		@apply font-bold text-2xl;
+	}
+
+	h3 {
+		@applu font-bold text-xl;
+	}
+
+	section {
+		@apply my-4;
+	}
+
+	section p:not(:first-of-type):not(:last-of-type) {
+		@apply my-4;
+	}
+
+    article {
+        @apply my-2;
+    }
+
+	img {
+		@apply rounded shadow-md;
+	}
+</style>

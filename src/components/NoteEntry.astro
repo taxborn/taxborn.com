@@ -6,15 +6,13 @@ interface Props {
     note: CollectionEntry<'notes'>
 }
 
-
 const { note } = Astro.props;
-
-console.log(note.data.tags)
 ---
 
 <li>
     <article>
         <div>
+            {note.data.draft && <span class="inline font-bold text-red-500 italic mr-2">DRAFT</span>}
             <h3 class="inline"><a href=`/note/${note.id}`>{note.data.title}</a></h3>
             <ul class="inline ml-2">
                 {note.data.tags.map((tag) => <li>{tag}</li>)}

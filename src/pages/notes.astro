@@ -3,7 +3,9 @@ import NoteEntry from '@components/NoteEntry.astro';
 import Layout from '@layouts/Layout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
-const notes: CollectionEntry<'notes'>[] = await getCollection("notes");
+const notes: CollectionEntry<'notes'>[] = await getCollection("notes", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+});
 
 // group notes by year
 // const notesByYear = ...;
