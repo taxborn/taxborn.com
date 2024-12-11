@@ -10,6 +10,8 @@ function groupNotesByYear(notes: CollectionEntry<'notes'>[]): Record<number, Col
     // Group notes by year
     acc[year] = acc[year] || [];
     acc[year].push(note);
+    // Sort notes within the year (newest to oldest)
+    acc[year].sort((a, b) => b.data.created_at.getTime() - a.data.created_at.getTime());
 
     return acc;
   }, {} as Record<number, CollectionEntry<'notes'>[]>);
