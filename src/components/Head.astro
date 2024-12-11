@@ -3,7 +3,7 @@ import { ClientRouter } from "astro:transitions";
 
 interface Props {
     title: string,
-    description: string
+    description?: string
 }
 
 const { title, description = "Braxton's digital garden to keep track of thier thoughts and projects" } = Astro.props;
