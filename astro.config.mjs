@@ -5,25 +5,24 @@ import expressiveCode from "astro-expressive-code";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import sitemap from "@astrojs/sitemap";
 
+import compressor from "astro-compressor";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.taxborn.com",
-  integrations: [
-    tailwind(),
-    sitemap(),
-    expressiveCode({
-      themes: ["catppuccin-mocha"],
-      plugins: [pluginLineNumbers()],
-      defaultProps: {
-        showLineNumbers: true,
-        overridesByLang: {
-          'console,bash': {
-            showLineNumbers: false,
-          }
+  // HEY: Ensure compressor() is the last integration to ensure everything is compressed
+  integrations: [tailwind(), sitemap(), expressiveCode({
+    themes: ["catppuccin-mocha"],
+    plugins: [pluginLineNumbers()],
+    defaultProps: {
+      showLineNumbers: true,
+      overridesByLang: {
+        'console,bash': {
+          showLineNumbers: false,
         }
       }
-    }),
-  ],
+    }
+  }), compressor()],
   prefetch: {
     prefetchAll: true,
   },
