@@ -26,9 +26,9 @@ const { Content } = await render(note);
 <NoteLayout title={note.data.title} description={note.data.description}>
     <section>
       <a href="/notes">&larr; Back to notes</a>
-      <p class="text-sm italic text-white/50 mb-2 mt-1">Written <DateAbbr date={note.data.created_at}/> {note.data.updated_at && <span>, updated at <DateAbbr date={note.data.updated_at}/></span>}</p>
+      <p class="text-sm italic text-text/50 mb-2 mt-1">Written <DateAbbr date={note.data.created_at}/> {note.data.updated_at && <span>, updated at <DateAbbr date={note.data.updated_at}/></span>}</p>
 
-      <div class="prose prose-invert prose-a:text-green">
+      <div class="prose prose-invert prose-a:text-green prose-p:text-text prose-headings:text-text">
         <Content />
       </div>
     </section>
