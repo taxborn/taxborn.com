@@ -13,10 +13,10 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="mocha">
 	<Head title={title} />
 
-	<body class="bg-[#35374B] text-gray-100">
+	<body class="bg-base text-text">
 		<div class="container mx-auto max-w-3xl p-2 text-lg font-serif">
 			<header>
 				<Navigation />
@@ -33,7 +33,7 @@ const { title } = Astro.props;
 
 <style is:global>
 	a {
-		@apply underline underline-offset-1 hover:underline-offset-2;
+		@apply underline underline-offset-1 hover:underline-offset-2 hover:text-green;
 	}
 
 	h1 {

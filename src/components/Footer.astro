@@ -5,7 +5,7 @@ import DateAbbr from "./DateAbbr.astro";
 const buildTime = new Date();
 ---
 
-<footer class="border-t-2 border-[#78A083] py-1">
+<footer class="border-t-2 border-green py-1">
     <div class="flex justify-between">
         <p>Copyright &copy; {buildTime.getFullYear()} Braxton Fair</p>
         <p>Last build: <DateAbbr date={buildTime} />. {import.meta.env.PROD && <a href="/sitemap-index.xml">Sitemap</a>}</p>

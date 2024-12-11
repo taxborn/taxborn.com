@@ -1,0 +1,35 @@
+---
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout title="colophon">
+	<section>
+		<h1>Colophon</h1>
+        <blockquote class="italic text-white/80">
+            In publishing, a colophon (<pre class="inline">/ˈkɒləfən, -fɒn/</pre>) is a brief statement containing information about the publication of a book such as an "imprint" (the place of publication, the publisher, and the date of publication).
+            <span class="block">- <a href="https://en.wikipedia.org/wiki/Colophon_(publishing)">Wikipedia - Colophon (publishing)</a></span>
+        </blockquote>
+		<p>In the context of my website, I want to use this space to write up a bit of how this website is run. Inspired by <a href="https://www.elizas.website/colophon">Eliza Weisman</a> and <a href="https://marcus.io/colophon">Marcus Herrmann</a>.</p>
+	</section>
+
+    <section>
+        <h2>Heavy lifting</h2>
+        <p>This website is built with <a href="https://astro.build">Astro 5.0</a>.</p>
+    </section>
+
+    <section>
+        <h2>Content</h2>
+        <p>All content is &copy; Braxton Fair and released under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons BY-NC 4.0</a>.</p>
+    </section>
+
+    <section>
+        <h2>Styling</h2>
+        <p>I try to follow the <a href="catppuccin">Catppuccin</a></p>
+    </section>
+</Layout>
+
+<style>
+    blockquote {
+        @apply border-l-2 ml-2 p-2 my-2;
+    }
+</style>

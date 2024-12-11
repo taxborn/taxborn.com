@@ -10,11 +10,12 @@ created_at: 2024-10-12T18:03:21-06:00
 updated_at: 2024-12-10T19:32:52-06:00
 ---
 
-First thing I do is change the `ubuntu` user password, and update the system.
+First thing I do is change the `ubuntu` user password, and update the system:
 
-1. `passwd`, save this JIC, I use 1Password.
+1. `passwd`, save this in a password manager, like 1Password or Proton Pass
 2. `sudo apt update && sudo apt upgrade -y`
-   Then I `reboot` the system. It's good to make sure everything is up-to-date.
+
+Then I `reboot` the system. It's good to make sure everything is up-to-date.
 
 # SSH and security
 

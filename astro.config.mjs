@@ -13,7 +13,7 @@ export default defineConfig({
     tailwind(),
     sitemap(),
     expressiveCode({
-      themes: ["catppuccin-mocha"],
+      themes: ["catppuccin-frappe"],
       plugins: [pluginLineNumbers()],
       defaultProps: {
         showLineNumbers: true,
