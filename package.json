@@ -16,7 +16,7 @@
     "@expressive-code/plugin-line-numbers": "^0.38.3",
     "@fontsource-variable/jetbrains-mono": "^5.1.1",
     "@fontsource/atkinson-hyperlegible": "^5.1.0",
-    "astro": "^5.0.2",
+    "astro": "^5.1.0",
     "astro-expressive-code": "^0.38.3",
     "tailwindcss": "^3.4.16",
     "typescript": "^5.7.2"
