@@ -30,6 +30,7 @@ jobs:
                   name: dist
                   path: website
             - run: ls website
+            - name: Write SSH key
+              run: echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
             - name: Deploy
-              run: |
-                    scp -i "${{ secrets.SSH_KEY }}" -r website ${{ secrets.NEON_SSH_USER }}@${{ secrets.NEON_SSH_HOST }}:/var/www/www.taxborn.com
+              run: scp -r website ${{ secrets.NEON_SSH_USER }}@${{ secrets.NEON_SSH_HOST }}:/var/www/www.taxborn.com
