@@ -32,4 +32,4 @@ jobs:
             - run: ls website
             - name: Deploy
               run: |
-                    scp -i '${{ secrets.NEON_PRIVATE_KEY }}' ${{ secrets.NEON_SSH_USER }}@${{ secrets.NEON_SSH_HOST }}:/var/www/www.taxborn.com -r 
+                    scp -i '${{ secrets.NEON_PRIVATE_KEY }}' -r website ${{ secrets.NEON_SSH_USER }}@${{ secrets.NEON_SSH_HOST }}:/var/www/www.taxborn.com
