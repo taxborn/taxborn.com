@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: "Atkinson Hyperlegible", "sans-serif";
+  --font-mono: "JetBrains Mono Variable", "monospace";
 
   --color-primary: var(--color-emerald-700);
 
