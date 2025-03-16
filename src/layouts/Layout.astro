@@ -1,36 +1,41 @@
 ---
 import "../assets/global.css";
-import '@fontsource/atkinson-hyperlegible';
-import '@fontsource-variable/jetbrains-mono'
-import Navigation from "../components/nav/Bar.astro";
-import Footer from "../components/Footer.astro";
+import "@fontsource/atkinson-hyperlegible";
+import "@fontsource-variable/jetbrains-mono";
+import Navigation from "@components/nav/Bar.astro";
+import Footer from "@components/Footer.astro";
 
 interface Props {
-    title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
 
-		<title>Braxton Fair - {title}</title>
-	</head>
-	<body class="font-sans bg-dark-bg text-dark-text text-lg border-t-4 border-primary">
-        <div class="container mx-auto p-2">
-            <div class="bg-primary text-dark-text rounded-md p-2 text-md">
-                <span class="font-bold">Hey!</span> This is a work in progress and will be updating as I work on it. Things will be broken with some dead links as I work on my garden :)
-            </div>
+    <title>Braxton Fair - {title}</title>
+  </head>
+  <body
+    class="font-sans bg-dark-bg text-dark-text text-lg border-t-4 border-primary"
+  >
+    <div class="container mx-auto p-2">
+      <div class="bg-primary text-dark-text rounded-md p-2 text-md">
+        <span class="font-bold">Hey!</span> This is a work in progress and will be
+        updating as I work on it. Things will be broken with some dead links as I
+        work on my garden :)
+      </div>
 
-            <Navigation />
+      <Navigation />
 
-            <slot />
+      <slot />
 
-            <Footer />
-        </div>
-	</body>
+      <Footer />
+    </div>
+  </body>
 </html>
