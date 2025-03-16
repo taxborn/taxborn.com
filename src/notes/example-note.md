@@ -1,5 +1,5 @@
 ---
-title: Example Note
+title: Example Note!
 description: This is an example note where I talk about XXX in X minutes using XXX.
 createdDate: 2025-03-15T23:53:00-05:00
 updatedDate: 2025-03-15T23:53:00-05:00
