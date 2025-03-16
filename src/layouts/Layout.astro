@@ -1,5 +1,6 @@
 ---
 import "../assets/global.css";
+import '@fontsource/atkinson-hyperlegible';
 import Navigation from "../components/nav/Bar.astro";
 
 interface Props {
@@ -17,9 +18,9 @@ const { title } = Astro.props;
 
 		<title>Braxton Fair - {title}</title>
 	</head>
-	<body>
+	<body class="font-sans bg-dark-bg text-dark-text text-lg border-t-4 border-primary">
         <div class="container mx-auto p-2">
-            <div class="bg-blue-700 text-white p-2">
+            <div class="bg-primary text-dark-text rounded-md p-2">
                 <span class="font-bold">Hey!</span> This is a work in progress and will be updating as I work on it. Things will be broken with some dead links as I work on my garden :)
             </div>
 

@@ -2,8 +2,9 @@
 interface Props {
     href: string;
     text: string;
+    first?: boolean;
 }
 
-const { href, text } = Astro.props;
+const { href, text, first = false } = Astro.props;
 ---
-<li class="ml-2 inline"><a href={href} class="hover:underline">{text}</a></li>
+<li class={`${!first ? 'ml-3' : ''} inline`}><a href={href} class="hover:underline underline-offset-2">{text}</a></li>

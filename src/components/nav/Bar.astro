@@ -2,11 +2,9 @@
 import Item from "./Item.astro";
 ---
 
-<nav class="flex justify-between py-2">
-    <span>taxborn</span>
-
-    <ul>
-        <Item href="/" text="home" />
+<nav class="flex justify-end py-2">
+    <ul class="border-b-4 border-primary">
+        <Item href="/" text="home" first />
         <Item href="/about" text="about" />
         <Item href="/notes" text="notes" />
         <Item href="/etc" text="etc" />

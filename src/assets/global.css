@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: 'Atkinson Hyperlegible', 'sans-serif';
+
+  --color-primary: var(--color-blue-600);
+
+  --color-dark-bg: var(--color-zinc-900);
+  --color-dark-text: var(--color-zinc-200);
+  --color-light-bg: var(--color-zinc-200);
+  --color-light-text: var(--color-zinc-900);
+}
