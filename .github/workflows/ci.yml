@@ -31,4 +31,4 @@ jobs:
             # Deploy the artifact to the server
             - name: Deploy
               run: |
-                    scp -r dist/* -i ${{ secrets.NEON_PRIVATE_KEY }} ${{ secrets.NEON_SSH_USER }}@${{ secrets.NEON_SSH_HOST }}:/var/www/www.taxborn/com
+                    scp -r dist/* -i ${{ secrets.NEON_PRIVATE_KEY }} ${{ secrets.NEON_SSH_USER }}@${{ secrets.NEON_SSH_HOST }}:/var/www/www.taxborn.com
