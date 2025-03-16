@@ -29,10 +29,11 @@ jobs:
               with:
                   name: dist
                   path: website
-            - run: ls website
-            - name: Write SSH key
+            - name: Setup SSH key
               run: |
                 mkdir -p ~/.ssh
                 echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+                chmod 600 ~/.ssh/id_rsa
+                ssh-keyscan -t rsa ${{ secrets.NEON_SSH_HOST }} >> ~/.ssh/known_hosts
             - name: Deploy
-              run: scp -r website ${{ secrets.NEON_SSH_USER }}@${{ secrets.NEON_SSH_HOST }}:/var/www/www.taxborn.com
+              run: scp -r website/* ${{ secrets.NEON_SSH_USER }}@${{ secrets.NEON_SSH_HOST }}:/var/www/www.taxborn.com
