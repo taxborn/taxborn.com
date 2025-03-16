@@ -28,7 +28,8 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                   name: dist
-            # Deploy the artifact to the server
+                  path: website
+            - run: ls website
             - name: Deploy
               run: |
-                    scp -r dist/* -i '${{ secrets.NEON_PRIVATE_KEY }}' ${{ secrets.NEON_SSH_USER }}@${{ secrets.NEON_SSH_HOST }}:/var/www/www.taxborn.com
+                    scp -i '${{ secrets.NEON_PRIVATE_KEY }}' ${{ secrets.NEON_SSH_USER }}@${{ secrets.NEON_SSH_HOST }}:/var/www/www.taxborn.com -r 
