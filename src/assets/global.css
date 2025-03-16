@@ -3,7 +3,7 @@
 @theme {
   --font-sans: 'Atkinson Hyperlegible', 'sans-serif';
 
-  --color-primary: var(--color-blue-600);
+  --color-primary: var(--color-emerald-700);
 
   --color-dark-bg: var(--color-zinc-900);
   --color-dark-text: var(--color-zinc-200);
