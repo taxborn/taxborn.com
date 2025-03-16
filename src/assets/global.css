@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Atkinson Hyperlegible', 'sans-serif';
+  --font-sans: "Atkinson Hyperlegible", "sans-serif";
 
   --color-primary: var(--color-emerald-700);
 
