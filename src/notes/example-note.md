@@ -29,8 +29,7 @@ and some **more** content. This is a lot of content that should be taken care of
 and some **more** content. This is a lot of content that should be taken care of.
 and some **more** content. This is a lot of content that should be taken care of.
 
-
-```zig 
+```zig
 // in src/main.zig L12-32
 pub fn LinkedList(comptime T: type, size: u8) type {
     const Node = struct {
@@ -45,20 +44,24 @@ pub fn main() void {
 
 const std = @import("std");
 ```
+
 and some **more** content. This is a lot of content that should be taken care of.
 and some **more** content. This is a lot of content that should be taken care of.
 and some **more** content. This is a lot of content that should be taken care of.
 
 ## What next??
+
 There are a couple different endings here.
 
 ### The good ending
+
 and some **more** content. This is a lot of content that should be taken care of.
 and some **more** content. This is a lot of content that should be taken care of.
 and some **more** content. This is a lot of content that should be taken care of.
 and some **more** content. This is a lot of content that should be taken care of.
 
 ### The bad ending
+
 and some **more** content. This is a lot of content that should be taken care of.
 and some **more** content. This is a lot of content that should be taken care of.
 and some **more** content. This is a lot of content that should be taken care of.
