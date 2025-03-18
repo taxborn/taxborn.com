@@ -2,7 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 
-const allNotes: CollectionEntry<"notes"> = await getCollection("notes");
+const allNotes = await getCollection("notes");
 ---
 
 <Layout title="home">
