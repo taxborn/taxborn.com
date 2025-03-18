@@ -1,8 +1,28 @@
 ---
 import Layout from "src/layouts/Layout.astro";
+import { modifiedTime } from "../assets/modified-time.mjs";
+
+const currentFsPath = import.meta.url.replace("file://", "");
+const lastModified = modifiedTime(currentFsPath);
 ---
 
 <Layout title="Now">
-  <h1>Now</h1>
-  <p>This is the now page.</p>
+  <header class="mb-2">
+    <h1 class="text-4xl font-bold">
+      What I am doing <a
+        href=""
+        class="underline underline-offset-2 hover:text-primary">now</a
+      >
+    </h1>
+    <p class="text-sm italic text-dark-text/80">
+      Last updated: {new Date(lastModified).toLocaleDateString()}
+    </p>
+  </header>
+
+  <main class="mb-4">
+    <ul class="list-disc list-inside">
+      <li>Working on updating this website</li>
+      <li>Learning Zig</li>
+    </ul>
+  </main>
 </Layout>

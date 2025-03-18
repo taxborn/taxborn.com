@@ -1,8 +1,32 @@
 ---
-import Layout from "src/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const allNotes = await getCollection("notes");
 ---
 
 <Layout title="Notes">
-  <h1>Notes</h1>
-  <p>This is the notes page.</p>
+  <h1 class="text-4xl font-bold">Notes</h1>
+  <p>
+    These will range from reflections in life, Linux tips, or technical
+    articles. We will see where this goes :)
+  </p>
+
+  <ul class="mt-1">
+    {
+      allNotes.map((note) => (
+        <li>
+          <span class="font-bold font-mono text-sm">
+            {note.data.createdDate.toDateString()}
+          </span>
+          <a
+            href={`/note/${note.id}`}
+            class="underline underline-offset-2 hover:text-primary"
+          >
+            {note.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </Layout>
