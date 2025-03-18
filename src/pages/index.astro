@@ -5,6 +5,9 @@ import Layout from "../layouts/Layout.astro";
 const allNotes = await getCollection("notes", ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
+allNotes.sort(
+  (a, b) => b.data.createdDate.getTime() - a.data.createdDate.getTime(),
+);
 ---
 
 <Layout title="home">
@@ -48,7 +51,7 @@ const allNotes = await getCollection("notes", ({ data }) => {
 
     <ul class="mt-1">
       {
-        allNotes.map((note) => (
+        allNotes.slice(0, 5).map((note) => (
           <li>
             <span class="font-bold font-mono text-sm">
               {note.data.createdDate.toDateString()}
