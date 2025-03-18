@@ -2,18 +2,24 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 
-const allNotes = await getCollection("notes");
+const allNotes = await getCollection("notes", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
+allNotes.sort(
+  (a, b) => b.data.createdDate.getTime() - a.data.createdDate.getTime(),
+);
 ---
 
 <Layout title="home">
-  <section class="mb-4">
+  <section class="mb-2">
     <h1 class="text-4xl font-bold">Hi, I'm Braxton</h1>
     <p>
       I'm a 23 year old software engineer at Thomson Reuters working on their
-      Westlaw Precision product. I mostly focus on the backend involving the
-      Spring Java Framework, Tomcat, and REST APIs. I care about writing
-      maintainable code, understanding the tools I use, and documenting
-      everything. I deeply value
+      Westlaw Precision product, and recent computer science graduate of <a
+        href="https://mnsu.edu">Minnesota State University, Mankato</a
+      >.. I mostly focus on the backend involving the Spring Java Framework,
+      Tomcat, and REST APIs. I care about writing maintainable code,
+      understanding the tools I use, and documenting everything. I deeply value
       <span class="font-bold"
         >sharing knowledge, educating others, and understanding new viewpoints</span
       > whether that be in computer science topics, my personal and professional
@@ -26,17 +32,20 @@ const allNotes = await getCollection("notes");
       File over app. Protocol over platform.
     </blockquote>
 
+    <p class="mb-2">
+      This website intends to serve as a <a
+        href="https://indieweb.org/digital_garden">digital garden</a
+      > for myself for various notes, projects, and experiments.
+    </p>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate vitae
-      rerum quia ratione a animi consectetur soluta vel dolore voluptates
-      laudantium nisi quae tempore, tenetur quis cumque omnis nemo consequuntur.
-      Rem beatae eveniet pariatur ipsam excepturi, sapiente nesciunt aspernatur
-      nisi, cupiditate quidem a itaque est, et autem. Earum facere laudantium,
-      commodi in alias quidem rerum, recusandae quasi veritatis ab iure.
+      I am not terribly active online, but you can find me on most services as <strong
+        >@taxborn</strong
+      >. I am most active on <a href="https://github.com/taxborn">GitHub</a> and
+      <a href="https://mastodon.social/@taxborn">Mastodon</a>.
     </p>
   </section>
 
-  <section class="mb-4">
+  <section>
     <h2 class="text-3xl font-bold">Recent Notes</h2>
     <p>
       I like to write from time to time about adventures I go on, growth in my
@@ -46,7 +55,7 @@ const allNotes = await getCollection("notes");
 
     <ul class="mt-1">
       {
-        allNotes.map((note) => (
+        allNotes.slice(0, 5).map((note) => (
           <li>
             <span class="font-bold font-mono text-sm">
               {note.data.createdDate.toDateString()}

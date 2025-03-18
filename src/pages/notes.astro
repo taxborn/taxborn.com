@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const allNotes = await getCollection("notes", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
+allNotes.sort(
+  (a, b) => b.data.createdDate.getTime() - a.data.createdDate.getTime(),
+);
+---
+
+<Layout title="Notes">
+  <header class="mb-2">
+    <h1 class="text-4xl font-bold">Notes</h1>
+    <p>
+      These will range from reflections in life, Linux tips, or technical
+      articles. We will see where this goes :)
+    </p>
+  </header>
+
+  <ul>
+    {
+      allNotes.map((note) => (
+        <li>
+          <span class="font-bold font-mono text-sm">
+            {note.data.createdDate.toDateString()}
+          </span>
+          <a
+            href={`/note/${note.id}`}
+            class="underline underline-offset-2 hover:text-primary"
+          >
+            {note.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
