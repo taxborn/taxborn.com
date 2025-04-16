@@ -9,4 +9,8 @@ jobs:
   build:
     runs-on: docker
     steps:
-      - run: echo Everything is working so far!
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/Jod'
+      - run: npm run build
