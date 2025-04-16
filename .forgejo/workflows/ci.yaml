@@ -1,0 +1,12 @@
+# CI for taxborn.com - this just tests that everything compiles and
+# tests pass.
+#
+# Forgejo Workflow reference: https://forgejo.org/docs/latest/user/actions/#workflow-reference-guide
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: docker
+    steps:
+      - run: echo Everything is working so far!
