@@ -29,7 +29,7 @@ jobs:
           node-version: 'lts/Jod'
       - run: npm i
       - run: npm run build
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v3
         with:
           name: built astro site
           path: dist
