@@ -6,7 +6,7 @@
 on: [push]
 
 jobs:
-  test:
+  build-and-test:
     runs-on: docker
     steps:
       - uses: actions/checkout@v4
@@ -17,17 +17,6 @@ jobs:
           node-version: 'lts/Jod'
       - run: npm i
       # - run: npm run test # waiting to write actual tests
-  build-and-upload:
-    runs-on: docker
-    needs: test # don't build if test doesn't work
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1 # only get the most recent commit
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 'lts/Jod'
-      - run: npm i
       - run: npm run build
       - uses: actions/upload-artifact@v3 # v4 currently broken it seems 2025-04-19
         with:
@@ -41,5 +30,4 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: built-astro-site
-      - run: ls -R
 
