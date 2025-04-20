@@ -12,7 +12,7 @@ import Footer from "../components/Footer.astro";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="mocha">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -42,14 +42,12 @@ import Footer from "../components/Footer.astro";
 			window.localStorage.setItem("theme", theme);
 		</script>
 	</head>
-	<body
-		class="font-mono bg-white text-black dark:bg-black dark:text-white px-2"
-	>
+	<body class="font-mono px-2 bg-ctp-base text-ctp-text">
 		<div class="container mx-auto max-w-5xl">
-			<header class="bg-red-800/00">
+			<header>
 				<Navigation />
 			</header>
-			<main class="bg-blue-800/00 py-4">
+			<main class="py-4">
 				<slot />
 			</main>
 			<footer class="border-t-2 dark:border-white bg-green-800/00">
