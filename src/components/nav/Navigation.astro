@@ -1,0 +1,16 @@
+---
+import ThemeToggle from "../ThemeToggle.astro";
+import NavItem from "./NavItem.astro";
+---
+
+<nav class="flex text-sm justify-between border-b-2 dark:border-white py-2">
+    <span class="font-bold">taxborn.com</span>
+
+    <ul class="inline-flex">
+        <NavItem title="Home" href="/" />
+        <NavItem title="About" href="/about" />
+        <NavItem title="Wiki" href="https://wiki.taxborn.com" />
+
+        <ThemeToggle />
+    </ul>
+</nav>

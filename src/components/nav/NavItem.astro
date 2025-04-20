@@ -1,0 +1,18 @@
+---
+interface Props {
+    title: string;
+    href: string;
+}
+
+const { title, href } = Astro.props;
+
+const isCurrentPage = Astro.url.pathname === href;
+---
+
+<li class="ml-2 underline-offset-2">
+    <a
+        href={href}
+        class={isCurrentPage ? "font-bold underline" : "hover:underline"}
+        >{title}</a
+    >
+</li>
