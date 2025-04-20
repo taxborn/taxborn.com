@@ -29,13 +29,17 @@ jobs:
           node-version: 'lts/Jod'
       - run: npm i
       - run: npm run build
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3 # v4 currently broken it seems 2025-04-19
         with:
-          name: built astro site
+          if-no-files-found: error # if nothing's found, error out to prevent bad docker image
+          name: built-astro-site
           path: dist
   bundle:
     runs-on: docker
     needs: build-and-upload
     steps:
-      - run: echo "Working"
+      - uses: actions/download-artifact@v3
+        with:
+          name: built-astro-site
+      - run: ls -R
 
