@@ -35,7 +35,7 @@ jobs:
           path: dist
   bundle:
     runs-on: docker
-    needs: build
+    needs: build-and-upload
     steps:
       - run: echo "Working"
 
