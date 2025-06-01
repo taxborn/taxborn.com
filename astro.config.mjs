@@ -13,7 +13,7 @@ export default defineConfig({
     fonts: [
       {
         provider: fontProviders.google(),
-        name: "Atkinson Hyperlegible",
+        name: "Atkinson Hyperlegible Next",
         cssVariable: "--font-atkinson-hyperlegible",
       },
     ],
