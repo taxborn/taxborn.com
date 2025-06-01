@@ -6,5 +6,4 @@ interface Props {
 const { date } = Astro.props;
 ---
 
-<!-- Does this show the date in ISO format? -->
 <abbr title={date.toISOString()}>{date.toISOString().split("T")[0]}</abbr>

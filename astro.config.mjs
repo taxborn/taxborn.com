@@ -5,6 +5,10 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://www.taxborn.com",
+  prefetch: {
+    prefetchAll: true,
+  },
   experimental: {
     fonts: [
       {
