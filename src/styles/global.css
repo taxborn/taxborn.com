@@ -4,7 +4,7 @@
     --font-sans: var(--font-atkinson-hyperlegible);
 }
 
-@theme base {
+@layer base {
     h1 {
         font-size: var(--text-5xl);
     }
