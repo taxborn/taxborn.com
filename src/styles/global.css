@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Plugins */
+@plugin "@tailwindcss/typography";
+
 @theme inline {
     --font-sans: var(--font-atkinson-hyperlegible);
 }

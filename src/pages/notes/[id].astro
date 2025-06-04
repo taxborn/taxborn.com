@@ -11,7 +11,6 @@ export async function getStaticPaths() {
     }));
 }
 
-// 2. For your template, you can get the entry directly from the prop
 const { note } = Astro.props;
 const { Content } = await render(note);
 ---
@@ -19,6 +18,10 @@ const { Content } = await render(note);
 <Main title={note.data.title}>
     <slot name="header">
         <h1>{note.data.title}</h1>
+        <!-- TODO: Reading time, tags? -->
     </slot>
-    <Content />
+
+    <article class="prose lg:prose-xl">
+        <Content />
+    </article>
 </Main>
