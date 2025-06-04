@@ -4,7 +4,7 @@ import NavItem from "./NavItem.astro";
 
 <nav class="flex justify-between">
     <div>
-        <b>Braxton Fair</b>
+        {Astro.url.pathname != "/" && <b>Braxton Fair</b>}
     </div>
     <div>
         <ul>

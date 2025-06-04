@@ -9,7 +9,7 @@ tenetur? Quia dicta quos voluptas est, hic eligendi cumque praesentium
 quo quisquam, dignissimos commodi, fuga quis ratione nihil earum
 necessitatibus voluptatum?
 
-I don't intend to write with many headings, but when I do:
+I don't intend to [write](https://www.taxborn.com) with many headings, but when I do:
 
 ## I should only H2's and above.
 

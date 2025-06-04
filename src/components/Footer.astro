@@ -4,7 +4,10 @@ import ISODate from "./ISODate.astro";
 
 <footer class="flex justify-between text-sm">
     <div>
-        <i>Last updated <ISODate date={new Date()} /></i>
+        <i
+            >Last updated <ISODate date={new Date()} />
+            <a href="https://github.com/taxborn/taxborn.com">(repo)</a></i
+        >
     </div>
     <div>
         <ul>
@@ -20,5 +23,3 @@ import ISODate from "./ISODate.astro";
         </ul>
     </div>
 </footer>
-
-<style></style>

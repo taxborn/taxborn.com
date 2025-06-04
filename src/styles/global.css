@@ -23,4 +23,9 @@
     h4 {
         font-size: var(--text-2xl);
     }
+
+    a {
+        font-weight: bold;
+        text-decoration: underline;
+    }
 }
