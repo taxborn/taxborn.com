@@ -11,7 +11,7 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="dark">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
@@ -25,7 +25,7 @@ const { title } = Astro.props;
             preload={Astro.url.pathname.startsWith("/notes")}
         />
     </head>
-    <body>
+    <body class="bg-whtie dark:bg-black dark:text-white">
         <section class="container mx-auto max-w-5xl p-2">
             <header>
                 <!-- Navigation -->

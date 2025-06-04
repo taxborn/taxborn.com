@@ -6,6 +6,14 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.taxborn.com",
+  markdown: {
+    shikiConfig: {
+      themes: {
+        dark: "catppuccin-mocha",
+        light: "catppuccin-frappe",
+      },
+    },
+  },
   prefetch: {
     prefetchAll: true,
   },
