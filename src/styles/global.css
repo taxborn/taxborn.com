@@ -5,6 +5,7 @@
 
 @theme inline {
     --font-sans: var(--font-atkinson-hyperlegible);
+    --font-mono: var(--font-jetbrains-mono);
 }
 
 @layer base {

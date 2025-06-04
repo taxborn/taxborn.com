@@ -16,6 +16,11 @@ export default defineConfig({
         name: "Atkinson Hyperlegible Next",
         cssVariable: "--font-atkinson-hyperlegible",
       },
+      {
+        provider: fontProviders.google(),
+        name: "JetBrains Mono",
+        cssVariable: "--font-jetbrains-mono",
+      },
     ],
   },
   vite: {
