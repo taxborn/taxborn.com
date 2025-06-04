@@ -7,19 +7,21 @@ const notes = await getCollection("notes", ({ data }) => {
 });
 ---
 
-<Main title="Notes">
+<Main title="notes">
     <h1>Things I write about</h1>
     <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-        tenetur? Quia dicta quos voluptas est, hic eligendi cumque praesentium
-        quo quisquam, dignissimos commodi, fuga quis ratione nihil earum
-        necessitatibus voluptatum?
+        I don't write too often, but it is a goal of mine in 2025 and 2026 to
+        write more about what I am working on, what I am learning, and what I am
+        thinking about.
     </p>
 
-    <ul class="list-disc list-inside">
+    <ul class="mt-4">
         {
             notes.map((note) => (
                 <li>
+                    <p class="inline">
+                        {note.data.published_date.toDateString()}
+                    </p>{" "}
                     <a href={`/notes/${note.id}`}>{note.data.title}</a>
                 </li>
             ))
