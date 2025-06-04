@@ -1,0 +1,28 @@
+---
+import Main from "../../layouts/Main.astro";
+import { getCollection } from "astro:content";
+
+const notes = await getCollection("notes", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+});
+---
+
+<Main title="Notes">
+    <h1>Things I write about</h1>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
+        tenetur? Quia dicta quos voluptas est, hic eligendi cumque praesentium
+        quo quisquam, dignissimos commodi, fuga quis ratione nihil earum
+        necessitatibus voluptatum?
+    </p>
+
+    <ul class="list-disc list-inside">
+        {
+            notes.map((note) => (
+                <li>
+                    <a href={`/notes/${note.id}`}>{note.data.title}</a>
+                </li>
+            ))
+        }
+    </ul>
+</Main>

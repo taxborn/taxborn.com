@@ -1,0 +1,19 @@
+---
+import Main from "../layouts/Main.astro";
+import ISODate from "../components/ISODate.astro";
+
+import { statSync } from "fs";
+import { fileURLToPath } from "url";
+
+// Get when this file was last updated
+// https://stackoverflow.com/a/62892482
+const __filename = fileURLToPath(import.meta.url);
+const file_update_time = new Date(statSync(__filename).mtime);
+---
+
+<Main title="Now">
+    <h1>What I'm doing <a href="https://nownownow.com/about">now</a>.</h1>
+    <i>Last updated: <ISODate date={file_update_time} /></i>
+
+    <ul class="list-disc list-inside"></ul>
+</Main>
