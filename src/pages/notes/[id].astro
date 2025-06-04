@@ -18,14 +18,14 @@ const { Content } = await render(note);
 
 <Main title={note.data.title}>
     <slot name="header">
-        <h1 class="mb-0">{note.data.title}</h1>
+        <h1>{note.data.title}</h1>
         <p class="-mt-2">
             Published <ISODate date={note.data.published_date} />
         </p>
         <!-- TODO: Reading time, tags? -->
     </slot>
 
-    <article class="prose dark:prose-invert lg:prose-xl mt-8">
+    <article class="prose dark:prose-invert lg:prose-xl mt-8 mx-auto">
         <Content />
     </article>
 </Main>
