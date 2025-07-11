@@ -4,4 +4,12 @@ jobs:
   build:
     runs-on: docker
     steps:
-      - run: echo "Hello, world!"
+      - name: Production Build
+        run: npx astro build
+        env:
+          NODE_ENV: production
+      - name: Deploy
+        run: echo "Deploying to carbon..."
+      # rsync dist folder to carbon
+      - name: Deploy to Carbon
+        run: echo "TODO rsync -avz dist/ carbon:/var/www/html/"
