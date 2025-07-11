@@ -10,7 +10,7 @@ jobs:
           node-version: 24
           cache: "npm"
       - name: Build
-        run: npx astro build
+        run: npm run build
         env:
           NODE_ENV: production
       - name: Deploy
