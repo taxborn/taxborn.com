@@ -20,8 +20,5 @@ jobs:
         with:
           name: taxborn.com-build-${{ github.run_number }}
           path: dist/
-      - name: Deploy
-        run: echo "Deploying to carbon..."
-      # rsync dist folder to carbon
       - name: Deploy to Carbon
         run: echo "TODO rsync -avz dist/ carbon:/var/www/html/"
