@@ -1,5 +1,42 @@
 ---
-
+const build_time = new Date().toISOString();
 ---
 
-<footer></footer>
+<footer class="flex justify-between text-sm">
+    <p>
+        Copyright &COPY; Braxton Fair, last updated <abbr title={build_time}
+            >{new Date(build_time).toLocaleDateString()}</abbr
+        >
+    </p>
+
+    <ul>
+        <li><a href="https://bsky.app/profile/taxborn.com">bluesky</a></li>
+        <li><a href="https://github.com/taxborn">github</a></li>
+        <li><a href="https://linkedin.com/in/braxtonfair">linkedin</a></li>
+    </ul>
+</footer>
+
+<style>
+    @layer components {
+        li {
+            display: inline;
+
+            &:not(:first-child) {
+                margin-left: 4px;
+            }
+        }
+
+        a {
+            color: var(--color-text);
+            text-decoration: underline;
+
+            &:hover {
+                font-weight: var(--font-weight-semibold);
+            }
+
+            &.active {
+                font-weight: var(--font-weight-semibold);
+            }
+        }
+    }
+</style>

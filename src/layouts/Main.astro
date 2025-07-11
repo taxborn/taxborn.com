@@ -21,8 +21,15 @@ const { title } = Astro.props;
     </head>
     <body>
         <div class="container mx-auto max-w-4xl">
-            <Navigation />
-            <slot />
+            <header>
+                <Navigation />
+                <slot name="header" />
+            </header>
+
+            <main class="py-4">
+                <slot />
+            </main>
+
             <Footer />
         </div>
     </body>
