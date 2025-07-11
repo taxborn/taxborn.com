@@ -4,14 +4,15 @@ const path = Astro.url.pathname;
 
 <nav>
     <ul class="flex justify-end">
-        <li><a href="/" class={path === "/" ? "active" : ""}>home</a></li>
+        <li><a href="/" class:list={{ active: path === "/" }}>home</a></li>
         <li>
-            <a href="/notes" class={path === "/notes" ? "active" : ""}>notes</a>
+            <a href="/notes" class:list={{ active: path === "/notes" }}
+                >notes</a>
         </li>
-        <li><a href="/now" class={path === "/now" ? "active" : ""}>now</a></li>
         <li>
-            <a href="/uses" class={path === "/uses" ? "active" : ""}>uses</a>
+            <a href="/uses" class:list={{ active: path === "/uses" }}>uses</a>
         </li>
+        <li><a href="/now" class:list={{ active: path === "/now" }}>now</a></li>
     </ul>
 </nav>
 

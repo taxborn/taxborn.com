@@ -4,7 +4,7 @@ const build_time = new Date().toISOString();
 
 <footer class="flex justify-between text-sm">
     <p>
-        Copyright &COPY; Braxton Fair, last updated <abbr title={build_time}
+        Copyright &copy; Braxton Fair, last updated <abbr title={build_time}
             >{new Date(build_time).toLocaleDateString()}</abbr
         >
     </p>
@@ -37,6 +37,11 @@ const build_time = new Date().toISOString();
             &.active {
                 font-weight: var(--font-weight-semibold);
             }
+        }
+
+        abbr {
+            font-style: italic;
+            font-weight: var(--font-weight-semibold);
         }
     }
 </style>
