@@ -1,5 +1,41 @@
 ---
-
+const path = Astro.url.pathname;
 ---
 
-<nav></nav>
+<nav>
+    <ul class="flex justify-end">
+        <li><a href="/" class={path === "/" ? "active" : ""}>home</a></li>
+        <li>
+            <a href="/notes" class={path === "/notes" ? "active" : ""}>notes</a>
+        </li>
+        <li><a href="/now" class={path === "/now" ? "active" : ""}>now</a></li>
+        <li>
+            <a href="/uses" class={path === "/uses" ? "active" : ""}>uses</a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    @layer components {
+        li {
+            display: inline;
+
+            &:not(:first-child) {
+                margin-left: 4px;
+            }
+        }
+
+        a {
+            color: var(--color-text);
+            text-decoration: underline;
+
+            &:hover {
+                font-weight: var(--font-weight-semibold);
+            }
+
+            &.active {
+                font-weight: var(--font-weight-semibold);
+            }
+        }
+    }
+</style>
