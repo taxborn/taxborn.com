@@ -22,14 +22,9 @@ const path = Astro.url.pathname;
 
         a {
             color: var(--color-text);
-            text-decoration: underline;
-
-            &:hover {
-                font-weight: var(--font-weight-semibold);
-            }
 
             &.active {
-                font-weight: var(--font-weight-semibold);
+                color: var(--color-indigo-600);
             }
         }
     }

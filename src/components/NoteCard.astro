@@ -11,7 +11,7 @@ const { note } = Astro.props;
 
 <article class="bg-gray-200 p-2 mb-2">
     <h2><a href={`/note/${note.id}`}>{note.data.title}</a></h2>
-    <span class="italic">{note.data.published.toLocaleDateString()}</span>
+    <span>{note.data.published.toLocaleDateString()}</span>
 
     <div>
         {note.data.tags?.map((tag) => <Tag tag={tag} />)}
