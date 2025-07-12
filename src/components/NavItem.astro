@@ -1,0 +1,36 @@
+---
+interface Props {
+    href: string;
+    text: string;
+}
+
+const { href, text } = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<li><a href={href} class:list={{ active: path === href }}>{text}</a></li>
+
+<style>
+    @layer components {
+        li {
+            display: inline;
+
+            &:not(:first-child) {
+                margin-left: 4px;
+            }
+        }
+
+        a {
+            color: var(--color-text);
+            text-decoration: underline;
+
+            &:hover {
+                font-weight: var(--font-weight-semibold);
+            }
+
+            &.active {
+                font-weight: var(--font-weight-semibold);
+            }
+        }
+    }
+</style>

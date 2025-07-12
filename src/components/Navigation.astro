@@ -1,42 +1,12 @@
 ---
-const path = Astro.url.pathname;
+import NavItem from "./NavItem.astro";
 ---
 
-<nav>
+<nav class="mb-2">
     <ul class="flex justify-end">
-        <li><a href="/" class:list={{ active: path === "/" }}>home</a></li>
-        <li>
-            <a href="/notes" class:list={{ active: path === "/notes" }}
-                >notes</a>
-        </li>
-        <li>
-            <a href="/uses" class:list={{ active: path === "/uses" }}>uses</a>
-        </li>
-        <li><a href="/now" class:list={{ active: path === "/now" }}>now</a></li>
+        <NavItem href="/" text="home" />
+        <NavItem href="/notes" text="notes" />
+        <NavItem href="/uses" text="uses" />
+        <NavItem href="/now" text="now" />
     </ul>
 </nav>
-
-<style>
-    @layer components {
-        li {
-            display: inline;
-
-            &:not(:first-child) {
-                margin-left: 4px;
-            }
-        }
-
-        a {
-            color: var(--color-text);
-            text-decoration: underline;
-
-            &:hover {
-                font-weight: var(--font-weight-semibold);
-            }
-
-            &.active {
-                font-weight: var(--font-weight-semibold);
-            }
-        }
-    }
-</style>
