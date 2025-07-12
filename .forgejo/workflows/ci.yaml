@@ -15,10 +15,27 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-      - name: Upload artifacts
+      - name: Create deployment archive
+        run: |
+          cd dist
+          tar -czf ../taxborn.com-${{ github.run_number }}.tar.gz .
+          cd ..
+      - name: Upload deployment artifact
         uses: actions/upload-artifact@v3
         with:
-          name: taxborn.com-build-${{ github.run_number }}
-          path: dist/
-      - name: Deploy to Carbon
-        run: echo "TODO rsync -avz dist/ carbon:/var/www/html/"
+          name: taxborn.com-deploy-${{ github.run_number }}
+          path: taxborn.com-${{ github.run_number }}.tar.gz
+      - name: Deploy to server
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Install SSH key
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          # Add server to known hosts
+          ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+
+          # Upload and deploy the tar file
+          scp -i ~/.ssh/deploy_key taxborn.com-${{ github.run_number }}.tar.gz deploy@${{ secrets.DEPLOY_HOST }}:/tmp/
+          ssh -i ~/.ssh/deploy_key deploy@${{ secrets.DEPLOY_HOST }} ./deploy.sh /tmp/taxborn.com-${{ github.run_number }}.tar.gz"
