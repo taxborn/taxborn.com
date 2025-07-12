@@ -1,6 +1,7 @@
 ---
 title: Example Note
 published: 2025-07-11T17:59:28-05:00
+tags: ["example", "note", "javascript", "rust", "programming", "brainfuck"]
 ---
 
 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.

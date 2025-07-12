@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
-// 1. Generate a new path for every collection entry
+import Main from "@layouts/Main.astro";
+
 export async function getStaticPaths() {
     const notes = await getCollection("notes");
     return notes.map((note) => ({
@@ -8,10 +9,16 @@ export async function getStaticPaths() {
         props: { note },
     }));
 }
-// 2. For your template, you can get the entry directly from the prop
+
 const { note } = Astro.props;
 const { Content } = await render(note);
 ---
 
-<h1>{note.data.title}</h1>
-<Content />
+<Main title={note.data.title}>
+    <div slot="header">
+        <h1>{note.data.title}</h1>
+        <a href="/notes">Back to notes</a>
+    </div>
+
+    <Content />
+</Main>

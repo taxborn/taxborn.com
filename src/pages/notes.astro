@@ -1,0 +1,20 @@
+---
+import Main from "@layouts/Main.astro";
+import NoteCard from "@components/NoteCard.astro";
+import { getCollection } from "astro:content";
+
+const notes = await getCollection("notes", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+});
+const notes_by_published = notes.sort(
+    (a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
+);
+---
+
+<Main title="notes">
+    <h1>Notes</h1>
+
+    {notes_by_published.map((note) => <NoteCard note={note} />)}
+    {notes_by_published.map((note) => <NoteCard note={note} />)}
+    {notes_by_published.map((note) => <NoteCard note={note} />)}
+</Main>
