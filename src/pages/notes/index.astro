@@ -1,5 +1,13 @@
 ---
 import Main from "@layouts/Main.astro";
+import { getCollection } from "astro:content";
+
+const notes = await getCollection("notes", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+});
+const posts = notes.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <Main title="notes">
