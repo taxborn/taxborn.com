@@ -1,11 +1,13 @@
 ---
+import ISODateDisplay from "@components/ISODateDisplay.astro";
 import Main from "@layouts/Main.astro";
 
 const last_updated = new Date("2025-07-11T17:47:21-05:00");
 ---
 
 <Main title="now">
-    <h1>What I'm Doing Now</h1>
-    <a href="https://nownownow.com/about">More about now pages</a>
-    <p>Last updated at {last_updated.toLocaleString()}</p>
+    <div slot="header">
+        <h1>What I'm doing <a href="https://nownownow.com/about">now</a></h1>
+        <p>Last updated at <ISODateDisplay date={last_updated} /></p>
+    </div>
 </Main>

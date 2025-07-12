@@ -12,7 +12,14 @@ const notes_by_published = notes.sort(
 ---
 
 <Main title="notes">
-    <h1>Notes</h1>
+    <div slot="header">
+        <h1>Notes</h1>
+        <p>
+            I don't write too often, but it is a goal of mine in 2025 and 2026
+            to write more about what I am working on, what I am learning, and
+            what I am thinking about.
+        </p>
+    </div>
 
     {notes_by_published.map((note) => <NoteCard note={note} />)}
     {notes_by_published.map((note) => <NoteCard note={note} />)}

@@ -1,12 +1,12 @@
 ---
-const build_time = new Date().toISOString();
+import ISODateDisplay from "@components/ISODateDisplay.astro";
 ---
 
 <footer class="flex justify-between text-sm">
     <p>
-        Copyright &copy; Braxton Fair, last updated <abbr title={build_time}
-            >{new Date(build_time).toLocaleDateString()}</abbr
-        >
+        Copyright &copy; Braxton Fair, last updated <ISODateDisplay
+            date={new Date()}
+        /> (<a href="https://github.com/taxborn/taxborn.com">repo</a>).
     </p>
 
     <ul>
