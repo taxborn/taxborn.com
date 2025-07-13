@@ -9,8 +9,7 @@ const path = Astro.url.pathname;
 ---
 
 <li>
-    <a data-path={path} href={href} class:list={{ active: path === href }}
-        >{text}</a>
+    <a href={href} class:list={{ active: path === href }}>{text}</a>
 </li>
 
 <style>
