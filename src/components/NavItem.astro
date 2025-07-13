@@ -8,7 +8,10 @@ const { href, text } = Astro.props;
 const path = Astro.url.pathname;
 ---
 
-<li><a href={href} class:list={{ active: path === href }}>{text}</a></li>
+<li>
+    <a data-path={path} href={href} class:list={{ active: path === href }}
+        >{text}</a>
+</li>
 
 <style>
     @layer components {
