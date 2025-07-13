@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
 import Tag from "./Tag.astro";
 
 interface Props {
@@ -9,11 +10,13 @@ interface Props {
 const { note } = Astro.props;
 ---
 
-<article class="bg-gray-200 p-2 mb-2">
+<article class="mb-4">
     <h2><a href={`/note/${note.id}`}>{note.data.title}</a></h2>
     <span>{note.data.published.toLocaleDateString()}</span>
 
     <div>
         {note.data.tags?.map((tag) => <Tag tag={tag} />)}
     </div>
+
+    <p class="mt-1 text-black/80">{note.body?.substring(0, 150)}...</p>
 </article>
