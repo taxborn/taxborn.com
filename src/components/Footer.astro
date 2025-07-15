@@ -2,7 +2,7 @@
 import ISODateDisplay from "@components/ISODateDisplay.astro";
 ---
 
-<footer class="flex justify-between text-sm">
+<footer class="flex justify-between text-sm card">
     <p>
         Copyright &copy; Braxton Fair, last updated <ISODateDisplay
             date={new Date()}
@@ -18,17 +18,16 @@ import ISODateDisplay from "@components/ISODateDisplay.astro";
 
 <style>
     @layer components {
+        p {
+            margin: 0px !important;
+        }
+
         li {
             display: inline;
 
             &:not(:first-child) {
                 margin-left: 4px;
             }
-        }
-
-        abbr {
-            font-style: italic;
-            font-weight: var(--font-weight-semibold);
         }
     }
 </style>

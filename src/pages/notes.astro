@@ -1,6 +1,5 @@
 ---
 import Main from "@layouts/Main.astro";
-import NoteCard from "@components/NoteCard.astro";
 import { getCollection } from "astro:content";
 
 const notes = await getCollection("notes", ({ data }) => {
@@ -12,16 +11,29 @@ const notes_by_published = notes.sort(
 ---
 
 <Main title="notes">
-    <div slot="header">
+    <section class="card">
         <h1>Notes</h1>
         <p>
             I don't write too often, but it is a goal of mine in 2025 and 2026
             to write more about what I am working on, what I am learning, and
             what I am thinking about.
         </p>
-    </div>
 
-    {notes_by_published.map((note) => <NoteCard note={note} />)}
-    {notes_by_published.map((note) => <NoteCard note={note} />)}
-    {notes_by_published.map((note) => <NoteCard note={note} />)}
+        {notes.length === 0 && <p>No notes, yet.</p>}
+
+        <ul>
+            {
+                notes_by_published.map((note) => (
+                    <li>
+                        <a href={`/notes/${note.id}`}>
+                            <span class="italic text-[#cba6f7]/80">
+                                {note.data.published.toLocaleDateString()}
+                            </span>
+                            {note.data.title}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </section>
 </Main>

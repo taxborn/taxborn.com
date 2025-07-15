@@ -2,11 +2,13 @@
 import NavItem from "./NavItem.astro";
 ---
 
-<nav class="mb-2 border-b-4 border-b-indigo-300 py-1">
-    <ul class="flex justify-end">
+<nav class="flex text-sm md:text-md justify-between card shadow-md">
+    <ul>
         <NavItem href="/" text="home" />
         <NavItem href="/notes/" text="notes" />
-        <NavItem href="/uses/" text="uses" />
         <NavItem href="/now/" text="now" />
+        <NavItem href="/uses/" text="uses" />
     </ul>
+
+    <a href="" class="text-right">512 hours logged &rarrb;</a>
 </nav>

@@ -17,17 +17,15 @@ const path = Astro.url.pathname;
         li {
             display: inline;
 
-            &:not(:first-child) {
-                margin-left: 4px;
+            &:not(:first-child)::before {
+                content: "/ ";
             }
         }
 
-        a {
-            color: var(--color-text);
-
-            &.active {
-                color: var(--color-indigo-600);
-            }
+        a.active {
+            font-weight: var(--font-weight-bold);
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
     }
 </style>

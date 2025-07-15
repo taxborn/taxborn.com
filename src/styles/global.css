@@ -1,19 +1,47 @@
 @import "tailwindcss";
 
-@layer components {
-    h1 {
-        @apply text-3xl font-bold;
+.card {
+    background-color: #313244;
+    border-radius: 4px;
+    margin-top: 8px;
+    padding: 12px;
+    border: 1px solid #6c7086df;
+}
+
+a {
+    font-weight: var(--font-weight-bold);
+
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
     }
 
-    h2 {
-        @apply text-2xl font-bold;
+    &:.active {
+        text-decoration: underline;
+        text-underline-offset: 4px;
     }
+}
 
-    p {
-        @apply mb-4;
+p {
+    margin: 8px 0px;
+}
+
+h1 {
+    color: #cba6f7;
+    font-size: var(--text-2xl);
+    text-underline-offset: 2px;
+
+    &::before {
+        content: "# ";
     }
+}
 
-    a {
-        @apply text-indigo-500 hover:text-indigo-600 underline font-semibold;
+h2 {
+    color: #cba6f7;
+    font-size: var(--text-xl);
+    text-underline-offset: 2px;
+
+    &::before {
+        content: "## ";
     }
 }
