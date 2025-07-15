@@ -15,10 +15,10 @@ const { Content } = await render(note);
 ---
 
 <Main title={note.data.title}>
-    <div slot="header">
+    <section class="card">
         <h1>{note.data.title}</h1>
-        <a href="/notes">Back to notes</a>
-    </div>
+        <a href="/notes/">&larrb; Back to notes</a>
 
-    <Content />
+        <Content />
+    </section>
 </Main>

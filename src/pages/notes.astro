@@ -25,7 +25,7 @@ const notes_by_published = notes.sort(
             {
                 notes_by_published.map((note) => (
                     <li>
-                        <a href={`/notes/${note.id}`}>
+                        <a href={`/note/${note.id}/`}>
                             <span class="italic text-[#cba6f7]/80">
                                 {note.data.published.toLocaleDateString()}
                             </span>
