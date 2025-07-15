@@ -20,7 +20,7 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
 
 <!-- Example image using placeholder service -->
-![Example Image](https://via.placeholder.com/150)
+![Example Image](https://placehold.co/400)
 
 ```js
 console.log('Hello World!');
