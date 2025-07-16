@@ -2,12 +2,51 @@
 import ISODateDisplay from "@components/ISODateDisplay.astro";
 import Main from "@layouts/Main.astro";
 
-const last_updated = new Date("2025-07-11T17:47:21-05:00");
+const last_updated = new Date("2025-07-15T21:00:00-05:00");
 ---
 
 <Main title="now">
     <section class="card">
         <h1>What I'm doing <a href="https://nownownow.com/about">now</a></h1>
-        <span>Last updated at <ISODateDisplay date={last_updated} /></span>
+        <p>
+            This serves as a place for me to detail what I'm working on,
+            thinking about, or doing recently. You view more about /now pages at <a
+                href="https://nownownow.com/">nownownow.com</a
+            >.
+        </p>
+        <span
+            >Last updated at <ISODateDisplay date={last_updated} /> in Eagan, MN.</span
+        >
+
+        <ul class="mt-4 list-disc list-inside">
+            <li>
+                Working on this website, a personal time tracking log, and
+                building my personal homelab.
+            </li>
+            <li class="indented">
+                I'm working on increasing my self-hosted infrastructure to
+                decrease my reliance on third-party services, and exploring new
+                technologies.
+            </li>
+            <li>
+                Focusing more on my health and eating habits, and trying to
+                improve my day-to-day self care routines.
+            </li>
+            <li>
+                Enjoying the summer! Taking a few trips to Michigan to visit
+                family, camping trips with friends, and spending time at the
+                local parks.
+            </li>
+        </ul>
     </section>
 </Main>
+
+<style>
+    li {
+        margin: 8px 0;
+
+        &.indented {
+            margin-left: 16px;
+        }
+    }
+</style>
