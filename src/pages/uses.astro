@@ -6,5 +6,67 @@ import Main from "@layouts/Main.astro";
     <section class="card">
         <h1>What I use</h1>
         <a href="https://uses.tech">Check out other people's /uses pages!</a>
+        <p>This is the stuff I use day to day for work and life.</p>
     </section>
+
+    <section class="card">
+        <h2>Hardware</h2>
+
+        <ul>
+            <li>
+                <span
+                    >Uranium <a
+                        href="https://pcpartpicker.com/user/taxbornfair/saved/bK7L7P"
+                        >(pcpartpicker)</a
+                    ></span
+                > - a computer I built in August 2023. It's my main workstation,
+                dual booting Windows and Arch Linux.
+            </li>
+
+            <li>
+                <span>Tungsten</span> - a Dell XPS 15 9520 that runs Arch Linux.
+                It was my main computer in college and is what I carry around when
+                I'm not at home.
+            </li>
+
+            <li>
+                <span>Helium (01 and 02)</span> - a pair of Intel NUC8iBEK's that
+                I use for my small homelab. They run various services like <a
+                    href="https://forgejo.org/">Forgejo</a
+                >, <a href="https://immich.app/">Immich</a>, and others.
+            </li>
+
+            <li>
+                <span>Carbon</span> - an OVH VPS I use for Minecraft servers, web
+                hosting, and cloud experiments.
+            </li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <h2>Software</h2>
+        <a href="https://github.com/taxborn/dotfiles"
+            >You can view my dotfiles on GitHub &rarrb;</a
+        >
+
+        <ul>
+            <li><span>WM</span> - Hyprland</li>
+            <li><span>Shell</span> - Fish</li>
+            <li><span>Terminal</span> - Ghostty, with tmux</li>
+            <li>
+                <span>Editors</span> - Mainly Neovim, experimenting with <a
+                    href="https://zed.dev">Zed</a
+                >.
+            </li>
+        </ul>
+    </section>
+
+    <style>
+        li {
+            margin: 4px 0;
+        }
+        li > span {
+            font-weight: bold;
+        }
+    </style>
 </Main>
