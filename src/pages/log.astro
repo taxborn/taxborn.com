@@ -1,5 +1,8 @@
 ---
+import ISODateDisplay from "@components/ISODateDisplay.astro";
 import Main from "@layouts/Main.astro";
+
+const last_updated = new Date("2025-07-15T22:40:00-05:00");
 ---
 
 <Main title="time log">
@@ -11,5 +14,17 @@ import Main from "@layouts/Main.astro";
                 class="italic">every</span
             > log, but want to share some highlights, statistics, and insights.
         </p>
+        <p>
+            This page is under construction while I build the tool I will be
+            using to track my time. Once it is functional I will have some sort
+            of summary of my time log here with some graphs. In the meantime, I
+            plan to post some development logs on <a href="/notes/">my notes</a>
+            page.
+        </p>
+    </section>
+    <section class="card">
+        <h2>Statistics</h2>
+        <p><span>Total hours logged</span>: 0 hours</p>
+        <p><span>Last update</span>: <ISODateDisplay date={last_updated} /></p>
     </section>
 </Main>
