@@ -1,39 +1,31 @@
 ---
-import Main from "@layouts/Main.astro";
-import { getCollection } from "astro:content";
+import "../styles/global.css";
 
-const notes = await getCollection("notes", ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
-});
-const notes_by_published = notes.sort(
-    (a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
-);
+import Main from "../layouts/Main.astro";
+import NoteCard from "../components/NoteCard.astro";
 ---
 
 <Main title="notes">
-    <section class="card">
-        <h1>Notes</h1>
+    <header class="mb-2">
+        <h1 class="text-6xl font-bold">Notes</h1>
         <p>
             I don't write too often, but it is a goal of mine in 2025 and 2026
             to write more about what I am working on, what I am learning, and
             what I am thinking about.
         </p>
+    </header>
 
-        {notes.length === 0 && <p>No notes, yet.</p>}
+    <main>
+        <p class="opacity-80">No notes, yet...</p>
 
-        <ul>
-            {
-                notes_by_published.map((note) => (
-                    <li>
-                        <a href={`/note/${note.id}/`}>
-                            <span class="italic text-[#cba6f7]/80">
-                                {note.data.published.toLocaleDateString()}
-                            </span>
-                            {note.data.title}
-                        </a>
-                    </li>
-                ))
-            }
-        </ul>
-    </section>
+        <NoteCard />
+        <NoteCard />
+        <NoteCard />
+    </main>
 </Main>
+
+<style>
+    article {
+        margin-bottom: 2rem;
+    }
+</style>

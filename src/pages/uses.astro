@@ -1,72 +1,97 @@
 ---
-import Main from "@layouts/Main.astro";
+import "../styles/global.css";
+import Main from "../layouts/Main.astro";
 ---
 
 <Main title="uses">
-    <section class="card">
-        <h1>What I use</h1>
-        <a href="https://uses.tech">Check out other people's /uses pages!</a>
-        <p>This is the stuff I use day to day for work and life.</p>
-    </section>
+    <header class="mb-2">
+        <h1 class="text-6xl font-bold">What I use</h1>
+        <p>The stuff I use day-to-day for work and life.</p>
+    </header>
 
-    <section class="card">
-        <h2>Hardware</h2>
+    <main>
+        <section>
+            <h2>Hardware</h2>
 
-        <ul>
-            <li>
-                <span
-                    >Uranium <a
+            <article>
+                <h3>
+                    Uranium <a
                         href="https://pcpartpicker.com/user/taxbornfair/saved/bK7L7P"
-                        >(pcpartpicker)</a
-                    ></span
-                > - a computer I built in August 2023. It's my main workstation,
-                dual booting Windows and Arch Linux.
-            </li>
+                        >pcpartpicker list</a
+                    >
+                </h3>
+                <p>
+                    A computer I built in ~August 2023. It is my main
+                    workstation dual-booting Windows 11 and Arch Linux.
+                </p>
+                <a href="https://uses.tech/" class="opacity-80 italic"
+                    >Check out other people's /uses pages!</a
+                >
+            </article>
 
-            <li>
-                <span>Tungsten</span> - a Dell XPS 15 9520 that runs Arch Linux.
-                It was my main computer in college and is what I carry around when
-                I'm not at home.
-            </li>
+            <article>
+                <h3>Tungsten</h3>
+                <p>
+                    a Dell XPS 15 9520 that runs Arch Linux. It was my main
+                    computer in college and is what I carry around when I'm not
+                    at home.
+                </p>
+            </article>
 
-            <li>
-                <span>Helium (01 and 02)</span> - a pair of Intel NUC8iBEK's that
-                I use for my small homelab. They run various services like <a
-                    href="https://forgejo.org/">Forgejo</a
-                >, <a href="https://immich.app/">Immich</a>, and others.
-            </li>
+            <article>
+                <h3>Helium (01 and 02)</h3>
+                <p>
+                    a pair of Intel NUC8i5BEK's that I use for my small homelab.
+                    They run various services like Forgejo, Immich, and others.
+                    I plan to have a more in-depth writeup on this eventually.
+                </p>
+            </article>
 
-            <li>
-                <span>Carbon</span> - an OVH VPS I use for Minecraft servers, web
-                hosting, and cloud experiments.
-            </li>
-        </ul>
-    </section>
+            <article>
+                <h3>Carbon</h3>
+                <p>
+                    an OVH VPS I use for Minecraft servers, web hosting, and
+                    cloud experiments.
+                </p>
+            </article>
+        </section>
 
-    <section class="card">
-        <h2>Software</h2>
-        <a href="https://github.com/taxborn/dotfiles"
-            >You can view my dotfiles on GitHub &rarrb;</a
-        >
+        <section>
+            <h2>Software</h2>
 
-        <ul>
-            <li><span>WM</span> - Hyprland</li>
-            <li><span>Shell</span> - Fish</li>
-            <li><span>Terminal</span> - Ghostty, with tmux</li>
-            <li>
-                <span>Editors</span> - Mainly Neovim, experimenting with <a
-                    href="https://zed.dev">Zed</a
-                >.
-            </li>
-        </ul>
-    </section>
+            <article>
+                <h3>Daily</h3>
+                <ul>
+                    <li>Zen Browser / Firefox on mobile</li>
+                    <li>Spotify</li>
+                    <li>Bluesky</li>
+                </ul>
+            </article>
 
-    <style>
-        li {
-            margin: 4px 0;
-        }
-        li > span {
-            font-weight: bold;
-        }
-    </style>
+            <article>
+                <h3>Development</h3>
+                <ul>
+                    <li>Editor - Zed / Neovim</li>
+                    <li>
+                        Tmux <span class="italic opacity-80"
+                            >though I have been considering <a
+                                href="https://zellij.dev/">Zellij</a
+                            ></span
+                        >
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </main>
 </Main>
+
+<style>
+    h2 {
+        font-size: 2.75rem;
+        font-weight: var(--font-weight-bold);
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+</style>

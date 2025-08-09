@@ -1,0 +1,131 @@
+---
+import "../styles/global.css";
+import Main from "../layouts/Main.astro";
+---
+
+<Main title="colophon">
+    <header class="mb-2">
+        <h1 class="text-6xl font-bold">Colophon</h1>
+        <p>
+            A behind-the-scenes look at how this website is built, hosted, and
+            maintained.
+        </p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Technology Stack</h2>
+
+            <article>
+                <h3>Framework & Build Tools</h3>
+                <p>
+                    This site is built with <a href="https://astro.build/"
+                        >Astro</a
+                    >, a modern static site generator that prioritizes
+                    performance and developer experience. Astro's partial
+                    hydration and islands architecture allow for fast loading
+                    times while maintaining interactive components where needed.
+                </p>
+                <p>
+                    Styling is handled by <a href="https://tailwindcss.com/"
+                        >Tailwind CSS</a
+                    >
+                    v4, providing utility-first CSS classes for rapid development
+                    and consistent design patterns.
+                </p>
+            </article>
+
+            <article>
+                <h3>Typography</h3>
+                <p>
+                    The site uses <a
+                        href="https://brailleinstitute.org/freefont"
+                        >Atkinson Hyperlegible</a
+                    >, a font designed by the Braille Institute to improve
+                    readability for everyone, including people with low vision.
+                    The font is loaded as a variable font through Astro's font
+                    optimization system.
+                </p>
+            </article>
+
+            <article>
+                <h3>Development Environment</h3>
+                <p>
+                    Code is written primarily in <a href="https://zed.dev/"
+                        >Zed</a
+                    > and
+                    <a href="https://neovim.io/">Neovim</a>, version controlled
+                    with Git, and hosted on a self-hosted <a
+                        href="https://forgejo.org/">Forgejo</a
+                    >
+                    instance running on my homelab infrastructure.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h2>Infrastructure & Hosting</h2>
+
+            <article>
+                <h3>Deployment</h3>
+                <p>
+                    The site is statically generated and deployed automatically
+                    via a CI pipeline in my homelab infrastructure. Changes
+                    pushed to the main branch trigger builds that generate
+                    optimized static files which is then simply scp'd to the
+                    server.
+                </p>
+            </article>
+
+            <article>
+                <h3>Performance Considerations</h3>
+                <p>
+                    The site is designed with performance in mind: minimal
+                    JavaScript, optimized images, and efficient CSS delivery.
+                    Astro's zero-JS-by-default approach ensures fast page loads
+                    and excellent Core Web Vitals scores.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h2>Design Philosophy</h2>
+
+            <article>
+                <h3>Accessibility First</h3>
+                <p>
+                    The site prioritizes accessibility with semantic HTML,
+                    proper heading hierarchy, sufficient color contrast, and the
+                    highly legible Atkinson Hyperlegible typeface. Dark mode
+                    support respects user preferences via the <code
+                        >prefers-color-scheme</code
+                    > media query.
+                </p>
+            </article>
+
+            <article>
+                <h3>Minimal & Functional</h3>
+                <p>
+                    The design embraces simplicity and readability over flashy
+                    effects. Content is king, and the interface stays out of the
+                    way to let the writing shine through.
+                </p>
+            </article>
+        </section>
+    </main>
+</Main>
+
+<style>
+    h2 {
+        font-size: 2.75rem;
+        font-weight: var(--font-weight-bold);
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    article {
+        margin-bottom: 2rem;
+    }
+</style>

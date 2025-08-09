@@ -1,32 +1,30 @@
 ---
-import ISODateDisplay from "@components/ISODateDisplay.astro";
-import Main from "@layouts/Main.astro";
-
-const last_updated = new Date("2025-07-15T21:00:00-05:00");
+import "../styles/global.css";
+import Main from "../layouts/Main.astro";
 ---
 
 <Main title="now">
-    <section class="card">
-        <h1>What I'm doing <a href="https://nownownow.com/about">now</a></h1>
+    <header class="mb-2">
+        <h1 class="text-6xl font-bold">What I'm doing now</h1>
+        <p class="italic opacity-80">Last updated at 7/16/2025 in Eagan, MN.</p>
         <p>
             This serves as a place for me to detail what I'm working on,
             thinking about, or doing recently. You view more about /now pages at <a
-                href="https://nownownow.com/">nownownow.com</a
+                href="https://nownownow.com/about">nownownow.com</a
             >.
         </p>
-        <span class="italic opacity-60"
-            >Last updated at <ISODateDisplay date={last_updated} /> in Eagan, MN.</span
-        >
+    </header>
 
-        <ul class="mt-4 list-disc list-inside">
+    <main>
+        <ul class="list-disc list-inside">
             <li>
                 Working on this website, a personal time tracking log, and
                 building my personal homelab.
             </li>
-            <li class="indented">
+            <li class="ml-8">
                 I'm working on increasing my self-hosted infrastructure to
                 decrease my reliance on third-party services, and exploring new
-                technologies.
+                tech like Docker, Nix, and Kubernetes.
             </li>
             <li>
                 Focusing more on my health and eating habits, and trying to
@@ -38,15 +36,5 @@ const last_updated = new Date("2025-07-15T21:00:00-05:00");
                 local parks.
             </li>
         </ul>
-    </section>
+    </main>
 </Main>
-
-<style>
-    li {
-        margin: 8px 0;
-
-        &.indented {
-            margin-left: 16px;
-        }
-    }
-</style>

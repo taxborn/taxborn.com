@@ -1,14 +1,31 @@
 ---
-import NavItem from "./NavItem.astro";
+
 ---
 
-<nav class="flex text-sm md:text-md justify-between card shadow-md">
+<nav class="fixed right-0 p-4 text-xl">
     <ul>
-        <NavItem href="/" text="home" />
-        <NavItem href="/notes/" text="notes" />
-        <NavItem href="/now/" text="now" />
-        <NavItem href="/uses/" text="uses" />
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/notes">Notes</a>
+        </li>
+        <li>
+            <a href="/now">Now</a>
+        </li>
+        <li>
+            <a href="/etc">Etc</a>
+        </li>
     </ul>
-
-    <a href="/log/" class="text-right">0 hours logged &rarrb;</a>
 </nav>
+
+<style>
+    li {
+        display: inline-block;
+        font-weight: var(--font-weight-bold);
+
+        &:not(:first-child) {
+            margin-left: 1rem;
+        }
+    }
+</style>
