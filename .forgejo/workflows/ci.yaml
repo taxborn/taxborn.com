@@ -25,6 +25,8 @@ jobs:
         with:
           name: taxborn.com-deploy-${{ github.run_number }}
           path: taxborn.com-${{ github.run_number }}.tar.gz
+      # TODO: Deploy in a seperate step to avoid recompiling the same artifact if the deployment fails
+      #       and the CI needs to be rerun.
       - name: Deploy to server
         if: github.ref == 'refs/heads/main'
         run: |
@@ -38,4 +40,4 @@ jobs:
 
           # Upload and deploy the tar file
           scp -i ~/.ssh/deploy_key taxborn.com-${{ github.run_number }}.tar.gz deploy@${{ secrets.DEPLOY_HOST }}:/tmp/
-          ssh -i ~/.ssh/deploy_key deploy@${{ secrets.DEPLOY_HOST }} './deploy.sh /tmp/taxborn.com-${{ github.run_number }}.tar.gz'
+          ssh -i ~/.ssh/deploy_key deploy@${{ secrets.DEPLOY_HOST }} './deploy.sh taxborn.com /tmp/taxborn.com-${{ github.run_number }}.tar.gz'
