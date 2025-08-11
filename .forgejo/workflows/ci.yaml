@@ -38,4 +38,4 @@ jobs:
 
           # Upload and deploy the tar file
           scp -i ~/.ssh/deploy_key taxborn.com-${{ github.run_number }}.tar.gz deploy@${{ secrets.DEPLOY_HOST }}:/tmp/
-          ssh -i ~/.ssh/deploy_key deploy@${{ secrets.DEPLOY_HOST }} './deploy.sh /tmp/taxborn.com-${{ github.run_number }}.tar.gz'
+          ssh -i ~/.ssh/deploy_key deploy@${{ secrets.DEPLOY_HOST }} './deploy.sh taxborn.com /tmp/taxborn.com-${{ github.run_number }}.tar.gz'
