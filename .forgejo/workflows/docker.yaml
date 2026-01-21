@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: git.mischeif.town
+  REGISTRY: git.mischief.town
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
