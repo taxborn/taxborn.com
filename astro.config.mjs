@@ -5,11 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  csp: {
-    scriptDirective: {
-      resources: ["'self'", "https://static.cloudflareinsights.com"],
-    },
-  },
+  csp: true,
   experimental: {
     fonts: [
       {
