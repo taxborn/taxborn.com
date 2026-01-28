@@ -4,3 +4,19 @@
 @theme inline {
     --font-mono: var(--font-jetbrains-mono);
 }
+
+@layer base {
+    h1 {
+        font-weight: var(--font-weight-bold);
+        font-size: var(--text-3xl);
+    }
+
+    p {
+        margin-bottom: 8px;
+    }
+
+    a {
+        font-weight: var(--font-weight-bold);
+        text-decoration: underline;
+    }
+}
