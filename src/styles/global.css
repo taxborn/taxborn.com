@@ -1,8 +1,12 @@
 @import "tailwindcss";
-@import "@catppuccin/tailwindcss/mocha.css";
 
 @theme inline {
     --font-mono: var(--font-jetbrains-mono);
+
+    /* Catppuccin Mocha — only the colors actually used */
+    --color-ctp-base: #1e1e2e;
+    --color-ctp-text: #cdd6f4;
+    --color-ctp-overlay0: #6c7086;
 }
 
 @layer base {
