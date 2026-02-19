@@ -24,11 +24,11 @@ const commitDate =
     <body class="bg-ctp-base text-ctp-text w-full min-h-screen font-mono p-8">
         <header class="flex justify-between">
             <p><span class="underline uppercase">taxborn</span>(1)</p>
-            <p>Braxton Fair</p>
+            <p class="hidden sm:block">Braxton Fair</p>
             <p><span class="underline uppercase">taxborn</span>(1)</p>
         </header>
 
-        <main class="my-16">
+        <main class="my-16 container">
             <ManSection title="name" first={true}>
                 <p>Braxton Fair - @taxborn online</p>
             </ManSection>
@@ -40,7 +40,29 @@ const commitDate =
                             >@taxborn.com</a
                         > on bluesky
                     </li>
+                    <li>
+                        @taxborn on <a href="https://git.mischief.town/taxborn"
+                            >my forgejo instance</a
+                        >
+                    </li>
+                    <li class="italic text-ctp-overlay0">
+                        @taxborn on <a href="https://git.mischief.town/taxborn"
+                            >github</a
+                        >, but it's mostly just a mirror of forgejo.
+                    </li>
                 </ul>
+            </ManSection>
+
+            <ManSection title="description">
+                <p>
+                    A 20-something software engineer at <a
+                        href="https://thomsonreuters.com">Thomson Reuters</a
+                    >. Working with Java, Spring, and building robust APIs. I've
+                    been programming for <a
+                        href="https://git.mischief.town/taxborn/ConnectU"
+                        >a bit over a decade</a
+                    >, but currently interested in Zig, atproto, and Nix.
+                </p>
             </ManSection>
         </main>
 
