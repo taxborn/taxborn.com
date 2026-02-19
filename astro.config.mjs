@@ -1,10 +1,14 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
-
+import node from "@astrojs/node";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  output: "server",
+  adapter: node({
+    mode: "standalone",
+  }),
   csp: true,
   fonts: [
     {
@@ -13,6 +17,10 @@ export default defineConfig({
       cssVariable: "--font-jetbrains-mono",
     },
   ],
+  server: {
+    host: true,
+    port: 8080,
+  },
   vite: {
     plugins: [tailwindcss()],
   },
