@@ -12,7 +12,7 @@ const commitDate =
     import.meta.env.COMMIT_DATE ??
     execSync("git log -1 --format=%cs").toString().trim();
 
-const lastfmApiKey = import.meta.env.LASTFM_API_KEY;
+const lastfmApiKey = process.env.LASTFM_API_KEY;
 let recentTrack: {
     name: string;
     artist: string;

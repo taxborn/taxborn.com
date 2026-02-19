@@ -13,5 +13,8 @@
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^6.0.0-beta.13",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.0"
   }
 }
