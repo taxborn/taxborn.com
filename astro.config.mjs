@@ -9,7 +9,9 @@ export default defineConfig({
   adapter: node({
     mode: "standalone",
   }),
-  csp: true,
+  security: {
+    csp: true,
+  },
   fonts: [
     {
       provider: fontProviders.bunny(),
