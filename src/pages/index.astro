@@ -1,8 +1,12 @@
 ---
 import { Font } from "astro:assets";
 import "../styles/global.css";
+import { execSync } from "node:child_process";
 
 import ManSection from "../components/ManSection.astro";
+
+const commitHash = execSync("git rev-parse --short HEAD").toString().trim();
+const commitDate = execSync("git log -1 --format=%cs").toString().trim();
 ---
 
 <html lang="en">
@@ -37,14 +41,12 @@ import ManSection from "../components/ManSection.astro";
         </main>
 
         <footer class="flex justify-between">
-            <!-- TODO: last git commit -->
             <p>
                 <a href="https://git.mischief.town/taxborn/taxborn.com"
-                    >cb013ef73d</a
+                    >{commitHash}</a
                 >
             </p>
-            <!-- TODO: last commit time? -->
-            <p>2025-02-18</p>
+            <p>{commitDate}</p>
             <p><span class="underline uppercase">taxborn</span>(1)</p>
         </footer>
     </body>
