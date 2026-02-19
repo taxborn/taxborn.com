@@ -1,0 +1,22 @@
+---
+interface Props {
+    title: string;
+    first?: boolean;
+}
+
+const { title, first = false } = Astro.props;
+---
+
+<section class="mb-4">
+    {
+        first ? (
+            <h1 class="font-black">{title}</h1>
+        ) : (
+            <h2 class="font-black">{title}</h2>
+        )
+    }
+
+    <div class="ml-16">
+        <slot />
+    </div>
+</section>

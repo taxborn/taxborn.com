@@ -1,6 +1,8 @@
 ---
 import { Font } from "astro:assets";
 import "../styles/global.css";
+
+import ManSection from "../components/ManSection.astro";
 ---
 
 <html lang="en">
@@ -17,6 +19,22 @@ import "../styles/global.css";
             <p>Braxton Fair</p>
             <p><span class="underline uppercase">taxborn</span>(1)</p>
         </header>
+
+        <main class="my-16">
+            <ManSection title="name" first={true}>
+                <p>Braxton Fair - @taxborn online</p>
+            </ManSection>
+
+            <ManSection title="synopsis">
+                <ul class="list-disc list-inside">
+                    <li>
+                        <a href="https://bsky.app/profile/taxborn.com"
+                            >@taxborn.com</a
+                        > on bluesky
+                    </li>
+                </ul>
+            </ManSection>
+        </main>
 
         <footer class="flex justify-between">
             <!-- TODO: last git commit -->
