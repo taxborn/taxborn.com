@@ -24,7 +24,7 @@ let recentTrack: {
 if (lastfmApiKey) {
     try {
         const res = await fetch(
-            `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=taxborn&api_key=${lastfmApiKey}&format=json&limit=1`,
+            `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=taxborn&api_key=${lastfmApiKey}&format=json&limit=1`,
         );
         const data = await res.json();
         const track = data?.recenttracks?.track?.[0];
@@ -38,6 +38,8 @@ if (lastfmApiKey) {
             };
         }
     } catch {}
+} else {
+    console.log("Last.fm API key not found");
 }
 ---
 
