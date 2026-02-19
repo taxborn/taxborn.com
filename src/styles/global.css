@@ -7,7 +7,28 @@
     --color-ctp-base: #1e1e2e;
     --color-ctp-text: #cdd6f4;
     --color-ctp-overlay0: #6c7086;
+    --color-ctp-mauve: #cba6f7;
 }
 
 @layer base {
+    .subtext {
+        color: var(--color-ctp-overlay0);
+        font-style: italic;
+    }
+
+    a {
+        color: var(--color-ctp-mauve);
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    .subtext > a {
+        color: var(--color-ctp-overlay0);
+        text-decoration: underline;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+            color: var(--color-ctp-mauve);
+        }
+    }
 }
