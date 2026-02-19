@@ -11,6 +11,34 @@ const commitHash =
 const commitDate =
     import.meta.env.COMMIT_DATE ??
     execSync("git log -1 --format=%cs").toString().trim();
+
+const lastfmApiKey = import.meta.env.LASTFM_API_KEY;
+let recentTrack: {
+    name: string;
+    artist: string;
+    album: string;
+    url: string;
+    nowPlaying: boolean;
+} | null = null;
+
+if (lastfmApiKey) {
+    try {
+        const res = await fetch(
+            `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=taxborn&api_key=${lastfmApiKey}&format=json&limit=1`,
+        );
+        const data = await res.json();
+        const track = data?.recenttracks?.track?.[0];
+        if (track) {
+            recentTrack = {
+                name: track.name,
+                artist: track.artist["#text"],
+                album: track.album["#text"],
+                url: track.url,
+                nowPlaying: !!track["@attr"]?.nowplaying,
+            };
+        }
+    } catch {}
+}
 ---
 
 <html lang="en">
@@ -64,6 +92,26 @@ const commitDate =
                     >, but currently interested in Zig, atproto, and Nix.
                 </p>
             </ManSection>
+
+            {
+                recentTrack && (
+                    <ManSection title="now playing">
+                        <p>
+                            {recentTrack.nowPlaying
+                                ? "Currently listening to"
+                                : "Last listened to"}{" "}
+                            <a href={recentTrack.url}>{recentTrack.name}</a> by{" "}
+                            {recentTrack.artist}
+                            {recentTrack.album && (
+                                <>
+                                    {" "}
+                                    from <em>{recentTrack.album}</em>
+                                </>
+                            )}
+                        </p>
+                    </ManSection>
+                )
+            }
         </main>
 
         <footer class="flex justify-between">
