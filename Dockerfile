@@ -1,9 +1,11 @@
 FROM node:lts-alpine AS build
+ARG COMMIT_HASH
+ARG COMMIT_DATE
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
+RUN COMMIT_HASH=$COMMIT_HASH COMMIT_DATE=$COMMIT_DATE npm run build
 
 FROM nginx:alpine AS runtime
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf

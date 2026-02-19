@@ -5,8 +5,12 @@ import { execSync } from "node:child_process";
 
 import ManSection from "../components/ManSection.astro";
 
-const commitHash = execSync("git rev-parse --short HEAD").toString().trim();
-const commitDate = execSync("git log -1 --format=%cs").toString().trim();
+const commitHash =
+    import.meta.env.COMMIT_HASH ??
+    execSync("git rev-parse --short HEAD").toString().trim();
+const commitDate =
+    import.meta.env.COMMIT_DATE ??
+    execSync("git log -1 --format=%cs").toString().trim();
 ---
 
 <html lang="en">

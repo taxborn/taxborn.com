@@ -31,6 +31,11 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: latest
+      - name: Get commit info
+        id: commit_date
+        run: |
+          echo "date=$(git log -1 --format=%cs)" >> $GITHUB_OUTPUT
+          echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
@@ -39,3 +44,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            COMMIT_HASH=${{ steps.commit_date.outputs.hash }}
+            COMMIT_DATE=${{ steps.commit_date.outputs.date }}
