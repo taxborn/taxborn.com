@@ -19,6 +19,7 @@ let recentTrack: {
     album: string;
     url: string;
     nowPlaying: boolean;
+    image: string | null;
 } | null = null;
 
 if (lastfmApiKey) {
@@ -29,12 +30,17 @@ if (lastfmApiKey) {
         const data = await res.json();
         const track = data?.recenttracks?.track?.[0];
         if (track) {
+            const mediumImage = track.image?.find(
+                (img: { size: string; "#text": string }) =>
+                    img.size === "large",
+            );
             recentTrack = {
                 name: track.name,
                 artist: track.artist["#text"],
                 album: track.album["#text"],
                 url: track.url,
                 nowPlaying: !!track["@attr"]?.nowplaying,
+                image: mediumImage?.["#text"] || null,
             };
         }
     } catch {}
@@ -116,6 +122,13 @@ if (lastfmApiKey) {
                             Data currently sourced from last.fm, hoping to pivot
                             to teal.fm once that opens up :)
                         </p>
+                        {recentTrack.image && (
+                            <img
+                                src={recentTrack.image}
+                                alt={`${recentTrack.album} album art`}
+                                class="mt-2"
+                            />
+                        )}
                     </ManSection>
                 )
             }
