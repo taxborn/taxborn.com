@@ -5,18 +5,13 @@ interface Props {
 }
 
 const { title, first = false } = Astro.props;
+const Header = first ? "h1" : "h2";
 ---
 
 <section class="mb-4">
-    {
-        first ? (
-            <h1 class="font-black">{title}</h1>
-        ) : (
-            <h2 class="font-black">{title}</h2>
-        )
-    }
+    <Header class="font-black uppercase">{title}</Header>
 
-    <div class="ml-16">
+    <div class="ml-16 mt-2">
         <slot />
     </div>
 </section>
