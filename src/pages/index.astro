@@ -1,16 +1,8 @@
 ---
-import { Font } from "astro:assets";
 import "../styles/global.css";
-import { execSync } from "node:child_process";
 
+import Man from "../layouts/Man.astro";
 import ManSection from "../components/ManSection.astro";
-
-const commitHash =
-    import.meta.env.COMMIT_HASH ??
-    execSync("git rev-parse --short HEAD").toString().trim();
-const commitDate =
-    import.meta.env.COMMIT_DATE ??
-    execSync("git log -1 --format=%cs").toString().trim();
 
 const lastfmApiKey = process.env.LASTFM_API_KEY;
 let recentTrack: {
@@ -44,104 +36,71 @@ if (lastfmApiKey) {
             };
         }
     } catch {}
-} else {
-    console.log("Last.fm API key not found");
 }
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>braxton fair - home</title>
-        <Font cssVariable="--font-jetbrains-mono" preload />
-    </head>
-    <body class="bg-ctp-base text-ctp-text w-full min-h-screen font-mono p-8">
-        <header class="flex justify-between">
-            <p><span class="underline uppercase">taxborn</span>(1)</p>
-            <p class="hidden sm:block">Braxton Fair</p>
-            <p><span class="underline uppercase">taxborn</span>(1)</p>
-        </header>
+<Man title="home">
+    <ManSection title="name" first={true}>
+        <p>Braxton Fair - @taxborn online</p>
+    </ManSection>
 
-        <main class="my-16 container">
-            <ManSection title="name" first={true}>
-                <p>Braxton Fair - @taxborn online</p>
-            </ManSection>
+    <ManSection title="synopsis">
+        <ul class="list-disc list-inside">
+            <li>
+                <a href="https://bsky.app/profile/taxborn.com">@taxborn.com</a> on
+                bluesky
+            </li>
+            <li>
+                <a href="https://git.mischief.town/taxborn">@taxborn</a> on
+                <a href="https://git.mischief.town/">my forgejo instance</a>
+            </li>
+            <li class="subtext">
+                <a href="https://github.com/taxborn">@taxborn</a> on github, but it's
+                mostly just a mirror of forgejo.
+            </li>
+        </ul>
+    </ManSection>
 
-            <ManSection title="synopsis">
-                <ul class="list-disc list-inside">
-                    <li>
-                        <a href="https://bsky.app/profile/taxborn.com"
-                            >@taxborn.com</a
-                        > on bluesky
-                    </li>
-                    <li>
-                        <a href="https://git.mischief.town/taxborn">@taxborn</a> on
-                        <a href="https://git.mischief.town/"
-                            >my forgejo instance</a
-                        >
-                    </li>
-                    <li class="subtext">
-                        <a href="https://github.com/taxborn">@taxborn</a> on github,
-                        but it's mostly just a mirror of forgejo.
-                    </li>
-                </ul>
-            </ManSection>
+    <ManSection title="description">
+        <p>
+            A 20-something software engineer at <a
+                href="https://thomsonreuters.com">Thomson Reuters</a
+            >. Working with Java, Spring, with a focus in the backend but
+            sometimes working on frontend (MFEs, React). I've been programming
+            for <a href="https://git.mischief.town/taxborn/ConnectU"
+                >a bit over a decade</a
+            >, but currently interested in Zig, atproto, and Nix.
+        </p>
+    </ManSection>
 
-            <ManSection title="description">
+    {
+        recentTrack && (
+            <ManSection title="now playing">
                 <p>
-                    A 20-something software engineer at <a
-                        href="https://thomsonreuters.com">Thomson Reuters</a
-                    >. Working with Java, Spring, with a focus in the backend
-                    but sometimes working on frontend (MFEs, React). I've been
-                    programming for <a
-                        href="https://git.mischief.town/taxborn/ConnectU"
-                        >a bit over a decade</a
-                    >, but currently interested in Zig, atproto, and Nix.
+                    {recentTrack.nowPlaying
+                        ? "Currently listening to"
+                        : "Last listened to"}{" "}
+                    <a href={recentTrack.url}>{recentTrack.name}</a> by{" "}
+                    {recentTrack.artist}
+                    {recentTrack.album && (
+                        <>
+                            {" "}
+                            from <em>{recentTrack.album}</em>
+                        </>
+                    )}
                 </p>
+                <p class="subtext">
+                    Data currently sourced from last.fm, hoping to pivot to
+                    teal.fm once that opens up :)
+                </p>
+                {recentTrack.image && (
+                    <img
+                        src={recentTrack.image}
+                        alt={`${recentTrack.album} album art`}
+                        class="mt-2"
+                    />
+                )}
             </ManSection>
-
-            {
-                recentTrack && (
-                    <ManSection title="now playing">
-                        <p>
-                            {recentTrack.nowPlaying
-                                ? "Currently listening to"
-                                : "Last listened to"}{" "}
-                            <a href={recentTrack.url}>{recentTrack.name}</a> by{" "}
-                            {recentTrack.artist}
-                            {recentTrack.album && (
-                                <>
-                                    {" "}
-                                    from <em>{recentTrack.album}</em>
-                                </>
-                            )}
-                        </p>
-                        <p class="subtext">
-                            Data currently sourced from last.fm, hoping to pivot
-                            to teal.fm once that opens up :)
-                        </p>
-                        {recentTrack.image && (
-                            <img
-                                src={recentTrack.image}
-                                alt={`${recentTrack.album} album art`}
-                                class="mt-2"
-                            />
-                        )}
-                    </ManSection>
-                )
-            }
-        </main>
-
-        <footer class="flex justify-between">
-            <p>
-                <a href="https://git.mischief.town/taxborn/taxborn.com"
-                    >{commitHash}</a
-                >
-            </p>
-            <p>{commitDate}</p>
-            <p><span class="underline uppercase">taxborn</span>(1)</p>
-        </footer>
-    </body>
-</html>
+        )
+    }
+</Man>

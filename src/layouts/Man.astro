@@ -1,0 +1,51 @@
+---
+import { Font } from "astro:assets";
+import "../styles/global.css";
+import { execSync } from "node:child_process";
+
+import ManSection from "../components/ManSection.astro";
+
+const commitHash =
+    import.meta.env.COMMIT_HASH ??
+    execSync("git rev-parse --short HEAD").toString().trim();
+const commitDate =
+    import.meta.env.COMMIT_DATE ??
+    execSync("git log -1 --format=%cs").toString().trim();
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>braxton fair - {title.toLowerCase()}</title>
+        <Font cssVariable="--font-jetbrains-mono" preload />
+    </head>
+    <body class="bg-ctp-base text-ctp-text w-full font-mono p-8">
+        <header class="flex justify-between">
+            <p><span class="underline uppercase">taxborn</span>(1)</p>
+            <p class="hidden sm:block">{title}</p>
+            <p><span class="underline uppercase">taxborn</span>(1)</p>
+        </header>
+
+        <main class="my-16 container">
+            <slot />
+        </main>
+
+        <footer class="flex justify-between">
+            <p>
+                <a href="https://git.mischief.town/taxborn/taxborn.com"
+                    >{commitHash}</a
+                >
+            </p>
+            <p>{commitDate}</p>
+            <p><span class="underline uppercase">taxborn</span>(1)</p>
+        </footer>
+    </body>
+</html>
