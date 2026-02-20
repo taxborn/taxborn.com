@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+
+import Man from "../layouts/Man.astro";
+import ManSection from "../components/ManSection.astro";
+---
+
+<Man title="colophon">
+    <div class="mb-4">
+        <a href="/">back home</a>
+    </div>
+
+    <ManSection title="description" first={true}>
+        <p>
+            A colophon is typically a page that provides information about the
+            creation of a book, website, or other publication.
+        </p>
+    </ManSection>
+
+    <ManSection title="software">
+        <p class="mb-4">
+            This website is built with <a href="https://astro.build"
+                >{Astro.generator}</a
+            >, I love the simplicity to spin up a simple website, with the room
+            to expand. I also use <a href="https://tailwindcss.com"
+                >Tailwind CSS</a
+            > for styling and this website uses the font <a
+                href="https://fonts.google.com/specimen/JetBrains+Mono"
+                >JetBrains Mono</a
+            >.
+        </p>
+
+        <p>
+            This Astro website is running in a <a
+                href="https://git.mischief.town/taxborn/-/packages/container/taxborn.com/latest"
+                >Podman container</a
+            >, hosted on my <a href="https://git.mischief.town">Forgejo</a> instance,
+            running on my self-hosted CI runners.
+        </p>
+    </ManSection>
+
+    <ManSection title="hardware">
+        <p class="mb-4">
+            The Podman container is running on an OVH VPS I own, named 'carbon'
+            (I name all of my devices after the elements). This server is
+            configured with an 8-core Intel processor, with 16GB of RAM and 320
+            GB of storage.
+        </p>
+
+        <p>
+            The OVH server is running NixOS, configured by <a
+                href="https://git.mischief.town/nix-infra/nixcfg">my nixcfg</a
+            >.
+        </p>
+    </ManSection>
+</Man>
