@@ -1,0 +1,21 @@
+---
+import "../styles/global.css";
+
+import Man from "../layouts/Man.astro";
+import ManSection from "../components/ManSection.astro";
+---
+
+<Man title="uses">
+    <div class="mb-4">
+        <a href="/">back home</a>
+    </div>
+
+    <ManSection title="description" first={true}>
+        <p>
+            This page serves as a list of what I use daily <em
+                >(or next to daily)</em
+            > that I think is worth mentioning.
+        </p>
+        <p class="subtext">WIP, will be populated soon.</p>
+    </ManSection>
+</Man>

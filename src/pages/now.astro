@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+
+import Man from "../layouts/Man.astro";
+import ManSection from "../components/ManSection.astro";
+---
+
+<Man title="now">
+    <div class="mb-4">
+        <a href="/">back home</a>
+    </div>
+
+    <ManSection title="description" first={true}>
+        <p>
+            Read more about now pages at <a href="https://nownownow.com/about"
+                >nownownow.com</a
+            >.
+        </p>
+    </ManSection>
+
+    <ManSection title="now">
+        <p class="subtext mb-2">Last updated 2026-02-20</p>
+        <ul class="list-disc list-inside">
+            <li>Working on updating this website</li>
+        </ul>
+    </ManSection>
+</Man>
