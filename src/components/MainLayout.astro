@@ -11,8 +11,9 @@ const { title, ...props } = Astro.props;
 <html lang="en">
     <head>
         <Head title={title} />
+        <slot name="head" />
     </head>
     <body>
-        <h1>Astro</h1>
+        <slot />
     </body>
 </html>
