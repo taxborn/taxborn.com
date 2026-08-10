@@ -1,5 +1,8 @@
 # build output
 dist/
+# nix build symlink
+result
+result-*
 # generated types
 .astro/
 

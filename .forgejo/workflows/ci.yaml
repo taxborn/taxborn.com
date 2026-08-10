@@ -11,3 +11,30 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+
+  # Builds the derivation nixcfg actually deploys. The job above proves the
+  # site compiles; this one proves the packaging around it still works — a
+  # dependency added to package.json without a matching lockfile entry, or a
+  # build output that stops landing where package.nix expects it, fails here
+  # rather than halfway through a deploy to Carbon.
+  nix:
+    runs-on: nix
+    steps:
+      # Checked out by hand rather than with actions/checkout. The `nix` label's
+      # image carries Nix and git and no node, and the runner needs node to
+      # execute a JavaScript action — so any `uses:` step here would fail before
+      # it started. See the label's description in the runner module.
+      #
+      # Fetching the exact SHA rather than cloning a branch keeps this honest
+      # when several pushes land close together, and flakes need the tree to be
+      # git-tracked, which checking out FETCH_HEAD leaves it.
+      - run: |
+          git config --global --add safe.directory "$PWD"
+          git init -q .
+          git remote add origin "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY"
+          git fetch -q --depth 1 origin "$GITHUB_SHA"
+          git checkout -q FETCH_HEAD
+
+      - run: |
+          nix --extra-experimental-features 'nix-command flakes' \
+            build .#default --print-build-logs
