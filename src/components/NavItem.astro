@@ -1,0 +1,32 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+    href: string;
+}
+
+const { href, class: className, ...attrs } = Astro.props;
+
+// `Astro.url.pathname` echoes back whatever trailing slash the request came in
+// with, so trim both sides before comparing. The root "/" is left alone.
+const normalize = (path: string) => path.replace(/(.)\/$/, "$1");
+
+const isActive = normalize(Astro.url.pathname) === normalize(href);
+---
+
+<li>
+    <a
+        href={href}
+        aria-current={isActive ? "page" : undefined}
+        class:list={[className, { active: isActive }]}
+        {...attrs}
+    >
+        <slot />
+    </a>
+</li>
+
+<style>
+    .active {
+        font-weight: bold;
+    }
+</style>
