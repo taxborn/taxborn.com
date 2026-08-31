@@ -1,1 +1,44 @@
 @import "tailwindcss";
+
+:root {
+    /* Tells the UA to render form controls and scrollbars to match. */
+    color-scheme: light dark;
+
+    --bg: oklch(0.958 0.006 264.532); /* base */
+    --fg: oklch(0.435 0.043 279.325); /* text */
+    --muted: oklch(0.601 0.030 278.694); /* overlay2 */
+    --accent: oklch(0.555 0.250 297.016); /* mauve */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: oklch(0.243 0.030 283.911); /* base */
+        --fg: oklch(0.879 0.043 272.277); /* text */
+        --muted: oklch(0.687 0.037 274.725); /* overlay2 */
+        --accent: oklch(0.787 0.119 304.769); /* mauve */
+    }
+}
+
+/*
+ * `inline` makes the utilities emit `var(--bg)` rather than a copy of its
+ * value, so `bg-bg` and friends re-resolve when the media query flips.
+ */
+@theme inline {
+    --color-bg: var(--bg);
+    --color-fg: var(--fg);
+    --color-muted: var(--muted);
+    --color-accent: var(--accent);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+}
+
+a {
+    color: var(--accent);
+}
+
+footer {
+    color: var(--muted);
+}

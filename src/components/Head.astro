@@ -10,6 +10,10 @@ const { title } = Astro.props;
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
 
+<!-- Paints the mobile browser chrome to match the palette in global.css. -->
+<meta name="theme-color" content="#fdfdfc" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)" />
+
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 
