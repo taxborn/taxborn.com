@@ -18,16 +18,18 @@ const { title, ...props } = Astro.props;
         <slot name="head" />
     </head>
     <body>
-        <header>
-            <Navigation />
-            <slot name="header" />
-        </header>
-        <main>
-            <slot />
-        </main>
-        <footer>
-            <Footer />
-            <slot name="footer" />
-        </footer>
+        <div class="p-2">
+            <header>
+                <Navigation />
+                <slot name="header" />
+            </header>
+            <main class="py-4">
+                <slot />
+            </main>
+            <footer>
+                <Footer />
+                <slot name="footer" />
+            </footer>
+        </div>
     </body>
 </html>
